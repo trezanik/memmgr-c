@@ -1,0 +1,8 @@
+var searchData=
+[
+  ['tailq_5fentry',['TAILQ_ENTRY',['../structmemblock__header.html#a566a8f9bbca747216118ce5c38518fc0',1,'memblock_header']]],
+  ['tailq_5fhead',['TAILQ_HEAD',['../structmem__context.html#a34706a5868f46210cd53dac06b3d1faa',1,'mem_context']]],
+  ['tracked_5falloc',['tracked_alloc',['../tracked__memory_8c.html#a060364772083abaaf94eee077a5d3365',1,'tracked_alloc(struct mem_context *const context, const uint32_t num_bytes, const char *file, const char *function, const uint32_t line):&#160;tracked_memory.c'],['../tracked__memory_8h.html#a060364772083abaaf94eee077a5d3365',1,'tracked_alloc(struct mem_context *const context, const uint32_t num_bytes, const char *file, const char *function, const uint32_t line):&#160;tracked_memory.c']]],
+  ['tracked_5ffree',['tracked_free',['../tracked__memory_8c.html#adaadfc4aa30023606455c7f940868825',1,'tracked_free(struct mem_context *const context, void *memory):&#160;tracked_memory.c'],['../tracked__memory_8h.html#adaadfc4aa30023606455c7f940868825',1,'tracked_free(struct mem_context *const context, void *memory):&#160;tracked_memory.c']]],
+  ['tracked_5frealloc',['tracked_realloc',['../tracked__memory_8c.html#a4e46491d14d0a28b73e4758cc2b20d3b',1,'tracked_realloc(struct mem_context *const context, void *memory, const uint32_t new_num_bytes, const char *file, const char *function, const uint32_t line):&#160;tracked_memory.c'],['../tracked__memory_8h.html#a4e46491d14d0a28b73e4758cc2b20d3b',1,'tracked_realloc(struct mem_context *const context, void *memory, const uint32_t new_num_bytes, const char *file, const char *function, const uint32_t line):&#160;tracked_memory.c']]]
+];

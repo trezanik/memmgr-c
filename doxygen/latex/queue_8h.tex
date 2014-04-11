@@ -1,0 +1,1866 @@
+\section{queue.\-h File Reference}
+\label{queue_8h}\index{queue.\-h@{queue.\-h}}
+{\ttfamily \#include $<$sys/cdefs.\-h$>$}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{queue_8h_a990f2617ebc37cd79c332e24ce7e4a88}{Q\-M\-D\-\_\-\-T\-R\-A\-C\-E\-\_\-\-E\-L\-E\-M}(elem)
+\item 
+\#define \hyperlink{queue_8h_af8813e6512e6ac86e6b598241b1bf020}{Q\-M\-D\-\_\-\-T\-R\-A\-C\-E\-\_\-\-H\-E\-A\-D}(head)
+\item 
+\#define \hyperlink{queue_8h_a96671a8f87ff87543b3b0b671a274a1c}{Q\-M\-D\-\_\-\-S\-A\-V\-E\-L\-I\-N\-K}(name, link)
+\item 
+\#define \hyperlink{queue_8h_a743488648fbd29bf4cf1addf004f43ef}{T\-R\-A\-C\-E\-B\-U\-F}
+\item 
+\#define \hyperlink{queue_8h_a0397af84b4a238c2b678721a88b6eccc}{T\-R\-A\-C\-E\-B\-U\-F\-\_\-\-I\-N\-I\-T\-I\-A\-L\-I\-Z\-E\-R}
+\item 
+\#define \hyperlink{queue_8h_adee7bf054da0ade68bb853732c665a2b}{T\-R\-A\-S\-H\-I\-T}(x)
+\item 
+\#define \hyperlink{queue_8h_a8224e40ea764bc857bab6f6d9c357dd9}{S\-L\-I\-S\-T\-\_\-\-H\-E\-A\-D}(name, type)
+\item 
+\#define \hyperlink{queue_8h_a9ae2aca3d46e62be4cb1408bd946ef15}{S\-L\-I\-S\-T\-\_\-\-H\-E\-A\-D\-\_\-\-I\-N\-I\-T\-I\-A\-L\-I\-Z\-E\-R}(head)~\{ N\-U\-L\-L \}
+\item 
+\#define \hyperlink{queue_8h_a5dd8bb1cef024ac008680e7e3b660332}{S\-L\-I\-S\-T\-\_\-\-E\-N\-T\-R\-Y}(type)
+\item 
+\#define \hyperlink{queue_8h_a59bcc4e6f4bf63b897bdc0644566c583}{S\-L\-I\-S\-T\-\_\-\-E\-M\-P\-T\-Y}(head)~((head)-\/$>$slh\-\_\-first == N\-U\-L\-L)
+\item 
+\#define \hyperlink{queue_8h_a91bac7d0d32e3ec56bc579ace45ed8cd}{S\-L\-I\-S\-T\-\_\-\-F\-I\-R\-S\-T}(head)~((head)-\/$>$slh\-\_\-first)
+\item 
+\#define \hyperlink{queue_8h_a05db87878125c27e3060dd641aa3b0f4}{S\-L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H}(var, head, field)
+\item 
+\#define \hyperlink{queue_8h_a24405a36fc765b619964d525714c7827}{S\-L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-F\-R\-O\-M}(var, head, field)
+\item 
+\#define \hyperlink{queue_8h_afeca7f301bcbd06a17821aa00e9d14d5}{S\-L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-S\-A\-F\-E}(var, head, field, tvar)
+\item 
+\#define \hyperlink{queue_8h_a6eaa913f1fb42af030c7933b5257643f}{S\-L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-F\-R\-O\-M\-\_\-\-S\-A\-F\-E}(var, head, field, tvar)
+\item 
+\#define \hyperlink{queue_8h_a7017f84f3ba90cd69441f09b2825f7b9}{S\-L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-P\-R\-E\-V\-P\-T\-R}(var, varp, head, field)
+\item 
+\#define \hyperlink{queue_8h_a361ac8e88cf066cc4d46d28b54fd3031}{S\-L\-I\-S\-T\-\_\-\-I\-N\-I\-T}(head)
+\item 
+\#define \hyperlink{queue_8h_af1d994d9652ccbc41a60b747dfc15ea5}{S\-L\-I\-S\-T\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-A\-F\-T\-E\-R}(slistelm, elm, field)
+\item 
+\#define \hyperlink{queue_8h_a48df7439e09a419afabdd1f2f8551e73}{S\-L\-I\-S\-T\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-H\-E\-A\-D}(head, elm, field)
+\item 
+\#define \hyperlink{queue_8h_a7cd1d5ae37224ecee1f0b831eb73e7f4}{S\-L\-I\-S\-T\-\_\-\-N\-E\-X\-T}(elm, field)~((elm)-\/$>$field.\-sle\-\_\-next)
+\item 
+\#define \hyperlink{queue_8h_a9c7950d61593ab9198524fca81b17ab0}{S\-L\-I\-S\-T\-\_\-\-R\-E\-M\-O\-V\-E}(head, elm, type, field)
+\item 
+\#define \hyperlink{queue_8h_a16cbbc38c258a695356d8c3377a5604d}{S\-L\-I\-S\-T\-\_\-\-R\-E\-M\-O\-V\-E\-\_\-\-A\-F\-T\-E\-R}(elm, field)
+\item 
+\#define \hyperlink{queue_8h_aeb10c664372b3b680455274170f4c897}{S\-L\-I\-S\-T\-\_\-\-R\-E\-M\-O\-V\-E\-\_\-\-H\-E\-A\-D}(head, field)
+\item 
+\#define \hyperlink{queue_8h_a43b7433e67885b7f342abe61a7e29745}{S\-L\-I\-S\-T\-\_\-\-S\-W\-A\-P}(head1, head2, type)
+\item 
+\#define \hyperlink{queue_8h_a7b54f0de61925e7cf33184c2ec24da14}{S\-T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D}(name, type)
+\item 
+\#define \hyperlink{queue_8h_a3d41ce2c3f1dd21c0d4051d13204c321}{S\-T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D\-\_\-\-I\-N\-I\-T\-I\-A\-L\-I\-Z\-E\-R}(head)~\{ N\-U\-L\-L, \&(head).stqh\-\_\-first \}
+\item 
+\#define \hyperlink{queue_8h_a765904f4fab4e7de1e2cd8ff351bc353}{S\-T\-A\-I\-L\-Q\-\_\-\-E\-N\-T\-R\-Y}(type)
+\item 
+\#define \hyperlink{queue_8h_aadfbe79db37e93cf528ae79a9aafb755}{S\-T\-A\-I\-L\-Q\-\_\-\-C\-O\-N\-C\-A\-T}(head1, head2)
+\item 
+\#define \hyperlink{queue_8h_a8427c8f43d09d73062cf6b37f303aff5}{S\-T\-A\-I\-L\-Q\-\_\-\-E\-M\-P\-T\-Y}(head)~((head)-\/$>$stqh\-\_\-first == N\-U\-L\-L)
+\item 
+\#define \hyperlink{queue_8h_a3e2eb7535019a2829399b24744dd1a66}{S\-T\-A\-I\-L\-Q\-\_\-\-F\-I\-R\-S\-T}(head)~((head)-\/$>$stqh\-\_\-first)
+\item 
+\#define \hyperlink{queue_8h_a77999ebdf5aaf7af8b8ea22bf208c432}{S\-T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H}(var, head, field)
+\item 
+\#define \hyperlink{queue_8h_afc90cddaa7d2b43eb0ca0588b09e493a}{S\-T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-F\-R\-O\-M}(var, head, field)
+\item 
+\#define \hyperlink{queue_8h_ac3203dcce73148c142df4586eb55ce55}{S\-T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-S\-A\-F\-E}(var, head, field, tvar)
+\item 
+\#define \hyperlink{queue_8h_a7c6e582a011a3935507475e8a952b4bd}{S\-T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-F\-R\-O\-M\-\_\-\-S\-A\-F\-E}(var, head, field, tvar)
+\item 
+\#define \hyperlink{queue_8h_a3b508a1c06ded6b4ce4b1feea7643c28}{S\-T\-A\-I\-L\-Q\-\_\-\-I\-N\-I\-T}(head)
+\item 
+\#define \hyperlink{queue_8h_af6ebdaf4ccbde5e464273b8079e832b3}{S\-T\-A\-I\-L\-Q\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-A\-F\-T\-E\-R}(head, tqelm, elm, field)
+\item 
+\#define \hyperlink{queue_8h_aad3b1fb87b675bae75334acd958b57dc}{S\-T\-A\-I\-L\-Q\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-H\-E\-A\-D}(head, elm, field)
+\item 
+\#define \hyperlink{queue_8h_a7bc9a31418b55c5698be3e54e10bb484}{S\-T\-A\-I\-L\-Q\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-T\-A\-I\-L}(head, elm, field)
+\item 
+\#define \hyperlink{queue_8h_ae18d422917aa0b8efb0f58d92a19ae41}{S\-T\-A\-I\-L\-Q\-\_\-\-L\-A\-S\-T}(head, type, field)
+\item 
+\#define \hyperlink{queue_8h_ad89ac472696d006112dface9c2d75e47}{S\-T\-A\-I\-L\-Q\-\_\-\-N\-E\-X\-T}(elm, field)~((elm)-\/$>$field.\-stqe\-\_\-next)
+\item 
+\#define \hyperlink{queue_8h_a2a0d6665f277f80bf301a16e6ab2403c}{S\-T\-A\-I\-L\-Q\-\_\-\-R\-E\-M\-O\-V\-E}(head, elm, type, field)
+\item 
+\#define \hyperlink{queue_8h_a657c50417f3caeab52e34fcd454cec71}{S\-T\-A\-I\-L\-Q\-\_\-\-R\-E\-M\-O\-V\-E\-\_\-\-A\-F\-T\-E\-R}(head, elm, field)
+\item 
+\#define \hyperlink{queue_8h_a24c16c7c5c9908022bad7a98ddac9740}{S\-T\-A\-I\-L\-Q\-\_\-\-R\-E\-M\-O\-V\-E\-\_\-\-H\-E\-A\-D}(head, field)
+\item 
+\#define \hyperlink{queue_8h_af30e7c9283aea226ad5a73575fc1601a}{S\-T\-A\-I\-L\-Q\-\_\-\-S\-W\-A\-P}(head1, head2, type)
+\item 
+\#define \hyperlink{queue_8h_ae72219f63b2fe9bce774a64e11404179}{L\-I\-S\-T\-\_\-\-H\-E\-A\-D}(name, type)
+\item 
+\#define \hyperlink{queue_8h_a5d7b8e9f9968d3152a8519cd9a45312e}{L\-I\-S\-T\-\_\-\-H\-E\-A\-D\-\_\-\-I\-N\-I\-T\-I\-A\-L\-I\-Z\-E\-R}(head)~\{ N\-U\-L\-L \}
+\item 
+\#define \hyperlink{queue_8h_aec2ccd0e8c215504508af23f04480be6}{L\-I\-S\-T\-\_\-\-E\-N\-T\-R\-Y}(type)
+\item 
+\#define \hyperlink{queue_8h_a56b1069d0673242f84246986614b15cc}{Q\-M\-D\-\_\-\-L\-I\-S\-T\-\_\-\-C\-H\-E\-C\-K\-\_\-\-H\-E\-A\-D}(head, field)
+\item 
+\#define \hyperlink{queue_8h_a98d7f73cec635caf9515945f0d5413f6}{Q\-M\-D\-\_\-\-L\-I\-S\-T\-\_\-\-C\-H\-E\-C\-K\-\_\-\-N\-E\-X\-T}(elm, field)
+\item 
+\#define \hyperlink{queue_8h_aa03b790c1e9ea4475fff822f2f924770}{Q\-M\-D\-\_\-\-L\-I\-S\-T\-\_\-\-C\-H\-E\-C\-K\-\_\-\-P\-R\-E\-V}(elm, field)
+\item 
+\#define \hyperlink{queue_8h_af59ab30a8f9a88af86422600c38125cf}{L\-I\-S\-T\-\_\-\-E\-M\-P\-T\-Y}(head)~((head)-\/$>$lh\-\_\-first == N\-U\-L\-L)
+\item 
+\#define \hyperlink{queue_8h_a8f223070a7fe7c5f24033e9d8fbeb610}{L\-I\-S\-T\-\_\-\-F\-I\-R\-S\-T}(head)~((head)-\/$>$lh\-\_\-first)
+\item 
+\#define \hyperlink{queue_8h_ac1543beeb6d9224b60feb7a2703b2a87}{L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H}(var, head, field)
+\item 
+\#define \hyperlink{queue_8h_abb233e757b72211906fce14e8dbfcada}{L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-F\-R\-O\-M}(var, head, field)
+\item 
+\#define \hyperlink{queue_8h_a2dd4b5313ff322ed89827dede22589e8}{L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-S\-A\-F\-E}(var, head, field, tvar)
+\item 
+\#define \hyperlink{queue_8h_acc9a82d352391194a56688d2d0f992c0}{L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-F\-R\-O\-M\-\_\-\-S\-A\-F\-E}(var, head, field, tvar)
+\item 
+\#define \hyperlink{queue_8h_a304b5b7f7bdcba2793eaba9c890991c3}{L\-I\-S\-T\-\_\-\-I\-N\-I\-T}(head)
+\item 
+\#define \hyperlink{queue_8h_aab62f53d4c94ab67bf7c4dc5c7670f64}{L\-I\-S\-T\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-A\-F\-T\-E\-R}(listelm, elm, field)
+\item 
+\#define \hyperlink{queue_8h_a73d12127b84f84215eb03a4fb20feebb}{L\-I\-S\-T\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-B\-E\-F\-O\-R\-E}(listelm, elm, field)
+\item 
+\#define \hyperlink{queue_8h_ad80d8d658fdb46a9f7cc81cb2ae54885}{L\-I\-S\-T\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-H\-E\-A\-D}(head, elm, field)
+\item 
+\#define \hyperlink{queue_8h_ad150fcc4dc3e0a56600101f1f1065ed5}{L\-I\-S\-T\-\_\-\-N\-E\-X\-T}(elm, field)~((elm)-\/$>$field.\-le\-\_\-next)
+\item 
+\#define \hyperlink{queue_8h_a7458f2852ae931b2ed5426311b53d029}{L\-I\-S\-T\-\_\-\-P\-R\-E\-V}(elm, head, type, field)
+\item 
+\#define \hyperlink{queue_8h_a4f60a3fedbebc5ef6edded99062dd98d}{L\-I\-S\-T\-\_\-\-R\-E\-M\-O\-V\-E}(elm, field)
+\item 
+\#define \hyperlink{queue_8h_a71800bd6ea3903a1068f87e4f07cc851}{L\-I\-S\-T\-\_\-\-S\-W\-A\-P}(head1, head2, type, field)
+\item 
+\#define \hyperlink{queue_8h_a4abce769a262e090c1f601605b9d6c76}{T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D}(name, type)
+\item 
+\#define \hyperlink{queue_8h_ac269df7d4126ed9885156cbad2cbf8af}{T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D\-\_\-\-I\-N\-I\-T\-I\-A\-L\-I\-Z\-E\-R}(head)~\{ N\-U\-L\-L, \&(head).tqh\-\_\-first, \hyperlink{queue_8h_a0397af84b4a238c2b678721a88b6eccc}{T\-R\-A\-C\-E\-B\-U\-F\-\_\-\-I\-N\-I\-T\-I\-A\-L\-I\-Z\-E\-R} \}
+\item 
+\#define \hyperlink{queue_8h_af71bfd90dc9d00fb03545fe66c67d673}{T\-A\-I\-L\-Q\-\_\-\-E\-N\-T\-R\-Y}(type)
+\item 
+\#define \hyperlink{queue_8h_a2fadd77a30e452cb44e961a3349e965c}{Q\-M\-D\-\_\-\-T\-A\-I\-L\-Q\-\_\-\-C\-H\-E\-C\-K\-\_\-\-H\-E\-A\-D}(head, field)
+\item 
+\#define \hyperlink{queue_8h_a388344b503d238583a1e7d710aa403ef}{Q\-M\-D\-\_\-\-T\-A\-I\-L\-Q\-\_\-\-C\-H\-E\-C\-K\-\_\-\-T\-A\-I\-L}(head, headname)
+\item 
+\#define \hyperlink{queue_8h_ac8ae401a8fb8a0c6259003d81717c137}{Q\-M\-D\-\_\-\-T\-A\-I\-L\-Q\-\_\-\-C\-H\-E\-C\-K\-\_\-\-N\-E\-X\-T}(elm, field)
+\item 
+\#define \hyperlink{queue_8h_a00699c4f3c7eb447c5ea7efc17999d09}{Q\-M\-D\-\_\-\-T\-A\-I\-L\-Q\-\_\-\-C\-H\-E\-C\-K\-\_\-\-P\-R\-E\-V}(elm, field)
+\item 
+\#define \hyperlink{queue_8h_afe4852d23c85543fafc53ad409461750}{T\-A\-I\-L\-Q\-\_\-\-C\-O\-N\-C\-A\-T}(head1, head2, field)
+\item 
+\#define \hyperlink{queue_8h_ac3c9da7ac712eacbbad5cc54d7a3477e}{T\-A\-I\-L\-Q\-\_\-\-E\-M\-P\-T\-Y}(head)~((head)-\/$>$tqh\-\_\-first == N\-U\-L\-L)
+\item 
+\#define \hyperlink{queue_8h_a7d6894360bd1c41e0e6f6d84998c1362}{T\-A\-I\-L\-Q\-\_\-\-F\-I\-R\-S\-T}(head)~((head)-\/$>$tqh\-\_\-first)
+\item 
+\#define \hyperlink{queue_8h_a16e5fc168e7f3494d4b1df54447d871e}{T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H}(var, head, field)
+\item 
+\#define \hyperlink{queue_8h_a749ad60232f2de8931c9c0871987f84f}{T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-F\-R\-O\-M}(var, head, field)
+\item 
+\#define \hyperlink{queue_8h_a2a85f19896399eecd0ebf91cb8176166}{T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-S\-A\-F\-E}(var, head, field, tvar)
+\item 
+\#define \hyperlink{queue_8h_aa9cc420c740f2f56c6efdacea6cc4d94}{T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-F\-R\-O\-M\-\_\-\-S\-A\-F\-E}(var, head, field, tvar)
+\item 
+\#define \hyperlink{queue_8h_aa7f65c910cd4616fcfa9723c5763b1a5}{T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-R\-E\-V\-E\-R\-S\-E}(var, head, headname, field)
+\item 
+\#define \hyperlink{queue_8h_a6cb12f27e7182bcb25c7dfdc9a8e83bf}{T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-R\-E\-V\-E\-R\-S\-E\-\_\-\-F\-R\-O\-M}(var, head, headname, field)
+\item 
+\#define \hyperlink{queue_8h_aa7841e4f848e470b9f2bc676473d7a5b}{T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-R\-E\-V\-E\-R\-S\-E\-\_\-\-S\-A\-F\-E}(var, head, headname, field, tvar)
+\item 
+\#define \hyperlink{queue_8h_a5a73496c2e5232e55ad90245bf301de8}{T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-R\-E\-V\-E\-R\-S\-E\-\_\-\-F\-R\-O\-M\-\_\-\-S\-A\-F\-E}(var, head, headname, field, tvar)
+\item 
+\#define \hyperlink{queue_8h_a449d224023780e46253b83b61e0a50a9}{T\-A\-I\-L\-Q\-\_\-\-I\-N\-I\-T}(head)
+\item 
+\#define \hyperlink{queue_8h_af972e33f5eacef659ee0bf0a13ca518c}{T\-A\-I\-L\-Q\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-A\-F\-T\-E\-R}(head, listelm, elm, field)
+\item 
+\#define \hyperlink{queue_8h_ac6a41e17dbc7d8df1f8b353a036754ff}{T\-A\-I\-L\-Q\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-B\-E\-F\-O\-R\-E}(listelm, elm, field)
+\item 
+\#define \hyperlink{queue_8h_af0f99e8f322ea4eef2d9deaa505239a6}{T\-A\-I\-L\-Q\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-H\-E\-A\-D}(head, elm, field)
+\item 
+\#define \hyperlink{queue_8h_a512bee16b46f601078c96c776d2648c3}{T\-A\-I\-L\-Q\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-T\-A\-I\-L}(head, elm, field)
+\item 
+\#define \hyperlink{queue_8h_ac9154a9aebb3c15a3f2356349a1cc14f}{T\-A\-I\-L\-Q\-\_\-\-L\-A\-S\-T}(head, headname)~($\ast$(((struct headname $\ast$)((head)-\/$>$tqh\-\_\-last))-\/$>$tqh\-\_\-last))
+\item 
+\#define \hyperlink{queue_8h_abd57fe9bdea6007a602f8c7d61bd5265}{T\-A\-I\-L\-Q\-\_\-\-N\-E\-X\-T}(elm, field)~((elm)-\/$>$field.\-tqe\-\_\-next)
+\item 
+\#define \hyperlink{queue_8h_a524f93a0c21c390683fab4c27e840a10}{T\-A\-I\-L\-Q\-\_\-\-P\-R\-E\-V}(elm, headname, field)~($\ast$(((struct headname $\ast$)((elm)-\/$>$field.\-tqe\-\_\-prev))-\/$>$tqh\-\_\-last))
+\item 
+\#define \hyperlink{queue_8h_aaae87ca18c28066e1a96221e762d1209}{T\-A\-I\-L\-Q\-\_\-\-R\-E\-M\-O\-V\-E}(head, elm, field)
+\item 
+\#define \hyperlink{queue_8h_aa4cf483c7dcddd1d89a00886b5466bac}{T\-A\-I\-L\-Q\-\_\-\-S\-W\-A\-P}(head1, head2, type, field)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\index{queue.\-h@{queue.\-h}!L\-I\-S\-T\-\_\-\-E\-M\-P\-T\-Y@{L\-I\-S\-T\-\_\-\-E\-M\-P\-T\-Y}}
+\index{L\-I\-S\-T\-\_\-\-E\-M\-P\-T\-Y@{L\-I\-S\-T\-\_\-\-E\-M\-P\-T\-Y}!queue.h@{queue.\-h}}
+\subsubsection[{L\-I\-S\-T\-\_\-\-E\-M\-P\-T\-Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\-I\-S\-T\-\_\-\-E\-M\-P\-T\-Y(
+\begin{DoxyParamCaption}
+\item[{}]{head}
+\end{DoxyParamCaption}
+)~((head)-\/$>$lh\-\_\-first == N\-U\-L\-L)}\label{queue_8h_af59ab30a8f9a88af86422600c38125cf}
+
+
+Definition at line 406 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!L\-I\-S\-T\-\_\-\-E\-N\-T\-R\-Y@{L\-I\-S\-T\-\_\-\-E\-N\-T\-R\-Y}}
+\index{L\-I\-S\-T\-\_\-\-E\-N\-T\-R\-Y@{L\-I\-S\-T\-\_\-\-E\-N\-T\-R\-Y}!queue.h@{queue.\-h}}
+\subsubsection[{L\-I\-S\-T\-\_\-\-E\-N\-T\-R\-Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\-I\-S\-T\-\_\-\-E\-N\-T\-R\-Y(
+\begin{DoxyParamCaption}
+\item[{}]{type}
+\end{DoxyParamCaption}
+)}\label{queue_8h_aec2ccd0e8c215504508af23f04480be6}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keyword}{struct }\{                                                                \(\backslash\)
+        struct type *le\_next;   \textcolor{comment}{/* next element */}                      \(\backslash\)
+        struct type **le\_prev;  \textcolor{comment}{/* address of previous next element */}  \(\backslash\)
+\}
+\end{DoxyCode}
+
+
+Definition at line 371 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!L\-I\-S\-T\-\_\-\-F\-I\-R\-S\-T@{L\-I\-S\-T\-\_\-\-F\-I\-R\-S\-T}}
+\index{L\-I\-S\-T\-\_\-\-F\-I\-R\-S\-T@{L\-I\-S\-T\-\_\-\-F\-I\-R\-S\-T}!queue.h@{queue.\-h}}
+\subsubsection[{L\-I\-S\-T\-\_\-\-F\-I\-R\-S\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\-I\-S\-T\-\_\-\-F\-I\-R\-S\-T(
+\begin{DoxyParamCaption}
+\item[{}]{head}
+\end{DoxyParamCaption}
+)~((head)-\/$>$lh\-\_\-first)}\label{queue_8h_a8f223070a7fe7c5f24033e9d8fbeb610}
+
+
+Definition at line 408 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H@{L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H}}
+\index{L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H@{L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H}!queue.h@{queue.\-h}}
+\subsubsection[{L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H(
+\begin{DoxyParamCaption}
+\item[{}]{var, }
+\item[{}]{head, }
+\item[{}]{field}
+\end{DoxyParamCaption}
+)}\label{queue_8h_ac1543beeb6d9224b60feb7a2703b2a87}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{for} ((var) = LIST_FIRST((head));                                \(\backslash\)
+            (var);                                                      \(\backslash\)
+            (var) = LIST_NEXT((var), field))
+\end{DoxyCode}
+
+
+Definition at line 410 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-F\-R\-O\-M@{L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-F\-R\-O\-M}}
+\index{L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-F\-R\-O\-M@{L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-F\-R\-O\-M}!queue.h@{queue.\-h}}
+\subsubsection[{L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-F\-R\-O\-M}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-F\-R\-O\-M(
+\begin{DoxyParamCaption}
+\item[{}]{var, }
+\item[{}]{head, }
+\item[{}]{field}
+\end{DoxyParamCaption}
+)}\label{queue_8h_abb233e757b72211906fce14e8dbfcada}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{for} ((var) = ((var) ? (var) : LIST_FIRST((head)));              \(\backslash\)
+            (var);                                                      \(\backslash\)
+            (var) = LIST_NEXT((var), field))
+\end{DoxyCode}
+
+
+Definition at line 415 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-F\-R\-O\-M\-\_\-\-S\-A\-F\-E@{L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-F\-R\-O\-M\-\_\-\-S\-A\-F\-E}}
+\index{L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-F\-R\-O\-M\-\_\-\-S\-A\-F\-E@{L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-F\-R\-O\-M\-\_\-\-S\-A\-F\-E}!queue.h@{queue.\-h}}
+\subsubsection[{L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-F\-R\-O\-M\-\_\-\-S\-A\-F\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-F\-R\-O\-M\-\_\-\-S\-A\-F\-E(
+\begin{DoxyParamCaption}
+\item[{}]{var, }
+\item[{}]{head, }
+\item[{}]{field, }
+\item[{}]{tvar}
+\end{DoxyParamCaption}
+)}\label{queue_8h_acc9a82d352391194a56688d2d0f992c0}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{for} ((var) = ((var) ? (var) : LIST_FIRST((head)));              \(\backslash\)
+            (var) && ((tvar) = LIST_NEXT((var), field), 1);             \(\backslash\)
+            (var) = (tvar))
+\end{DoxyCode}
+
+
+Definition at line 425 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-S\-A\-F\-E@{L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-S\-A\-F\-E}}
+\index{L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-S\-A\-F\-E@{L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-S\-A\-F\-E}!queue.h@{queue.\-h}}
+\subsubsection[{L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-S\-A\-F\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-S\-A\-F\-E(
+\begin{DoxyParamCaption}
+\item[{}]{var, }
+\item[{}]{head, }
+\item[{}]{field, }
+\item[{}]{tvar}
+\end{DoxyParamCaption}
+)}\label{queue_8h_a2dd4b5313ff322ed89827dede22589e8}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{for} ((var) = LIST_FIRST((head));                                \(\backslash\)
+            (var) && ((tvar) = LIST_NEXT((var), field), 1);             \(\backslash\)
+            (var) = (tvar))
+\end{DoxyCode}
+
+
+Definition at line 420 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!L\-I\-S\-T\-\_\-\-H\-E\-A\-D@{L\-I\-S\-T\-\_\-\-H\-E\-A\-D}}
+\index{L\-I\-S\-T\-\_\-\-H\-E\-A\-D@{L\-I\-S\-T\-\_\-\-H\-E\-A\-D}!queue.h@{queue.\-h}}
+\subsubsection[{L\-I\-S\-T\-\_\-\-H\-E\-A\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\-I\-S\-T\-\_\-\-H\-E\-A\-D(
+\begin{DoxyParamCaption}
+\item[{}]{name, }
+\item[{}]{type}
+\end{DoxyParamCaption}
+)}\label{queue_8h_ae72219f63b2fe9bce774a64e11404179}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keyword}{struct }name \{                                                           \(\backslash\)
+        struct type *lh\_first;  \textcolor{comment}{/* first element */}                     \(\backslash\)
+\}
+\end{DoxyCode}
+
+
+Definition at line 363 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!L\-I\-S\-T\-\_\-\-H\-E\-A\-D\-\_\-\-I\-N\-I\-T\-I\-A\-L\-I\-Z\-E\-R@{L\-I\-S\-T\-\_\-\-H\-E\-A\-D\-\_\-\-I\-N\-I\-T\-I\-A\-L\-I\-Z\-E\-R}}
+\index{L\-I\-S\-T\-\_\-\-H\-E\-A\-D\-\_\-\-I\-N\-I\-T\-I\-A\-L\-I\-Z\-E\-R@{L\-I\-S\-T\-\_\-\-H\-E\-A\-D\-\_\-\-I\-N\-I\-T\-I\-A\-L\-I\-Z\-E\-R}!queue.h@{queue.\-h}}
+\subsubsection[{L\-I\-S\-T\-\_\-\-H\-E\-A\-D\-\_\-\-I\-N\-I\-T\-I\-A\-L\-I\-Z\-E\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\-I\-S\-T\-\_\-\-H\-E\-A\-D\-\_\-\-I\-N\-I\-T\-I\-A\-L\-I\-Z\-E\-R(
+\begin{DoxyParamCaption}
+\item[{}]{head}
+\end{DoxyParamCaption}
+)~\{ N\-U\-L\-L \}}\label{queue_8h_a5d7b8e9f9968d3152a8519cd9a45312e}
+
+
+Definition at line 368 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!L\-I\-S\-T\-\_\-\-I\-N\-I\-T@{L\-I\-S\-T\-\_\-\-I\-N\-I\-T}}
+\index{L\-I\-S\-T\-\_\-\-I\-N\-I\-T@{L\-I\-S\-T\-\_\-\-I\-N\-I\-T}!queue.h@{queue.\-h}}
+\subsubsection[{L\-I\-S\-T\-\_\-\-I\-N\-I\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\-I\-S\-T\-\_\-\-I\-N\-I\-T(
+\begin{DoxyParamCaption}
+\item[{}]{head}
+\end{DoxyParamCaption}
+)}\label{queue_8h_a304b5b7f7bdcba2793eaba9c890991c3}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{                                            \
+	LIST_FIRST((head)) = NULL;                                     \(\backslash\)
+\} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+
+
+Definition at line 430 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!L\-I\-S\-T\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-A\-F\-T\-E\-R@{L\-I\-S\-T\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-A\-F\-T\-E\-R}}
+\index{L\-I\-S\-T\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-A\-F\-T\-E\-R@{L\-I\-S\-T\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-A\-F\-T\-E\-R}!queue.h@{queue.\-h}}
+\subsubsection[{L\-I\-S\-T\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-A\-F\-T\-E\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\-I\-S\-T\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-A\-F\-T\-E\-R(
+\begin{DoxyParamCaption}
+\item[{}]{listelm, }
+\item[{}]{elm, }
+\item[{}]{field}
+\end{DoxyParamCaption}
+)}\label{queue_8h_aab62f53d4c94ab67bf7c4dc5c7670f64}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{                    \
+	QMD_LIST_CHECK_NEXT(listelm, field);                           \(\backslash\)
+        if ((LIST_NEXT((elm), field) = LIST_NEXT((listelm), field)) != NULL)\
+		LIST_NEXT((listelm), field)->field.le\_prev =          \(\backslash\)
+                    &LIST_NEXT((elm), field);                           \
+	LIST_NEXT((listelm), field) = (elm);                           \(\backslash\)
+        (elm)->field.le\_prev = &LIST_NEXT((listelm), field);            \(\backslash\)
+\} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+
+
+Definition at line 434 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!L\-I\-S\-T\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-B\-E\-F\-O\-R\-E@{L\-I\-S\-T\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-B\-E\-F\-O\-R\-E}}
+\index{L\-I\-S\-T\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-B\-E\-F\-O\-R\-E@{L\-I\-S\-T\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-B\-E\-F\-O\-R\-E}!queue.h@{queue.\-h}}
+\subsubsection[{L\-I\-S\-T\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-B\-E\-F\-O\-R\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\-I\-S\-T\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-B\-E\-F\-O\-R\-E(
+\begin{DoxyParamCaption}
+\item[{}]{listelm, }
+\item[{}]{elm, }
+\item[{}]{field}
+\end{DoxyParamCaption}
+)}\label{queue_8h_a73d12127b84f84215eb03a4fb20feebb}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{                    \
+	QMD_LIST_CHECK_PREV(listelm, field);                           \(\backslash\)
+        (elm)->field.le\_prev = (listelm)->field.le\_prev;                \
+	LIST_NEXT((elm), field) = (listelm);                           \(\backslash\)
+        *(listelm)->field.le\_prev = (elm);                              \(\backslash\)
+        (listelm)->field.le\_prev = &LIST_NEXT((elm), field);            \(\backslash\)
+\} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+
+
+Definition at line 443 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!L\-I\-S\-T\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-H\-E\-A\-D@{L\-I\-S\-T\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-H\-E\-A\-D}}
+\index{L\-I\-S\-T\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-H\-E\-A\-D@{L\-I\-S\-T\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-H\-E\-A\-D}!queue.h@{queue.\-h}}
+\subsubsection[{L\-I\-S\-T\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-H\-E\-A\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\-I\-S\-T\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-H\-E\-A\-D(
+\begin{DoxyParamCaption}
+\item[{}]{head, }
+\item[{}]{elm, }
+\item[{}]{field}
+\end{DoxyParamCaption}
+)}\label{queue_8h_ad80d8d658fdb46a9f7cc81cb2ae54885}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{                            \
+	QMD_LIST_CHECK_HEAD((head), field);                            \(\backslash\)
+        if ((LIST_NEXT((elm), field) = LIST_FIRST((head))) != NULL)     \
+		LIST_FIRST((head))->field.le\_prev = &LIST_NEXT((elm), field);\
+	LIST_FIRST((head)) = (elm);                                    \(\backslash\)
+        (elm)->field.le\_prev = &LIST_FIRST((head));                     \(\backslash\)
+\} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+
+
+Definition at line 451 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!L\-I\-S\-T\-\_\-\-N\-E\-X\-T@{L\-I\-S\-T\-\_\-\-N\-E\-X\-T}}
+\index{L\-I\-S\-T\-\_\-\-N\-E\-X\-T@{L\-I\-S\-T\-\_\-\-N\-E\-X\-T}!queue.h@{queue.\-h}}
+\subsubsection[{L\-I\-S\-T\-\_\-\-N\-E\-X\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\-I\-S\-T\-\_\-\-N\-E\-X\-T(
+\begin{DoxyParamCaption}
+\item[{}]{elm, }
+\item[{}]{field}
+\end{DoxyParamCaption}
+)~((elm)-\/$>$field.\-le\-\_\-next)}\label{queue_8h_ad150fcc4dc3e0a56600101f1f1065ed5}
+
+
+Definition at line 459 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!L\-I\-S\-T\-\_\-\-P\-R\-E\-V@{L\-I\-S\-T\-\_\-\-P\-R\-E\-V}}
+\index{L\-I\-S\-T\-\_\-\-P\-R\-E\-V@{L\-I\-S\-T\-\_\-\-P\-R\-E\-V}!queue.h@{queue.\-h}}
+\subsubsection[{L\-I\-S\-T\-\_\-\-P\-R\-E\-V}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\-I\-S\-T\-\_\-\-P\-R\-E\-V(
+\begin{DoxyParamCaption}
+\item[{}]{elm, }
+\item[{}]{head, }
+\item[{}]{type, }
+\item[{}]{field}
+\end{DoxyParamCaption}
+)}\label{queue_8h_a7458f2852ae931b2ed5426311b53d029}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+((elm)->field.le\_prev == &LIST_FIRST((head)) ? NULL :           \(\backslash\)
+            \_\_containerof((elm)->field.le\_prev, \textcolor{keyword}{struct }type, field.le\_next))
+\end{DoxyCode}
+
+
+Definition at line 461 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!L\-I\-S\-T\-\_\-\-R\-E\-M\-O\-V\-E@{L\-I\-S\-T\-\_\-\-R\-E\-M\-O\-V\-E}}
+\index{L\-I\-S\-T\-\_\-\-R\-E\-M\-O\-V\-E@{L\-I\-S\-T\-\_\-\-R\-E\-M\-O\-V\-E}!queue.h@{queue.\-h}}
+\subsubsection[{L\-I\-S\-T\-\_\-\-R\-E\-M\-O\-V\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\-I\-S\-T\-\_\-\-R\-E\-M\-O\-V\-E(
+\begin{DoxyParamCaption}
+\item[{}]{elm, }
+\item[{}]{field}
+\end{DoxyParamCaption}
+)}\label{queue_8h_a4f60a3fedbebc5ef6edded99062dd98d}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{                                    \
+	QMD_SAVELINK(oldnext, (elm)->field.le\_next);                   \
+	QMD_SAVELINK(oldprev, (elm)->field.le\_prev);                   \
+	QMD_LIST_CHECK_NEXT(elm, field);                               \
+	QMD_LIST_CHECK_PREV(elm, field);                               \(\backslash\)
+        if (LIST_NEXT((elm), field) != NULL)                            \
+		LIST_NEXT((elm), field)->field.le\_prev =              \(\backslash\)
+                    (elm)->field.le\_prev;                               \(\backslash\)
+        *(elm)->field.le\_prev = LIST_NEXT((elm), field);                \
+	TRASHIT(*oldnext);                                             \
+	TRASHIT(*oldprev);                                             \(\backslash\)
+\} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+
+
+Definition at line 465 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!L\-I\-S\-T\-\_\-\-S\-W\-A\-P@{L\-I\-S\-T\-\_\-\-S\-W\-A\-P}}
+\index{L\-I\-S\-T\-\_\-\-S\-W\-A\-P@{L\-I\-S\-T\-\_\-\-S\-W\-A\-P}!queue.h@{queue.\-h}}
+\subsubsection[{L\-I\-S\-T\-\_\-\-S\-W\-A\-P}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\-I\-S\-T\-\_\-\-S\-W\-A\-P(
+\begin{DoxyParamCaption}
+\item[{}]{head1, }
+\item[{}]{head2, }
+\item[{}]{type, }
+\item[{}]{field}
+\end{DoxyParamCaption}
+)}\label{queue_8h_a71800bd6ea3903a1068f87e4f07cc851}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{                    \(\backslash\)
+        struct type *swap\_tmp = LIST_FIRST((head1));                    \
+	LIST_FIRST((head1)) = LIST_FIRST((head2));                     \
+	LIST_FIRST((head2)) = swap\_tmp;                                        \(\backslash\)
+        if ((swap\_tmp = LIST_FIRST((head1))) != NULL)                   \(\backslash\)
+                swap\_tmp->field.le\_prev = &LIST_FIRST((head1));         \(\backslash\)
+        if ((swap\_tmp = LIST_FIRST((head2))) != NULL)                   \(\backslash\)
+                swap\_tmp->field.le\_prev = &LIST_FIRST((head2));         \(\backslash\)
+\} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+
+
+Definition at line 478 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!Q\-M\-D\-\_\-\-L\-I\-S\-T\-\_\-\-C\-H\-E\-C\-K\-\_\-\-H\-E\-A\-D@{Q\-M\-D\-\_\-\-L\-I\-S\-T\-\_\-\-C\-H\-E\-C\-K\-\_\-\-H\-E\-A\-D}}
+\index{Q\-M\-D\-\_\-\-L\-I\-S\-T\-\_\-\-C\-H\-E\-C\-K\-\_\-\-H\-E\-A\-D@{Q\-M\-D\-\_\-\-L\-I\-S\-T\-\_\-\-C\-H\-E\-C\-K\-\_\-\-H\-E\-A\-D}!queue.h@{queue.\-h}}
+\subsubsection[{Q\-M\-D\-\_\-\-L\-I\-S\-T\-\_\-\-C\-H\-E\-C\-K\-\_\-\-H\-E\-A\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define Q\-M\-D\-\_\-\-L\-I\-S\-T\-\_\-\-C\-H\-E\-C\-K\-\_\-\-H\-E\-A\-D(
+\begin{DoxyParamCaption}
+\item[{}]{head, }
+\item[{}]{field}
+\end{DoxyParamCaption}
+)}\label{queue_8h_a56b1069d0673242f84246986614b15cc}
+
+
+Definition at line 401 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!Q\-M\-D\-\_\-\-L\-I\-S\-T\-\_\-\-C\-H\-E\-C\-K\-\_\-\-N\-E\-X\-T@{Q\-M\-D\-\_\-\-L\-I\-S\-T\-\_\-\-C\-H\-E\-C\-K\-\_\-\-N\-E\-X\-T}}
+\index{Q\-M\-D\-\_\-\-L\-I\-S\-T\-\_\-\-C\-H\-E\-C\-K\-\_\-\-N\-E\-X\-T@{Q\-M\-D\-\_\-\-L\-I\-S\-T\-\_\-\-C\-H\-E\-C\-K\-\_\-\-N\-E\-X\-T}!queue.h@{queue.\-h}}
+\subsubsection[{Q\-M\-D\-\_\-\-L\-I\-S\-T\-\_\-\-C\-H\-E\-C\-K\-\_\-\-N\-E\-X\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define Q\-M\-D\-\_\-\-L\-I\-S\-T\-\_\-\-C\-H\-E\-C\-K\-\_\-\-N\-E\-X\-T(
+\begin{DoxyParamCaption}
+\item[{}]{elm, }
+\item[{}]{field}
+\end{DoxyParamCaption}
+)}\label{queue_8h_a98d7f73cec635caf9515945f0d5413f6}
+
+
+Definition at line 402 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!Q\-M\-D\-\_\-\-L\-I\-S\-T\-\_\-\-C\-H\-E\-C\-K\-\_\-\-P\-R\-E\-V@{Q\-M\-D\-\_\-\-L\-I\-S\-T\-\_\-\-C\-H\-E\-C\-K\-\_\-\-P\-R\-E\-V}}
+\index{Q\-M\-D\-\_\-\-L\-I\-S\-T\-\_\-\-C\-H\-E\-C\-K\-\_\-\-P\-R\-E\-V@{Q\-M\-D\-\_\-\-L\-I\-S\-T\-\_\-\-C\-H\-E\-C\-K\-\_\-\-P\-R\-E\-V}!queue.h@{queue.\-h}}
+\subsubsection[{Q\-M\-D\-\_\-\-L\-I\-S\-T\-\_\-\-C\-H\-E\-C\-K\-\_\-\-P\-R\-E\-V}]{\setlength{\rightskip}{0pt plus 5cm}\#define Q\-M\-D\-\_\-\-L\-I\-S\-T\-\_\-\-C\-H\-E\-C\-K\-\_\-\-P\-R\-E\-V(
+\begin{DoxyParamCaption}
+\item[{}]{elm, }
+\item[{}]{field}
+\end{DoxyParamCaption}
+)}\label{queue_8h_aa03b790c1e9ea4475fff822f2f924770}
+
+
+Definition at line 403 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!Q\-M\-D\-\_\-\-S\-A\-V\-E\-L\-I\-N\-K@{Q\-M\-D\-\_\-\-S\-A\-V\-E\-L\-I\-N\-K}}
+\index{Q\-M\-D\-\_\-\-S\-A\-V\-E\-L\-I\-N\-K@{Q\-M\-D\-\_\-\-S\-A\-V\-E\-L\-I\-N\-K}!queue.h@{queue.\-h}}
+\subsubsection[{Q\-M\-D\-\_\-\-S\-A\-V\-E\-L\-I\-N\-K}]{\setlength{\rightskip}{0pt plus 5cm}\#define Q\-M\-D\-\_\-\-S\-A\-V\-E\-L\-I\-N\-K(
+\begin{DoxyParamCaption}
+\item[{}]{name, }
+\item[{}]{link}
+\end{DoxyParamCaption}
+)}\label{queue_8h_a96671a8f87ff87543b3b0b671a274a1c}
+
+
+Definition at line 140 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!Q\-M\-D\-\_\-\-T\-A\-I\-L\-Q\-\_\-\-C\-H\-E\-C\-K\-\_\-\-H\-E\-A\-D@{Q\-M\-D\-\_\-\-T\-A\-I\-L\-Q\-\_\-\-C\-H\-E\-C\-K\-\_\-\-H\-E\-A\-D}}
+\index{Q\-M\-D\-\_\-\-T\-A\-I\-L\-Q\-\_\-\-C\-H\-E\-C\-K\-\_\-\-H\-E\-A\-D@{Q\-M\-D\-\_\-\-T\-A\-I\-L\-Q\-\_\-\-C\-H\-E\-C\-K\-\_\-\-H\-E\-A\-D}!queue.h@{queue.\-h}}
+\subsubsection[{Q\-M\-D\-\_\-\-T\-A\-I\-L\-Q\-\_\-\-C\-H\-E\-C\-K\-\_\-\-H\-E\-A\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define Q\-M\-D\-\_\-\-T\-A\-I\-L\-Q\-\_\-\-C\-H\-E\-C\-K\-\_\-\-H\-E\-A\-D(
+\begin{DoxyParamCaption}
+\item[{}]{head, }
+\item[{}]{field}
+\end{DoxyParamCaption}
+)}\label{queue_8h_a2fadd77a30e452cb44e961a3349e965c}
+
+
+Definition at line 536 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!Q\-M\-D\-\_\-\-T\-A\-I\-L\-Q\-\_\-\-C\-H\-E\-C\-K\-\_\-\-N\-E\-X\-T@{Q\-M\-D\-\_\-\-T\-A\-I\-L\-Q\-\_\-\-C\-H\-E\-C\-K\-\_\-\-N\-E\-X\-T}}
+\index{Q\-M\-D\-\_\-\-T\-A\-I\-L\-Q\-\_\-\-C\-H\-E\-C\-K\-\_\-\-N\-E\-X\-T@{Q\-M\-D\-\_\-\-T\-A\-I\-L\-Q\-\_\-\-C\-H\-E\-C\-K\-\_\-\-N\-E\-X\-T}!queue.h@{queue.\-h}}
+\subsubsection[{Q\-M\-D\-\_\-\-T\-A\-I\-L\-Q\-\_\-\-C\-H\-E\-C\-K\-\_\-\-N\-E\-X\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define Q\-M\-D\-\_\-\-T\-A\-I\-L\-Q\-\_\-\-C\-H\-E\-C\-K\-\_\-\-N\-E\-X\-T(
+\begin{DoxyParamCaption}
+\item[{}]{elm, }
+\item[{}]{field}
+\end{DoxyParamCaption}
+)}\label{queue_8h_ac8ae401a8fb8a0c6259003d81717c137}
+
+
+Definition at line 538 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!Q\-M\-D\-\_\-\-T\-A\-I\-L\-Q\-\_\-\-C\-H\-E\-C\-K\-\_\-\-P\-R\-E\-V@{Q\-M\-D\-\_\-\-T\-A\-I\-L\-Q\-\_\-\-C\-H\-E\-C\-K\-\_\-\-P\-R\-E\-V}}
+\index{Q\-M\-D\-\_\-\-T\-A\-I\-L\-Q\-\_\-\-C\-H\-E\-C\-K\-\_\-\-P\-R\-E\-V@{Q\-M\-D\-\_\-\-T\-A\-I\-L\-Q\-\_\-\-C\-H\-E\-C\-K\-\_\-\-P\-R\-E\-V}!queue.h@{queue.\-h}}
+\subsubsection[{Q\-M\-D\-\_\-\-T\-A\-I\-L\-Q\-\_\-\-C\-H\-E\-C\-K\-\_\-\-P\-R\-E\-V}]{\setlength{\rightskip}{0pt plus 5cm}\#define Q\-M\-D\-\_\-\-T\-A\-I\-L\-Q\-\_\-\-C\-H\-E\-C\-K\-\_\-\-P\-R\-E\-V(
+\begin{DoxyParamCaption}
+\item[{}]{elm, }
+\item[{}]{field}
+\end{DoxyParamCaption}
+)}\label{queue_8h_a00699c4f3c7eb447c5ea7efc17999d09}
+
+
+Definition at line 539 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!Q\-M\-D\-\_\-\-T\-A\-I\-L\-Q\-\_\-\-C\-H\-E\-C\-K\-\_\-\-T\-A\-I\-L@{Q\-M\-D\-\_\-\-T\-A\-I\-L\-Q\-\_\-\-C\-H\-E\-C\-K\-\_\-\-T\-A\-I\-L}}
+\index{Q\-M\-D\-\_\-\-T\-A\-I\-L\-Q\-\_\-\-C\-H\-E\-C\-K\-\_\-\-T\-A\-I\-L@{Q\-M\-D\-\_\-\-T\-A\-I\-L\-Q\-\_\-\-C\-H\-E\-C\-K\-\_\-\-T\-A\-I\-L}!queue.h@{queue.\-h}}
+\subsubsection[{Q\-M\-D\-\_\-\-T\-A\-I\-L\-Q\-\_\-\-C\-H\-E\-C\-K\-\_\-\-T\-A\-I\-L}]{\setlength{\rightskip}{0pt plus 5cm}\#define Q\-M\-D\-\_\-\-T\-A\-I\-L\-Q\-\_\-\-C\-H\-E\-C\-K\-\_\-\-T\-A\-I\-L(
+\begin{DoxyParamCaption}
+\item[{}]{head, }
+\item[{}]{headname}
+\end{DoxyParamCaption}
+)}\label{queue_8h_a388344b503d238583a1e7d710aa403ef}
+
+
+Definition at line 537 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!Q\-M\-D\-\_\-\-T\-R\-A\-C\-E\-\_\-\-E\-L\-E\-M@{Q\-M\-D\-\_\-\-T\-R\-A\-C\-E\-\_\-\-E\-L\-E\-M}}
+\index{Q\-M\-D\-\_\-\-T\-R\-A\-C\-E\-\_\-\-E\-L\-E\-M@{Q\-M\-D\-\_\-\-T\-R\-A\-C\-E\-\_\-\-E\-L\-E\-M}!queue.h@{queue.\-h}}
+\subsubsection[{Q\-M\-D\-\_\-\-T\-R\-A\-C\-E\-\_\-\-E\-L\-E\-M}]{\setlength{\rightskip}{0pt plus 5cm}\#define Q\-M\-D\-\_\-\-T\-R\-A\-C\-E\-\_\-\-E\-L\-E\-M(
+\begin{DoxyParamCaption}
+\item[{}]{elem}
+\end{DoxyParamCaption}
+)}\label{queue_8h_a990f2617ebc37cd79c332e24ce7e4a88}
+
+
+Definition at line 138 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!Q\-M\-D\-\_\-\-T\-R\-A\-C\-E\-\_\-\-H\-E\-A\-D@{Q\-M\-D\-\_\-\-T\-R\-A\-C\-E\-\_\-\-H\-E\-A\-D}}
+\index{Q\-M\-D\-\_\-\-T\-R\-A\-C\-E\-\_\-\-H\-E\-A\-D@{Q\-M\-D\-\_\-\-T\-R\-A\-C\-E\-\_\-\-H\-E\-A\-D}!queue.h@{queue.\-h}}
+\subsubsection[{Q\-M\-D\-\_\-\-T\-R\-A\-C\-E\-\_\-\-H\-E\-A\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define Q\-M\-D\-\_\-\-T\-R\-A\-C\-E\-\_\-\-H\-E\-A\-D(
+\begin{DoxyParamCaption}
+\item[{}]{head}
+\end{DoxyParamCaption}
+)}\label{queue_8h_af8813e6512e6ac86e6b598241b1bf020}
+
+
+Definition at line 139 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!S\-L\-I\-S\-T\-\_\-\-E\-M\-P\-T\-Y@{S\-L\-I\-S\-T\-\_\-\-E\-M\-P\-T\-Y}}
+\index{S\-L\-I\-S\-T\-\_\-\-E\-M\-P\-T\-Y@{S\-L\-I\-S\-T\-\_\-\-E\-M\-P\-T\-Y}!queue.h@{queue.\-h}}
+\subsubsection[{S\-L\-I\-S\-T\-\_\-\-E\-M\-P\-T\-Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-L\-I\-S\-T\-\_\-\-E\-M\-P\-T\-Y(
+\begin{DoxyParamCaption}
+\item[{}]{head}
+\end{DoxyParamCaption}
+)~((head)-\/$>$slh\-\_\-first == N\-U\-L\-L)}\label{queue_8h_a59bcc4e6f4bf63b897bdc0644566c583}
+
+
+Definition at line 165 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!S\-L\-I\-S\-T\-\_\-\-E\-N\-T\-R\-Y@{S\-L\-I\-S\-T\-\_\-\-E\-N\-T\-R\-Y}}
+\index{S\-L\-I\-S\-T\-\_\-\-E\-N\-T\-R\-Y@{S\-L\-I\-S\-T\-\_\-\-E\-N\-T\-R\-Y}!queue.h@{queue.\-h}}
+\subsubsection[{S\-L\-I\-S\-T\-\_\-\-E\-N\-T\-R\-Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-L\-I\-S\-T\-\_\-\-E\-N\-T\-R\-Y(
+\begin{DoxyParamCaption}
+\item[{}]{type}
+\end{DoxyParamCaption}
+)}\label{queue_8h_a5dd8bb1cef024ac008680e7e3b660332}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keyword}{struct }\{                                                                \(\backslash\)
+        struct type *sle\_next;  \textcolor{comment}{/* next element */}                      \(\backslash\)
+\}
+\end{DoxyCode}
+
+
+Definition at line 157 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!S\-L\-I\-S\-T\-\_\-\-F\-I\-R\-S\-T@{S\-L\-I\-S\-T\-\_\-\-F\-I\-R\-S\-T}}
+\index{S\-L\-I\-S\-T\-\_\-\-F\-I\-R\-S\-T@{S\-L\-I\-S\-T\-\_\-\-F\-I\-R\-S\-T}!queue.h@{queue.\-h}}
+\subsubsection[{S\-L\-I\-S\-T\-\_\-\-F\-I\-R\-S\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-L\-I\-S\-T\-\_\-\-F\-I\-R\-S\-T(
+\begin{DoxyParamCaption}
+\item[{}]{head}
+\end{DoxyParamCaption}
+)~((head)-\/$>$slh\-\_\-first)}\label{queue_8h_a91bac7d0d32e3ec56bc579ace45ed8cd}
+
+
+Definition at line 167 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!S\-L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H@{S\-L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H}}
+\index{S\-L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H@{S\-L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H}!queue.h@{queue.\-h}}
+\subsubsection[{S\-L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H(
+\begin{DoxyParamCaption}
+\item[{}]{var, }
+\item[{}]{head, }
+\item[{}]{field}
+\end{DoxyParamCaption}
+)}\label{queue_8h_a05db87878125c27e3060dd641aa3b0f4}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{for} ((var) = SLIST_FIRST((head));                               \(\backslash\)
+            (var);                                                      \(\backslash\)
+            (var) = SLIST_NEXT((var), field))
+\end{DoxyCode}
+
+
+Definition at line 169 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!S\-L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-F\-R\-O\-M@{S\-L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-F\-R\-O\-M}}
+\index{S\-L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-F\-R\-O\-M@{S\-L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-F\-R\-O\-M}!queue.h@{queue.\-h}}
+\subsubsection[{S\-L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-F\-R\-O\-M}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-F\-R\-O\-M(
+\begin{DoxyParamCaption}
+\item[{}]{var, }
+\item[{}]{head, }
+\item[{}]{field}
+\end{DoxyParamCaption}
+)}\label{queue_8h_a24405a36fc765b619964d525714c7827}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{for} ((var) = ((var) ? (var) : SLIST_FIRST((head)));             \(\backslash\)
+            (var);                                                      \(\backslash\)
+            (var) = SLIST_NEXT((var), field))
+\end{DoxyCode}
+
+
+Definition at line 174 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!S\-L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-F\-R\-O\-M\-\_\-\-S\-A\-F\-E@{S\-L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-F\-R\-O\-M\-\_\-\-S\-A\-F\-E}}
+\index{S\-L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-F\-R\-O\-M\-\_\-\-S\-A\-F\-E@{S\-L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-F\-R\-O\-M\-\_\-\-S\-A\-F\-E}!queue.h@{queue.\-h}}
+\subsubsection[{S\-L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-F\-R\-O\-M\-\_\-\-S\-A\-F\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-F\-R\-O\-M\-\_\-\-S\-A\-F\-E(
+\begin{DoxyParamCaption}
+\item[{}]{var, }
+\item[{}]{head, }
+\item[{}]{field, }
+\item[{}]{tvar}
+\end{DoxyParamCaption}
+)}\label{queue_8h_a6eaa913f1fb42af030c7933b5257643f}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{for} ((var) = ((var) ? (var) : SLIST_FIRST((head)));             \(\backslash\)
+            (var) && ((tvar) = SLIST_NEXT((var), field), 1);            \(\backslash\)
+            (var) = (tvar))
+\end{DoxyCode}
+
+
+Definition at line 184 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!S\-L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-P\-R\-E\-V\-P\-T\-R@{S\-L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-P\-R\-E\-V\-P\-T\-R}}
+\index{S\-L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-P\-R\-E\-V\-P\-T\-R@{S\-L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-P\-R\-E\-V\-P\-T\-R}!queue.h@{queue.\-h}}
+\subsubsection[{S\-L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-P\-R\-E\-V\-P\-T\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-P\-R\-E\-V\-P\-T\-R(
+\begin{DoxyParamCaption}
+\item[{}]{var, }
+\item[{}]{varp, }
+\item[{}]{head, }
+\item[{}]{field}
+\end{DoxyParamCaption}
+)}\label{queue_8h_a7017f84f3ba90cd69441f09b2825f7b9}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{for} ((varp) = &SLIST_FIRST((head));                             \(\backslash\)
+            ((var) = *(varp)) != NULL;                                  \(\backslash\)
+            (varp) = &SLIST_NEXT((var), field))
+\end{DoxyCode}
+
+
+Definition at line 189 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!S\-L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-S\-A\-F\-E@{S\-L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-S\-A\-F\-E}}
+\index{S\-L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-S\-A\-F\-E@{S\-L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-S\-A\-F\-E}!queue.h@{queue.\-h}}
+\subsubsection[{S\-L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-S\-A\-F\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-L\-I\-S\-T\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-S\-A\-F\-E(
+\begin{DoxyParamCaption}
+\item[{}]{var, }
+\item[{}]{head, }
+\item[{}]{field, }
+\item[{}]{tvar}
+\end{DoxyParamCaption}
+)}\label{queue_8h_afeca7f301bcbd06a17821aa00e9d14d5}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{for} ((var) = SLIST_FIRST((head));                               \(\backslash\)
+            (var) && ((tvar) = SLIST_NEXT((var), field), 1);            \(\backslash\)
+            (var) = (tvar))
+\end{DoxyCode}
+
+
+Definition at line 179 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!S\-L\-I\-S\-T\-\_\-\-H\-E\-A\-D@{S\-L\-I\-S\-T\-\_\-\-H\-E\-A\-D}}
+\index{S\-L\-I\-S\-T\-\_\-\-H\-E\-A\-D@{S\-L\-I\-S\-T\-\_\-\-H\-E\-A\-D}!queue.h@{queue.\-h}}
+\subsubsection[{S\-L\-I\-S\-T\-\_\-\-H\-E\-A\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-L\-I\-S\-T\-\_\-\-H\-E\-A\-D(
+\begin{DoxyParamCaption}
+\item[{}]{name, }
+\item[{}]{type}
+\end{DoxyParamCaption}
+)}\label{queue_8h_a8224e40ea764bc857bab6f6d9c357dd9}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keyword}{struct }name \{                                                           \(\backslash\)
+        struct type *slh\_first; \textcolor{comment}{/* first element */}                     \(\backslash\)
+\}
+\end{DoxyCode}
+
+
+Definition at line 149 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!S\-L\-I\-S\-T\-\_\-\-H\-E\-A\-D\-\_\-\-I\-N\-I\-T\-I\-A\-L\-I\-Z\-E\-R@{S\-L\-I\-S\-T\-\_\-\-H\-E\-A\-D\-\_\-\-I\-N\-I\-T\-I\-A\-L\-I\-Z\-E\-R}}
+\index{S\-L\-I\-S\-T\-\_\-\-H\-E\-A\-D\-\_\-\-I\-N\-I\-T\-I\-A\-L\-I\-Z\-E\-R@{S\-L\-I\-S\-T\-\_\-\-H\-E\-A\-D\-\_\-\-I\-N\-I\-T\-I\-A\-L\-I\-Z\-E\-R}!queue.h@{queue.\-h}}
+\subsubsection[{S\-L\-I\-S\-T\-\_\-\-H\-E\-A\-D\-\_\-\-I\-N\-I\-T\-I\-A\-L\-I\-Z\-E\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-L\-I\-S\-T\-\_\-\-H\-E\-A\-D\-\_\-\-I\-N\-I\-T\-I\-A\-L\-I\-Z\-E\-R(
+\begin{DoxyParamCaption}
+\item[{}]{head}
+\end{DoxyParamCaption}
+)~\{ N\-U\-L\-L \}}\label{queue_8h_a9ae2aca3d46e62be4cb1408bd946ef15}
+
+
+Definition at line 154 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!S\-L\-I\-S\-T\-\_\-\-I\-N\-I\-T@{S\-L\-I\-S\-T\-\_\-\-I\-N\-I\-T}}
+\index{S\-L\-I\-S\-T\-\_\-\-I\-N\-I\-T@{S\-L\-I\-S\-T\-\_\-\-I\-N\-I\-T}!queue.h@{queue.\-h}}
+\subsubsection[{S\-L\-I\-S\-T\-\_\-\-I\-N\-I\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-L\-I\-S\-T\-\_\-\-I\-N\-I\-T(
+\begin{DoxyParamCaption}
+\item[{}]{head}
+\end{DoxyParamCaption}
+)}\label{queue_8h_a361ac8e88cf066cc4d46d28b54fd3031}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{                                            \
+	SLIST_FIRST((head)) = NULL;                                    \(\backslash\)
+\} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+
+
+Definition at line 194 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!S\-L\-I\-S\-T\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-A\-F\-T\-E\-R@{S\-L\-I\-S\-T\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-A\-F\-T\-E\-R}}
+\index{S\-L\-I\-S\-T\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-A\-F\-T\-E\-R@{S\-L\-I\-S\-T\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-A\-F\-T\-E\-R}!queue.h@{queue.\-h}}
+\subsubsection[{S\-L\-I\-S\-T\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-A\-F\-T\-E\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-L\-I\-S\-T\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-A\-F\-T\-E\-R(
+\begin{DoxyParamCaption}
+\item[{}]{slistelm, }
+\item[{}]{elm, }
+\item[{}]{field}
+\end{DoxyParamCaption}
+)}\label{queue_8h_af1d994d9652ccbc41a60b747dfc15ea5}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{                    \
+	SLIST_NEXT((elm), field) = SLIST_NEXT((slistelm), field);      \
+	SLIST_NEXT((slistelm), field) = (elm);                         \(\backslash\)
+\} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+
+
+Definition at line 198 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!S\-L\-I\-S\-T\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-H\-E\-A\-D@{S\-L\-I\-S\-T\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-H\-E\-A\-D}}
+\index{S\-L\-I\-S\-T\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-H\-E\-A\-D@{S\-L\-I\-S\-T\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-H\-E\-A\-D}!queue.h@{queue.\-h}}
+\subsubsection[{S\-L\-I\-S\-T\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-H\-E\-A\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-L\-I\-S\-T\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-H\-E\-A\-D(
+\begin{DoxyParamCaption}
+\item[{}]{head, }
+\item[{}]{elm, }
+\item[{}]{field}
+\end{DoxyParamCaption}
+)}\label{queue_8h_a48df7439e09a419afabdd1f2f8551e73}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{                    \
+	SLIST_NEXT((elm), field) = SLIST_FIRST((head));                        \
+	SLIST_FIRST((head)) = (elm);                                   \(\backslash\)
+\} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+
+
+Definition at line 203 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!S\-L\-I\-S\-T\-\_\-\-N\-E\-X\-T@{S\-L\-I\-S\-T\-\_\-\-N\-E\-X\-T}}
+\index{S\-L\-I\-S\-T\-\_\-\-N\-E\-X\-T@{S\-L\-I\-S\-T\-\_\-\-N\-E\-X\-T}!queue.h@{queue.\-h}}
+\subsubsection[{S\-L\-I\-S\-T\-\_\-\-N\-E\-X\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-L\-I\-S\-T\-\_\-\-N\-E\-X\-T(
+\begin{DoxyParamCaption}
+\item[{}]{elm, }
+\item[{}]{field}
+\end{DoxyParamCaption}
+)~((elm)-\/$>$field.\-sle\-\_\-next)}\label{queue_8h_a7cd1d5ae37224ecee1f0b831eb73e7f4}
+
+
+Definition at line 208 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!S\-L\-I\-S\-T\-\_\-\-R\-E\-M\-O\-V\-E@{S\-L\-I\-S\-T\-\_\-\-R\-E\-M\-O\-V\-E}}
+\index{S\-L\-I\-S\-T\-\_\-\-R\-E\-M\-O\-V\-E@{S\-L\-I\-S\-T\-\_\-\-R\-E\-M\-O\-V\-E}!queue.h@{queue.\-h}}
+\subsubsection[{S\-L\-I\-S\-T\-\_\-\-R\-E\-M\-O\-V\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-L\-I\-S\-T\-\_\-\-R\-E\-M\-O\-V\-E(
+\begin{DoxyParamCaption}
+\item[{}]{head, }
+\item[{}]{elm, }
+\item[{}]{type, }
+\item[{}]{field}
+\end{DoxyParamCaption}
+)}\label{queue_8h_a9c7950d61593ab9198524fca81b17ab0}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{                    \
+	QMD_SAVELINK(oldnext, (elm)->field.sle\_next);                  \(\backslash\)
+        if (SLIST_FIRST((head)) == (elm)) \{                             \
+		SLIST_REMOVE_HEAD((head), field);                     \(\backslash\)
+        \}                                                               \(\backslash\)
+        else \{                                                          \(\backslash\)
+                struct type *curelm = SLIST_FIRST((head));              \(\backslash\)
+                while (SLIST_NEXT(curelm, field) != (elm))              \(\backslash\)
+                        curelm = SLIST_NEXT(curelm, field);             \
+		SLIST_REMOVE_AFTER(curelm, field);                    \(\backslash\)
+        \}                                                               \
+	TRASHIT(*oldnext);                                             \(\backslash\)
+\} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+
+
+Definition at line 210 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!S\-L\-I\-S\-T\-\_\-\-R\-E\-M\-O\-V\-E\-\_\-\-A\-F\-T\-E\-R@{S\-L\-I\-S\-T\-\_\-\-R\-E\-M\-O\-V\-E\-\_\-\-A\-F\-T\-E\-R}}
+\index{S\-L\-I\-S\-T\-\_\-\-R\-E\-M\-O\-V\-E\-\_\-\-A\-F\-T\-E\-R@{S\-L\-I\-S\-T\-\_\-\-R\-E\-M\-O\-V\-E\-\_\-\-A\-F\-T\-E\-R}!queue.h@{queue.\-h}}
+\subsubsection[{S\-L\-I\-S\-T\-\_\-\-R\-E\-M\-O\-V\-E\-\_\-\-A\-F\-T\-E\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-L\-I\-S\-T\-\_\-\-R\-E\-M\-O\-V\-E\-\_\-\-A\-F\-T\-E\-R(
+\begin{DoxyParamCaption}
+\item[{}]{elm, }
+\item[{}]{field}
+\end{DoxyParamCaption}
+)}\label{queue_8h_a16cbbc38c258a695356d8c3377a5604d}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{                            \
+	SLIST_NEXT(elm, field) =                                       \
+	    SLIST_NEXT(SLIST_NEXT(elm, field), field);                 \(\backslash\)
+\} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+
+
+Definition at line 224 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!S\-L\-I\-S\-T\-\_\-\-R\-E\-M\-O\-V\-E\-\_\-\-H\-E\-A\-D@{S\-L\-I\-S\-T\-\_\-\-R\-E\-M\-O\-V\-E\-\_\-\-H\-E\-A\-D}}
+\index{S\-L\-I\-S\-T\-\_\-\-R\-E\-M\-O\-V\-E\-\_\-\-H\-E\-A\-D@{S\-L\-I\-S\-T\-\_\-\-R\-E\-M\-O\-V\-E\-\_\-\-H\-E\-A\-D}!queue.h@{queue.\-h}}
+\subsubsection[{S\-L\-I\-S\-T\-\_\-\-R\-E\-M\-O\-V\-E\-\_\-\-H\-E\-A\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-L\-I\-S\-T\-\_\-\-R\-E\-M\-O\-V\-E\-\_\-\-H\-E\-A\-D(
+\begin{DoxyParamCaption}
+\item[{}]{head, }
+\item[{}]{field}
+\end{DoxyParamCaption}
+)}\label{queue_8h_aeb10c664372b3b680455274170f4c897}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{                            \
+	SLIST_FIRST((head)) = SLIST_NEXT(SLIST_FIRST((head)), field);  \(\backslash\)
+\} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+
+
+Definition at line 229 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!S\-L\-I\-S\-T\-\_\-\-S\-W\-A\-P@{S\-L\-I\-S\-T\-\_\-\-S\-W\-A\-P}}
+\index{S\-L\-I\-S\-T\-\_\-\-S\-W\-A\-P@{S\-L\-I\-S\-T\-\_\-\-S\-W\-A\-P}!queue.h@{queue.\-h}}
+\subsubsection[{S\-L\-I\-S\-T\-\_\-\-S\-W\-A\-P}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-L\-I\-S\-T\-\_\-\-S\-W\-A\-P(
+\begin{DoxyParamCaption}
+\item[{}]{head1, }
+\item[{}]{head2, }
+\item[{}]{type}
+\end{DoxyParamCaption}
+)}\label{queue_8h_a43b7433e67885b7f342abe61a7e29745}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{                            \(\backslash\)
+        struct type *swap\_first = SLIST_FIRST(head1);                   \
+	SLIST_FIRST(head1) = SLIST_FIRST(head2);                       \
+	SLIST_FIRST(head2) = swap\_first;                               \(\backslash\)
+\} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+
+
+Definition at line 233 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!S\-T\-A\-I\-L\-Q\-\_\-\-C\-O\-N\-C\-A\-T@{S\-T\-A\-I\-L\-Q\-\_\-\-C\-O\-N\-C\-A\-T}}
+\index{S\-T\-A\-I\-L\-Q\-\_\-\-C\-O\-N\-C\-A\-T@{S\-T\-A\-I\-L\-Q\-\_\-\-C\-O\-N\-C\-A\-T}!queue.h@{queue.\-h}}
+\subsubsection[{S\-T\-A\-I\-L\-Q\-\_\-\-C\-O\-N\-C\-A\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-T\-A\-I\-L\-Q\-\_\-\-C\-O\-N\-C\-A\-T(
+\begin{DoxyParamCaption}
+\item[{}]{head1, }
+\item[{}]{head2}
+\end{DoxyParamCaption}
+)}\label{queue_8h_aadfbe79db37e93cf528ae79a9aafb755}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{                            \(\backslash\)
+        if (!STAILQ_EMPTY((head2))) \{                                   \(\backslash\)
+                *(head1)->stqh\_last = (head2)->stqh\_first;              \(\backslash\)
+                (head1)->stqh\_last = (head2)->stqh\_last;                \
+		STAILQ_INIT((head2));                                 \(\backslash\)
+        \}                                                               \(\backslash\)
+\} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+
+
+Definition at line 259 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!S\-T\-A\-I\-L\-Q\-\_\-\-E\-M\-P\-T\-Y@{S\-T\-A\-I\-L\-Q\-\_\-\-E\-M\-P\-T\-Y}}
+\index{S\-T\-A\-I\-L\-Q\-\_\-\-E\-M\-P\-T\-Y@{S\-T\-A\-I\-L\-Q\-\_\-\-E\-M\-P\-T\-Y}!queue.h@{queue.\-h}}
+\subsubsection[{S\-T\-A\-I\-L\-Q\-\_\-\-E\-M\-P\-T\-Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-T\-A\-I\-L\-Q\-\_\-\-E\-M\-P\-T\-Y(
+\begin{DoxyParamCaption}
+\item[{}]{head}
+\end{DoxyParamCaption}
+)~((head)-\/$>$stqh\-\_\-first == N\-U\-L\-L)}\label{queue_8h_a8427c8f43d09d73062cf6b37f303aff5}
+
+
+Definition at line 267 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!S\-T\-A\-I\-L\-Q\-\_\-\-E\-N\-T\-R\-Y@{S\-T\-A\-I\-L\-Q\-\_\-\-E\-N\-T\-R\-Y}}
+\index{S\-T\-A\-I\-L\-Q\-\_\-\-E\-N\-T\-R\-Y@{S\-T\-A\-I\-L\-Q\-\_\-\-E\-N\-T\-R\-Y}!queue.h@{queue.\-h}}
+\subsubsection[{S\-T\-A\-I\-L\-Q\-\_\-\-E\-N\-T\-R\-Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-T\-A\-I\-L\-Q\-\_\-\-E\-N\-T\-R\-Y(
+\begin{DoxyParamCaption}
+\item[{}]{type}
+\end{DoxyParamCaption}
+)}\label{queue_8h_a765904f4fab4e7de1e2cd8ff351bc353}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keyword}{struct }\{                                                                \(\backslash\)
+        struct type *stqe\_next; \textcolor{comment}{/* next element */}                      \(\backslash\)
+\}
+\end{DoxyCode}
+
+
+Definition at line 251 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!S\-T\-A\-I\-L\-Q\-\_\-\-F\-I\-R\-S\-T@{S\-T\-A\-I\-L\-Q\-\_\-\-F\-I\-R\-S\-T}}
+\index{S\-T\-A\-I\-L\-Q\-\_\-\-F\-I\-R\-S\-T@{S\-T\-A\-I\-L\-Q\-\_\-\-F\-I\-R\-S\-T}!queue.h@{queue.\-h}}
+\subsubsection[{S\-T\-A\-I\-L\-Q\-\_\-\-F\-I\-R\-S\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-T\-A\-I\-L\-Q\-\_\-\-F\-I\-R\-S\-T(
+\begin{DoxyParamCaption}
+\item[{}]{head}
+\end{DoxyParamCaption}
+)~((head)-\/$>$stqh\-\_\-first)}\label{queue_8h_a3e2eb7535019a2829399b24744dd1a66}
+
+
+Definition at line 269 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!S\-T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H@{S\-T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H}}
+\index{S\-T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H@{S\-T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H}!queue.h@{queue.\-h}}
+\subsubsection[{S\-T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H(
+\begin{DoxyParamCaption}
+\item[{}]{var, }
+\item[{}]{head, }
+\item[{}]{field}
+\end{DoxyParamCaption}
+)}\label{queue_8h_a77999ebdf5aaf7af8b8ea22bf208c432}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{for}((var) = STAILQ_FIRST((head));                               \(\backslash\)
+           (var);                                                       \(\backslash\)
+           (var) = STAILQ_NEXT((var), field))
+\end{DoxyCode}
+
+
+Definition at line 271 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!S\-T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-F\-R\-O\-M@{S\-T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-F\-R\-O\-M}}
+\index{S\-T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-F\-R\-O\-M@{S\-T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-F\-R\-O\-M}!queue.h@{queue.\-h}}
+\subsubsection[{S\-T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-F\-R\-O\-M}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-F\-R\-O\-M(
+\begin{DoxyParamCaption}
+\item[{}]{var, }
+\item[{}]{head, }
+\item[{}]{field}
+\end{DoxyParamCaption}
+)}\label{queue_8h_afc90cddaa7d2b43eb0ca0588b09e493a}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{for} ((var) = ((var) ? (var) : STAILQ_FIRST((head)));            \(\backslash\)
+           (var);                                                       \(\backslash\)
+           (var) = STAILQ_NEXT((var), field))
+\end{DoxyCode}
+
+
+Definition at line 276 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!S\-T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-F\-R\-O\-M\-\_\-\-S\-A\-F\-E@{S\-T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-F\-R\-O\-M\-\_\-\-S\-A\-F\-E}}
+\index{S\-T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-F\-R\-O\-M\-\_\-\-S\-A\-F\-E@{S\-T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-F\-R\-O\-M\-\_\-\-S\-A\-F\-E}!queue.h@{queue.\-h}}
+\subsubsection[{S\-T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-F\-R\-O\-M\-\_\-\-S\-A\-F\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-F\-R\-O\-M\-\_\-\-S\-A\-F\-E(
+\begin{DoxyParamCaption}
+\item[{}]{var, }
+\item[{}]{head, }
+\item[{}]{field, }
+\item[{}]{tvar}
+\end{DoxyParamCaption}
+)}\label{queue_8h_a7c6e582a011a3935507475e8a952b4bd}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{for} ((var) = ((var) ? (var) : STAILQ_FIRST((head)));            \(\backslash\)
+            (var) && ((tvar) = STAILQ_NEXT((var), field), 1);           \(\backslash\)
+            (var) = (tvar))
+\end{DoxyCode}
+
+
+Definition at line 286 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!S\-T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-S\-A\-F\-E@{S\-T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-S\-A\-F\-E}}
+\index{S\-T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-S\-A\-F\-E@{S\-T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-S\-A\-F\-E}!queue.h@{queue.\-h}}
+\subsubsection[{S\-T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-S\-A\-F\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-S\-A\-F\-E(
+\begin{DoxyParamCaption}
+\item[{}]{var, }
+\item[{}]{head, }
+\item[{}]{field, }
+\item[{}]{tvar}
+\end{DoxyParamCaption}
+)}\label{queue_8h_ac3203dcce73148c142df4586eb55ce55}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{for} ((var) = STAILQ_FIRST((head));                              \(\backslash\)
+            (var) && ((tvar) = STAILQ_NEXT((var), field), 1);           \(\backslash\)
+            (var) = (tvar))
+\end{DoxyCode}
+
+
+Definition at line 281 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!S\-T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D@{S\-T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D}}
+\index{S\-T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D@{S\-T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D}!queue.h@{queue.\-h}}
+\subsubsection[{S\-T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D(
+\begin{DoxyParamCaption}
+\item[{}]{name, }
+\item[{}]{type}
+\end{DoxyParamCaption}
+)}\label{queue_8h_a7b54f0de61925e7cf33184c2ec24da14}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keyword}{struct }name \{                                                           \(\backslash\)
+        struct type *stqh\_first;\textcolor{comment}{/* first element */}                     \(\backslash\)
+        struct type **stqh\_last;\textcolor{comment}{/* addr of last next element */}         \(\backslash\)
+\}
+\end{DoxyCode}
+
+
+Definition at line 242 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!S\-T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D\-\_\-\-I\-N\-I\-T\-I\-A\-L\-I\-Z\-E\-R@{S\-T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D\-\_\-\-I\-N\-I\-T\-I\-A\-L\-I\-Z\-E\-R}}
+\index{S\-T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D\-\_\-\-I\-N\-I\-T\-I\-A\-L\-I\-Z\-E\-R@{S\-T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D\-\_\-\-I\-N\-I\-T\-I\-A\-L\-I\-Z\-E\-R}!queue.h@{queue.\-h}}
+\subsubsection[{S\-T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D\-\_\-\-I\-N\-I\-T\-I\-A\-L\-I\-Z\-E\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D\-\_\-\-I\-N\-I\-T\-I\-A\-L\-I\-Z\-E\-R(
+\begin{DoxyParamCaption}
+\item[{}]{head}
+\end{DoxyParamCaption}
+)~\{ N\-U\-L\-L, \&(head).stqh\-\_\-first \}}\label{queue_8h_a3d41ce2c3f1dd21c0d4051d13204c321}
+
+
+Definition at line 248 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!S\-T\-A\-I\-L\-Q\-\_\-\-I\-N\-I\-T@{S\-T\-A\-I\-L\-Q\-\_\-\-I\-N\-I\-T}}
+\index{S\-T\-A\-I\-L\-Q\-\_\-\-I\-N\-I\-T@{S\-T\-A\-I\-L\-Q\-\_\-\-I\-N\-I\-T}!queue.h@{queue.\-h}}
+\subsubsection[{S\-T\-A\-I\-L\-Q\-\_\-\-I\-N\-I\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-T\-A\-I\-L\-Q\-\_\-\-I\-N\-I\-T(
+\begin{DoxyParamCaption}
+\item[{}]{head}
+\end{DoxyParamCaption}
+)}\label{queue_8h_a3b508a1c06ded6b4ce4b1feea7643c28}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{                                            \
+	STAILQ_FIRST((head)) = NULL;                                   \(\backslash\)
+        (head)->stqh\_last = &STAILQ_FIRST((head));                      \(\backslash\)
+\} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+
+
+Definition at line 291 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!S\-T\-A\-I\-L\-Q\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-A\-F\-T\-E\-R@{S\-T\-A\-I\-L\-Q\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-A\-F\-T\-E\-R}}
+\index{S\-T\-A\-I\-L\-Q\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-A\-F\-T\-E\-R@{S\-T\-A\-I\-L\-Q\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-A\-F\-T\-E\-R}!queue.h@{queue.\-h}}
+\subsubsection[{S\-T\-A\-I\-L\-Q\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-A\-F\-T\-E\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-T\-A\-I\-L\-Q\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-A\-F\-T\-E\-R(
+\begin{DoxyParamCaption}
+\item[{}]{head, }
+\item[{}]{tqelm, }
+\item[{}]{elm, }
+\item[{}]{field}
+\end{DoxyParamCaption}
+)}\label{queue_8h_af6ebdaf4ccbde5e464273b8079e832b3}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{            \(\backslash\)
+        if ((STAILQ_NEXT((elm), field) = STAILQ_NEXT((tqelm), field)) == NULL)\(\backslash\)
+                (head)->stqh\_last = &STAILQ_NEXT((elm), field);         \
+	STAILQ_NEXT((tqelm), field) = (elm);                           \(\backslash\)
+\} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+
+
+Definition at line 296 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!S\-T\-A\-I\-L\-Q\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-H\-E\-A\-D@{S\-T\-A\-I\-L\-Q\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-H\-E\-A\-D}}
+\index{S\-T\-A\-I\-L\-Q\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-H\-E\-A\-D@{S\-T\-A\-I\-L\-Q\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-H\-E\-A\-D}!queue.h@{queue.\-h}}
+\subsubsection[{S\-T\-A\-I\-L\-Q\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-H\-E\-A\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-T\-A\-I\-L\-Q\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-H\-E\-A\-D(
+\begin{DoxyParamCaption}
+\item[{}]{head, }
+\item[{}]{elm, }
+\item[{}]{field}
+\end{DoxyParamCaption}
+)}\label{queue_8h_aad3b1fb87b675bae75334acd958b57dc}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{                    \(\backslash\)
+        if ((STAILQ_NEXT((elm), field) = STAILQ_FIRST((head))) == NULL) \(\backslash\)
+                (head)->stqh\_last = &STAILQ_NEXT((elm), field);         \
+	STAILQ_FIRST((head)) = (elm);                                  \(\backslash\)
+\} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+
+
+Definition at line 302 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!S\-T\-A\-I\-L\-Q\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-T\-A\-I\-L@{S\-T\-A\-I\-L\-Q\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-T\-A\-I\-L}}
+\index{S\-T\-A\-I\-L\-Q\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-T\-A\-I\-L@{S\-T\-A\-I\-L\-Q\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-T\-A\-I\-L}!queue.h@{queue.\-h}}
+\subsubsection[{S\-T\-A\-I\-L\-Q\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-T\-A\-I\-L}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-T\-A\-I\-L\-Q\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-T\-A\-I\-L(
+\begin{DoxyParamCaption}
+\item[{}]{head, }
+\item[{}]{elm, }
+\item[{}]{field}
+\end{DoxyParamCaption}
+)}\label{queue_8h_a7bc9a31418b55c5698be3e54e10bb484}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{                    \
+	STAILQ_NEXT((elm), field) = NULL;                              \(\backslash\)
+        *(head)->stqh\_last = (elm);                                     \(\backslash\)
+        (head)->stqh\_last = &STAILQ_NEXT((elm), field);                 \(\backslash\)
+\} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+
+
+Definition at line 308 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!S\-T\-A\-I\-L\-Q\-\_\-\-L\-A\-S\-T@{S\-T\-A\-I\-L\-Q\-\_\-\-L\-A\-S\-T}}
+\index{S\-T\-A\-I\-L\-Q\-\_\-\-L\-A\-S\-T@{S\-T\-A\-I\-L\-Q\-\_\-\-L\-A\-S\-T}!queue.h@{queue.\-h}}
+\subsubsection[{S\-T\-A\-I\-L\-Q\-\_\-\-L\-A\-S\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-T\-A\-I\-L\-Q\-\_\-\-L\-A\-S\-T(
+\begin{DoxyParamCaption}
+\item[{}]{head, }
+\item[{}]{type, }
+\item[{}]{field}
+\end{DoxyParamCaption}
+)}\label{queue_8h_ae18d422917aa0b8efb0f58d92a19ae41}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+(STAILQ_EMPTY((head)) ? NULL :                                  \(\backslash\)
+            \_\_containerof((head)->stqh\_last, \textcolor{keyword}{struct} type, field.stqe\_next))
+\end{DoxyCode}
+
+
+Definition at line 314 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!S\-T\-A\-I\-L\-Q\-\_\-\-N\-E\-X\-T@{S\-T\-A\-I\-L\-Q\-\_\-\-N\-E\-X\-T}}
+\index{S\-T\-A\-I\-L\-Q\-\_\-\-N\-E\-X\-T@{S\-T\-A\-I\-L\-Q\-\_\-\-N\-E\-X\-T}!queue.h@{queue.\-h}}
+\subsubsection[{S\-T\-A\-I\-L\-Q\-\_\-\-N\-E\-X\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-T\-A\-I\-L\-Q\-\_\-\-N\-E\-X\-T(
+\begin{DoxyParamCaption}
+\item[{}]{elm, }
+\item[{}]{field}
+\end{DoxyParamCaption}
+)~((elm)-\/$>$field.\-stqe\-\_\-next)}\label{queue_8h_ad89ac472696d006112dface9c2d75e47}
+
+
+Definition at line 318 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!S\-T\-A\-I\-L\-Q\-\_\-\-R\-E\-M\-O\-V\-E@{S\-T\-A\-I\-L\-Q\-\_\-\-R\-E\-M\-O\-V\-E}}
+\index{S\-T\-A\-I\-L\-Q\-\_\-\-R\-E\-M\-O\-V\-E@{S\-T\-A\-I\-L\-Q\-\_\-\-R\-E\-M\-O\-V\-E}!queue.h@{queue.\-h}}
+\subsubsection[{S\-T\-A\-I\-L\-Q\-\_\-\-R\-E\-M\-O\-V\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-T\-A\-I\-L\-Q\-\_\-\-R\-E\-M\-O\-V\-E(
+\begin{DoxyParamCaption}
+\item[{}]{head, }
+\item[{}]{elm, }
+\item[{}]{type, }
+\item[{}]{field}
+\end{DoxyParamCaption}
+)}\label{queue_8h_a2a0d6665f277f80bf301a16e6ab2403c}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{                    \
+	QMD_SAVELINK(oldnext, (elm)->field.stqe\_next);                 \(\backslash\)
+        if (STAILQ_FIRST((head)) == (elm)) \{                            \
+		STAILQ_REMOVE_HEAD((head), field);                    \(\backslash\)
+        \}                                                               \(\backslash\)
+        else \{                                                          \(\backslash\)
+                struct type *curelm = STAILQ_FIRST((head));             \(\backslash\)
+                while (STAILQ_NEXT(curelm, field) != (elm))             \(\backslash\)
+                        curelm = STAILQ_NEXT(curelm, field);            \
+		STAILQ_REMOVE_AFTER(head, curelm, field);             \(\backslash\)
+        \}                                                               \
+	TRASHIT(*oldnext);                                             \(\backslash\)
+\} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+
+
+Definition at line 320 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!S\-T\-A\-I\-L\-Q\-\_\-\-R\-E\-M\-O\-V\-E\-\_\-\-A\-F\-T\-E\-R@{S\-T\-A\-I\-L\-Q\-\_\-\-R\-E\-M\-O\-V\-E\-\_\-\-A\-F\-T\-E\-R}}
+\index{S\-T\-A\-I\-L\-Q\-\_\-\-R\-E\-M\-O\-V\-E\-\_\-\-A\-F\-T\-E\-R@{S\-T\-A\-I\-L\-Q\-\_\-\-R\-E\-M\-O\-V\-E\-\_\-\-A\-F\-T\-E\-R}!queue.h@{queue.\-h}}
+\subsubsection[{S\-T\-A\-I\-L\-Q\-\_\-\-R\-E\-M\-O\-V\-E\-\_\-\-A\-F\-T\-E\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-T\-A\-I\-L\-Q\-\_\-\-R\-E\-M\-O\-V\-E\-\_\-\-A\-F\-T\-E\-R(
+\begin{DoxyParamCaption}
+\item[{}]{head, }
+\item[{}]{elm, }
+\item[{}]{field}
+\end{DoxyParamCaption}
+)}\label{queue_8h_a657c50417f3caeab52e34fcd454cec71}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{                    \(\backslash\)
+        if ((STAILQ_NEXT(elm, field) =                                  \(\backslash\)
+             STAILQ_NEXT(STAILQ_NEXT(elm, field), field)) == NULL)      \(\backslash\)
+                (head)->stqh\_last = &STAILQ_NEXT((elm), field);         \(\backslash\)
+\} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+
+
+Definition at line 334 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!S\-T\-A\-I\-L\-Q\-\_\-\-R\-E\-M\-O\-V\-E\-\_\-\-H\-E\-A\-D@{S\-T\-A\-I\-L\-Q\-\_\-\-R\-E\-M\-O\-V\-E\-\_\-\-H\-E\-A\-D}}
+\index{S\-T\-A\-I\-L\-Q\-\_\-\-R\-E\-M\-O\-V\-E\-\_\-\-H\-E\-A\-D@{S\-T\-A\-I\-L\-Q\-\_\-\-R\-E\-M\-O\-V\-E\-\_\-\-H\-E\-A\-D}!queue.h@{queue.\-h}}
+\subsubsection[{S\-T\-A\-I\-L\-Q\-\_\-\-R\-E\-M\-O\-V\-E\-\_\-\-H\-E\-A\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-T\-A\-I\-L\-Q\-\_\-\-R\-E\-M\-O\-V\-E\-\_\-\-H\-E\-A\-D(
+\begin{DoxyParamCaption}
+\item[{}]{head, }
+\item[{}]{field}
+\end{DoxyParamCaption}
+)}\label{queue_8h_a24c16c7c5c9908022bad7a98ddac9740}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{                            \(\backslash\)
+        if ((STAILQ_FIRST((head)) =                                     \(\backslash\)
+             STAILQ_NEXT(STAILQ_FIRST((head)), field)) == NULL)         \(\backslash\)
+                (head)->stqh\_last = &STAILQ_FIRST((head));              \(\backslash\)
+\} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+
+
+Definition at line 340 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!S\-T\-A\-I\-L\-Q\-\_\-\-S\-W\-A\-P@{S\-T\-A\-I\-L\-Q\-\_\-\-S\-W\-A\-P}}
+\index{S\-T\-A\-I\-L\-Q\-\_\-\-S\-W\-A\-P@{S\-T\-A\-I\-L\-Q\-\_\-\-S\-W\-A\-P}!queue.h@{queue.\-h}}
+\subsubsection[{S\-T\-A\-I\-L\-Q\-\_\-\-S\-W\-A\-P}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-T\-A\-I\-L\-Q\-\_\-\-S\-W\-A\-P(
+\begin{DoxyParamCaption}
+\item[{}]{head1, }
+\item[{}]{head2, }
+\item[{}]{type}
+\end{DoxyParamCaption}
+)}\label{queue_8h_af30e7c9283aea226ad5a73575fc1601a}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{                            \(\backslash\)
+        struct type *swap\_first = STAILQ_FIRST(head1);                  \(\backslash\)
+        struct type **swap\_last = (head1)->stqh\_last;                   \
+	STAILQ_FIRST(head1) = STAILQ_FIRST(head2);                     \(\backslash\)
+        (head1)->stqh\_last = (head2)->stqh\_last;                        \
+	STAILQ_FIRST(head2) = swap\_first;                              \(\backslash\)
+        (head2)->stqh\_last = swap\_last;                                 \(\backslash\)
+        if (STAILQ_EMPTY(head1))                                        \(\backslash\)
+                (head1)->stqh\_last = &STAILQ_FIRST(head1);              \(\backslash\)
+        if (STAILQ_EMPTY(head2))                                        \(\backslash\)
+                (head2)->stqh\_last = &STAILQ_FIRST(head2);              \(\backslash\)
+\} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+
+
+Definition at line 346 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!T\-A\-I\-L\-Q\-\_\-\-C\-O\-N\-C\-A\-T@{T\-A\-I\-L\-Q\-\_\-\-C\-O\-N\-C\-A\-T}}
+\index{T\-A\-I\-L\-Q\-\_\-\-C\-O\-N\-C\-A\-T@{T\-A\-I\-L\-Q\-\_\-\-C\-O\-N\-C\-A\-T}!queue.h@{queue.\-h}}
+\subsubsection[{T\-A\-I\-L\-Q\-\_\-\-C\-O\-N\-C\-A\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\-A\-I\-L\-Q\-\_\-\-C\-O\-N\-C\-A\-T(
+\begin{DoxyParamCaption}
+\item[{}]{head1, }
+\item[{}]{head2, }
+\item[{}]{field}
+\end{DoxyParamCaption}
+)}\label{queue_8h_afe4852d23c85543fafc53ad409461750}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{                            \(\backslash\)
+        if (!TAILQ_EMPTY(head2)) \{                                      \(\backslash\)
+                *(head1)->tqh\_last = (head2)->tqh\_first;                \(\backslash\)
+                (head2)->tqh\_first->field.tqe\_prev = (head1)->tqh\_last; \(\backslash\)
+                (head1)->tqh\_last = (head2)->tqh\_last;                  \
+		TAILQ_INIT((head2));                                  \
+		QMD_TRACE_HEAD(head1);                                        \
+		QMD_TRACE_HEAD(head2);                                        \(\backslash\)
+        \}                                                               \(\backslash\)
+\} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+
+
+Definition at line 542 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!T\-A\-I\-L\-Q\-\_\-\-E\-M\-P\-T\-Y@{T\-A\-I\-L\-Q\-\_\-\-E\-M\-P\-T\-Y}}
+\index{T\-A\-I\-L\-Q\-\_\-\-E\-M\-P\-T\-Y@{T\-A\-I\-L\-Q\-\_\-\-E\-M\-P\-T\-Y}!queue.h@{queue.\-h}}
+\subsubsection[{T\-A\-I\-L\-Q\-\_\-\-E\-M\-P\-T\-Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\-A\-I\-L\-Q\-\_\-\-E\-M\-P\-T\-Y(
+\begin{DoxyParamCaption}
+\item[{}]{head}
+\end{DoxyParamCaption}
+)~((head)-\/$>$tqh\-\_\-first == N\-U\-L\-L)}\label{queue_8h_ac3c9da7ac712eacbbad5cc54d7a3477e}
+
+
+Definition at line 553 of file queue.\-h.
+
+
+
+Referenced by mem\-\_\-context\-\_\-destroy().
+
+\index{queue.\-h@{queue.\-h}!T\-A\-I\-L\-Q\-\_\-\-E\-N\-T\-R\-Y@{T\-A\-I\-L\-Q\-\_\-\-E\-N\-T\-R\-Y}}
+\index{T\-A\-I\-L\-Q\-\_\-\-E\-N\-T\-R\-Y@{T\-A\-I\-L\-Q\-\_\-\-E\-N\-T\-R\-Y}!queue.h@{queue.\-h}}
+\subsubsection[{T\-A\-I\-L\-Q\-\_\-\-E\-N\-T\-R\-Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\-A\-I\-L\-Q\-\_\-\-E\-N\-T\-R\-Y(
+\begin{DoxyParamCaption}
+\item[{}]{type}
+\end{DoxyParamCaption}
+)}\label{queue_8h_af71bfd90dc9d00fb03545fe66c67d673}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keyword}{struct }\{                                                                \(\backslash\)
+        struct type *tqe\_next;  \textcolor{comment}{/* next element */}                      \(\backslash\)
+        struct type **tqe\_prev; \textcolor{comment}{/* address of previous next element */}  \
+	TRACEBUF                                                       \(\backslash\)
+\}
+\end{DoxyCode}
+
+
+Definition at line 501 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!T\-A\-I\-L\-Q\-\_\-\-F\-I\-R\-S\-T@{T\-A\-I\-L\-Q\-\_\-\-F\-I\-R\-S\-T}}
+\index{T\-A\-I\-L\-Q\-\_\-\-F\-I\-R\-S\-T@{T\-A\-I\-L\-Q\-\_\-\-F\-I\-R\-S\-T}!queue.h@{queue.\-h}}
+\subsubsection[{T\-A\-I\-L\-Q\-\_\-\-F\-I\-R\-S\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\-A\-I\-L\-Q\-\_\-\-F\-I\-R\-S\-T(
+\begin{DoxyParamCaption}
+\item[{}]{head}
+\end{DoxyParamCaption}
+)~((head)-\/$>$tqh\-\_\-first)}\label{queue_8h_a7d6894360bd1c41e0e6f6d84998c1362}
+
+
+Definition at line 555 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H@{T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H}}
+\index{T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H@{T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H}!queue.h@{queue.\-h}}
+\subsubsection[{T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H(
+\begin{DoxyParamCaption}
+\item[{}]{var, }
+\item[{}]{head, }
+\item[{}]{field}
+\end{DoxyParamCaption}
+)}\label{queue_8h_a16e5fc168e7f3494d4b1df54447d871e}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{for} ((var) = TAILQ_FIRST((head));                               \(\backslash\)
+            (var);                                                      \(\backslash\)
+            (var) = TAILQ_NEXT((var), field))
+\end{DoxyCode}
+
+
+Definition at line 557 of file queue.\-h.
+
+
+
+Referenced by output\-\_\-memory\-\_\-info(), and validate\-\_\-memory().
+
+\index{queue.\-h@{queue.\-h}!T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-F\-R\-O\-M@{T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-F\-R\-O\-M}}
+\index{T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-F\-R\-O\-M@{T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-F\-R\-O\-M}!queue.h@{queue.\-h}}
+\subsubsection[{T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-F\-R\-O\-M}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-F\-R\-O\-M(
+\begin{DoxyParamCaption}
+\item[{}]{var, }
+\item[{}]{head, }
+\item[{}]{field}
+\end{DoxyParamCaption}
+)}\label{queue_8h_a749ad60232f2de8931c9c0871987f84f}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{for} ((var) = ((var) ? (var) : TAILQ_FIRST((head)));             \(\backslash\)
+            (var);                                                      \(\backslash\)
+            (var) = TAILQ_NEXT((var), field))
+\end{DoxyCode}
+
+
+Definition at line 562 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-F\-R\-O\-M\-\_\-\-S\-A\-F\-E@{T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-F\-R\-O\-M\-\_\-\-S\-A\-F\-E}}
+\index{T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-F\-R\-O\-M\-\_\-\-S\-A\-F\-E@{T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-F\-R\-O\-M\-\_\-\-S\-A\-F\-E}!queue.h@{queue.\-h}}
+\subsubsection[{T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-F\-R\-O\-M\-\_\-\-S\-A\-F\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-F\-R\-O\-M\-\_\-\-S\-A\-F\-E(
+\begin{DoxyParamCaption}
+\item[{}]{var, }
+\item[{}]{head, }
+\item[{}]{field, }
+\item[{}]{tvar}
+\end{DoxyParamCaption}
+)}\label{queue_8h_aa9cc420c740f2f56c6efdacea6cc4d94}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{for} ((var) = ((var) ? (var) : TAILQ_FIRST((head)));             \(\backslash\)
+            (var) && ((tvar) = TAILQ_NEXT((var), field), 1);            \(\backslash\)
+            (var) = (tvar))
+\end{DoxyCode}
+
+
+Definition at line 572 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-R\-E\-V\-E\-R\-S\-E@{T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-R\-E\-V\-E\-R\-S\-E}}
+\index{T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-R\-E\-V\-E\-R\-S\-E@{T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-R\-E\-V\-E\-R\-S\-E}!queue.h@{queue.\-h}}
+\subsubsection[{T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-R\-E\-V\-E\-R\-S\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-R\-E\-V\-E\-R\-S\-E(
+\begin{DoxyParamCaption}
+\item[{}]{var, }
+\item[{}]{head, }
+\item[{}]{headname, }
+\item[{}]{field}
+\end{DoxyParamCaption}
+)}\label{queue_8h_aa7f65c910cd4616fcfa9723c5763b1a5}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{for} ((var) = TAILQ_LAST((head), headname);                      \(\backslash\)
+            (var);                                                      \(\backslash\)
+            (var) = TAILQ_PREV((var), headname, field))
+\end{DoxyCode}
+
+
+Definition at line 577 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-R\-E\-V\-E\-R\-S\-E\-\_\-\-F\-R\-O\-M@{T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-R\-E\-V\-E\-R\-S\-E\-\_\-\-F\-R\-O\-M}}
+\index{T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-R\-E\-V\-E\-R\-S\-E\-\_\-\-F\-R\-O\-M@{T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-R\-E\-V\-E\-R\-S\-E\-\_\-\-F\-R\-O\-M}!queue.h@{queue.\-h}}
+\subsubsection[{T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-R\-E\-V\-E\-R\-S\-E\-\_\-\-F\-R\-O\-M}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-R\-E\-V\-E\-R\-S\-E\-\_\-\-F\-R\-O\-M(
+\begin{DoxyParamCaption}
+\item[{}]{var, }
+\item[{}]{head, }
+\item[{}]{headname, }
+\item[{}]{field}
+\end{DoxyParamCaption}
+)}\label{queue_8h_a6cb12f27e7182bcb25c7dfdc9a8e83bf}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{for} ((var) = ((var) ? (var) : TAILQ_LAST((head), headname));    \(\backslash\)
+            (var);                                                      \(\backslash\)
+            (var) = TAILQ_PREV((var), headname, field))
+\end{DoxyCode}
+
+
+Definition at line 582 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-R\-E\-V\-E\-R\-S\-E\-\_\-\-F\-R\-O\-M\-\_\-\-S\-A\-F\-E@{T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-R\-E\-V\-E\-R\-S\-E\-\_\-\-F\-R\-O\-M\-\_\-\-S\-A\-F\-E}}
+\index{T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-R\-E\-V\-E\-R\-S\-E\-\_\-\-F\-R\-O\-M\-\_\-\-S\-A\-F\-E@{T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-R\-E\-V\-E\-R\-S\-E\-\_\-\-F\-R\-O\-M\-\_\-\-S\-A\-F\-E}!queue.h@{queue.\-h}}
+\subsubsection[{T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-R\-E\-V\-E\-R\-S\-E\-\_\-\-F\-R\-O\-M\-\_\-\-S\-A\-F\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-R\-E\-V\-E\-R\-S\-E\-\_\-\-F\-R\-O\-M\-\_\-\-S\-A\-F\-E(
+\begin{DoxyParamCaption}
+\item[{}]{var, }
+\item[{}]{head, }
+\item[{}]{headname, }
+\item[{}]{field, }
+\item[{}]{tvar}
+\end{DoxyParamCaption}
+)}\label{queue_8h_a5a73496c2e5232e55ad90245bf301de8}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{for} ((var) = ((var) ? (var) : TAILQ_LAST((head), headname));    \(\backslash\)
+            (var) && ((tvar) = TAILQ_PREV((var), headname, field), 1);  \(\backslash\)
+            (var) = (tvar))
+\end{DoxyCode}
+
+
+Definition at line 592 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-R\-E\-V\-E\-R\-S\-E\-\_\-\-S\-A\-F\-E@{T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-R\-E\-V\-E\-R\-S\-E\-\_\-\-S\-A\-F\-E}}
+\index{T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-R\-E\-V\-E\-R\-S\-E\-\_\-\-S\-A\-F\-E@{T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-R\-E\-V\-E\-R\-S\-E\-\_\-\-S\-A\-F\-E}!queue.h@{queue.\-h}}
+\subsubsection[{T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-R\-E\-V\-E\-R\-S\-E\-\_\-\-S\-A\-F\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-R\-E\-V\-E\-R\-S\-E\-\_\-\-S\-A\-F\-E(
+\begin{DoxyParamCaption}
+\item[{}]{var, }
+\item[{}]{head, }
+\item[{}]{headname, }
+\item[{}]{field, }
+\item[{}]{tvar}
+\end{DoxyParamCaption}
+)}\label{queue_8h_aa7841e4f848e470b9f2bc676473d7a5b}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{for} ((var) = TAILQ_LAST((head), headname);                      \(\backslash\)
+            (var) && ((tvar) = TAILQ_PREV((var), headname, field), 1);  \(\backslash\)
+            (var) = (tvar))
+\end{DoxyCode}
+
+
+Definition at line 587 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-S\-A\-F\-E@{T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-S\-A\-F\-E}}
+\index{T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-S\-A\-F\-E@{T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-S\-A\-F\-E}!queue.h@{queue.\-h}}
+\subsubsection[{T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-S\-A\-F\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H\-\_\-\-S\-A\-F\-E(
+\begin{DoxyParamCaption}
+\item[{}]{var, }
+\item[{}]{head, }
+\item[{}]{field, }
+\item[{}]{tvar}
+\end{DoxyParamCaption}
+)}\label{queue_8h_a2a85f19896399eecd0ebf91cb8176166}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{for} ((var) = TAILQ_FIRST((head));                               \(\backslash\)
+            (var) && ((tvar) = TAILQ_NEXT((var), field), 1);            \(\backslash\)
+            (var) = (tvar))
+\end{DoxyCode}
+
+
+Definition at line 567 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D@{T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D}}
+\index{T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D@{T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D}!queue.h@{queue.\-h}}
+\subsubsection[{T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D(
+\begin{DoxyParamCaption}
+\item[{}]{name, }
+\item[{}]{type}
+\end{DoxyParamCaption}
+)}\label{queue_8h_a4abce769a262e090c1f601605b9d6c76}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keyword}{struct }name \{                                                           \(\backslash\)
+        struct type *tqh\_first; \textcolor{comment}{/* first element */}                     \(\backslash\)
+        struct type **tqh\_last; \textcolor{comment}{/* addr of last next element */}         \
+	TRACEBUF                                                       \(\backslash\)
+\}
+\end{DoxyCode}
+
+
+Definition at line 491 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D\-\_\-\-I\-N\-I\-T\-I\-A\-L\-I\-Z\-E\-R@{T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D\-\_\-\-I\-N\-I\-T\-I\-A\-L\-I\-Z\-E\-R}}
+\index{T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D\-\_\-\-I\-N\-I\-T\-I\-A\-L\-I\-Z\-E\-R@{T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D\-\_\-\-I\-N\-I\-T\-I\-A\-L\-I\-Z\-E\-R}!queue.h@{queue.\-h}}
+\subsubsection[{T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D\-\_\-\-I\-N\-I\-T\-I\-A\-L\-I\-Z\-E\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D\-\_\-\-I\-N\-I\-T\-I\-A\-L\-I\-Z\-E\-R(
+\begin{DoxyParamCaption}
+\item[{}]{head}
+\end{DoxyParamCaption}
+)~\{ N\-U\-L\-L, \&(head).tqh\-\_\-first, {\bf T\-R\-A\-C\-E\-B\-U\-F\-\_\-\-I\-N\-I\-T\-I\-A\-L\-I\-Z\-E\-R} \}}\label{queue_8h_ac269df7d4126ed9885156cbad2cbf8af}
+
+
+Definition at line 498 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!T\-A\-I\-L\-Q\-\_\-\-I\-N\-I\-T@{T\-A\-I\-L\-Q\-\_\-\-I\-N\-I\-T}}
+\index{T\-A\-I\-L\-Q\-\_\-\-I\-N\-I\-T@{T\-A\-I\-L\-Q\-\_\-\-I\-N\-I\-T}!queue.h@{queue.\-h}}
+\subsubsection[{T\-A\-I\-L\-Q\-\_\-\-I\-N\-I\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\-A\-I\-L\-Q\-\_\-\-I\-N\-I\-T(
+\begin{DoxyParamCaption}
+\item[{}]{head}
+\end{DoxyParamCaption}
+)}\label{queue_8h_a449d224023780e46253b83b61e0a50a9}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{                                            \
+	TAILQ_FIRST((head)) = NULL;                                    \(\backslash\)
+        (head)->tqh\_last = &TAILQ_FIRST((head));                        \
+	QMD_TRACE_HEAD(head);                                          \(\backslash\)
+\} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+
+
+Definition at line 597 of file queue.\-h.
+
+
+
+Referenced by mem\-\_\-context\-\_\-init().
+
+\index{queue.\-h@{queue.\-h}!T\-A\-I\-L\-Q\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-A\-F\-T\-E\-R@{T\-A\-I\-L\-Q\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-A\-F\-T\-E\-R}}
+\index{T\-A\-I\-L\-Q\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-A\-F\-T\-E\-R@{T\-A\-I\-L\-Q\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-A\-F\-T\-E\-R}!queue.h@{queue.\-h}}
+\subsubsection[{T\-A\-I\-L\-Q\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-A\-F\-T\-E\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\-A\-I\-L\-Q\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-A\-F\-T\-E\-R(
+\begin{DoxyParamCaption}
+\item[{}]{head, }
+\item[{}]{listelm, }
+\item[{}]{elm, }
+\item[{}]{field}
+\end{DoxyParamCaption}
+)}\label{queue_8h_af972e33f5eacef659ee0bf0a13ca518c}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{            \
+	QMD_TAILQ_CHECK_NEXT(listelm, field);                          \(\backslash\)
+        if ((TAILQ_NEXT((elm), field) = TAILQ_NEXT((listelm), field)) != NULL)\
+		TAILQ_NEXT((elm), field)->field.tqe\_prev =            \(\backslash\)
+                    &TAILQ_NEXT((elm), field);                          \(\backslash\)
+        else \{                                                          \(\backslash\)
+                (head)->tqh\_last = &TAILQ_NEXT((elm), field);           \
+		QMD_TRACE_HEAD(head);                                 \(\backslash\)
+        \}                                                               \
+	TAILQ_NEXT((listelm), field) = (elm);                          \(\backslash\)
+        (elm)->field.tqe\_prev = &TAILQ_NEXT((listelm), field);          \
+	QMD_TRACE_ELEM(&(elm)->field);                                 \
+	QMD_TRACE_ELEM(&listelm->field);                               \(\backslash\)
+\} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+
+
+Definition at line 603 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!T\-A\-I\-L\-Q\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-B\-E\-F\-O\-R\-E@{T\-A\-I\-L\-Q\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-B\-E\-F\-O\-R\-E}}
+\index{T\-A\-I\-L\-Q\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-B\-E\-F\-O\-R\-E@{T\-A\-I\-L\-Q\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-B\-E\-F\-O\-R\-E}!queue.h@{queue.\-h}}
+\subsubsection[{T\-A\-I\-L\-Q\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-B\-E\-F\-O\-R\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\-A\-I\-L\-Q\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-B\-E\-F\-O\-R\-E(
+\begin{DoxyParamCaption}
+\item[{}]{listelm, }
+\item[{}]{elm, }
+\item[{}]{field}
+\end{DoxyParamCaption}
+)}\label{queue_8h_ac6a41e17dbc7d8df1f8b353a036754ff}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{                    \
+	QMD_TAILQ_CHECK_PREV(listelm, field);                          \(\backslash\)
+        (elm)->field.tqe\_prev = (listelm)->field.tqe\_prev;              \
+	TAILQ_NEXT((elm), field) = (listelm);                          \(\backslash\)
+        *(listelm)->field.tqe\_prev = (elm);                             \(\backslash\)
+        (listelm)->field.tqe\_prev = &TAILQ_NEXT((elm), field);          \
+	QMD_TRACE_ELEM(&(elm)->field);                                 \
+	QMD_TRACE_ELEM(&listelm->field);                               \(\backslash\)
+\} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+
+
+Definition at line 618 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!T\-A\-I\-L\-Q\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-H\-E\-A\-D@{T\-A\-I\-L\-Q\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-H\-E\-A\-D}}
+\index{T\-A\-I\-L\-Q\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-H\-E\-A\-D@{T\-A\-I\-L\-Q\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-H\-E\-A\-D}!queue.h@{queue.\-h}}
+\subsubsection[{T\-A\-I\-L\-Q\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-H\-E\-A\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\-A\-I\-L\-Q\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-H\-E\-A\-D(
+\begin{DoxyParamCaption}
+\item[{}]{head, }
+\item[{}]{elm, }
+\item[{}]{field}
+\end{DoxyParamCaption}
+)}\label{queue_8h_af0f99e8f322ea4eef2d9deaa505239a6}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{                    \
+	QMD_TAILQ_CHECK_HEAD(head, field);                             \(\backslash\)
+        if ((TAILQ_NEXT((elm), field) = TAILQ_FIRST((head))) != NULL)   \
+		TAILQ_FIRST((head))->field.tqe\_prev =                 \(\backslash\)
+                    &TAILQ_NEXT((elm), field);                          \(\backslash\)
+        else                                                            \(\backslash\)
+                (head)->tqh\_last = &TAILQ_NEXT((elm), field);           \
+	TAILQ_FIRST((head)) = (elm);                                   \(\backslash\)
+        (elm)->field.tqe\_prev = &TAILQ_FIRST((head));                   \
+	QMD_TRACE_HEAD(head);                                          \
+	QMD_TRACE_ELEM(&(elm)->field);                                 \(\backslash\)
+\} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+
+
+Definition at line 628 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!T\-A\-I\-L\-Q\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-T\-A\-I\-L@{T\-A\-I\-L\-Q\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-T\-A\-I\-L}}
+\index{T\-A\-I\-L\-Q\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-T\-A\-I\-L@{T\-A\-I\-L\-Q\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-T\-A\-I\-L}!queue.h@{queue.\-h}}
+\subsubsection[{T\-A\-I\-L\-Q\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-T\-A\-I\-L}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\-A\-I\-L\-Q\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-T\-A\-I\-L(
+\begin{DoxyParamCaption}
+\item[{}]{head, }
+\item[{}]{elm, }
+\item[{}]{field}
+\end{DoxyParamCaption}
+)}\label{queue_8h_a512bee16b46f601078c96c776d2648c3}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{                    \
+	QMD_TAILQ_CHECK_TAIL(head, field);                             \
+	TAILQ_NEXT((elm), field) = NULL;                               \(\backslash\)
+        (elm)->field.tqe\_prev = (head)->tqh\_last;                       \(\backslash\)
+        *(head)->tqh\_last = (elm);                                      \(\backslash\)
+        (head)->tqh\_last = &TAILQ_NEXT((elm), field);                   \
+	QMD_TRACE_HEAD(head);                                          \
+	QMD_TRACE_ELEM(&(elm)->field);                                 \(\backslash\)
+\} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+
+
+Definition at line 641 of file queue.\-h.
+
+
+
+Referenced by tracked\-\_\-alloc().
+
+\index{queue.\-h@{queue.\-h}!T\-A\-I\-L\-Q\-\_\-\-L\-A\-S\-T@{T\-A\-I\-L\-Q\-\_\-\-L\-A\-S\-T}}
+\index{T\-A\-I\-L\-Q\-\_\-\-L\-A\-S\-T@{T\-A\-I\-L\-Q\-\_\-\-L\-A\-S\-T}!queue.h@{queue.\-h}}
+\subsubsection[{T\-A\-I\-L\-Q\-\_\-\-L\-A\-S\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\-A\-I\-L\-Q\-\_\-\-L\-A\-S\-T(
+\begin{DoxyParamCaption}
+\item[{}]{head, }
+\item[{}]{headname}
+\end{DoxyParamCaption}
+)~($\ast$(((struct headname $\ast$)((head)-\/$>$tqh\-\_\-last))-\/$>$tqh\-\_\-last))}\label{queue_8h_ac9154a9aebb3c15a3f2356349a1cc14f}
+
+
+Definition at line 651 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!T\-A\-I\-L\-Q\-\_\-\-N\-E\-X\-T@{T\-A\-I\-L\-Q\-\_\-\-N\-E\-X\-T}}
+\index{T\-A\-I\-L\-Q\-\_\-\-N\-E\-X\-T@{T\-A\-I\-L\-Q\-\_\-\-N\-E\-X\-T}!queue.h@{queue.\-h}}
+\subsubsection[{T\-A\-I\-L\-Q\-\_\-\-N\-E\-X\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\-A\-I\-L\-Q\-\_\-\-N\-E\-X\-T(
+\begin{DoxyParamCaption}
+\item[{}]{elm, }
+\item[{}]{field}
+\end{DoxyParamCaption}
+)~((elm)-\/$>$field.\-tqe\-\_\-next)}\label{queue_8h_abd57fe9bdea6007a602f8c7d61bd5265}
+
+
+Definition at line 654 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!T\-A\-I\-L\-Q\-\_\-\-P\-R\-E\-V@{T\-A\-I\-L\-Q\-\_\-\-P\-R\-E\-V}}
+\index{T\-A\-I\-L\-Q\-\_\-\-P\-R\-E\-V@{T\-A\-I\-L\-Q\-\_\-\-P\-R\-E\-V}!queue.h@{queue.\-h}}
+\subsubsection[{T\-A\-I\-L\-Q\-\_\-\-P\-R\-E\-V}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\-A\-I\-L\-Q\-\_\-\-P\-R\-E\-V(
+\begin{DoxyParamCaption}
+\item[{}]{elm, }
+\item[{}]{headname, }
+\item[{}]{field}
+\end{DoxyParamCaption}
+)~($\ast$(((struct headname $\ast$)((elm)-\/$>$field.\-tqe\-\_\-prev))-\/$>$tqh\-\_\-last))}\label{queue_8h_a524f93a0c21c390683fab4c27e840a10}
+
+
+Definition at line 656 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!T\-A\-I\-L\-Q\-\_\-\-R\-E\-M\-O\-V\-E@{T\-A\-I\-L\-Q\-\_\-\-R\-E\-M\-O\-V\-E}}
+\index{T\-A\-I\-L\-Q\-\_\-\-R\-E\-M\-O\-V\-E@{T\-A\-I\-L\-Q\-\_\-\-R\-E\-M\-O\-V\-E}!queue.h@{queue.\-h}}
+\subsubsection[{T\-A\-I\-L\-Q\-\_\-\-R\-E\-M\-O\-V\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\-A\-I\-L\-Q\-\_\-\-R\-E\-M\-O\-V\-E(
+\begin{DoxyParamCaption}
+\item[{}]{head, }
+\item[{}]{elm, }
+\item[{}]{field}
+\end{DoxyParamCaption}
+)}\label{queue_8h_aaae87ca18c28066e1a96221e762d1209}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{                            \
+	QMD_SAVELINK(oldnext, (elm)->field.tqe\_next);                  \
+	QMD_SAVELINK(oldprev, (elm)->field.tqe\_prev);                  \
+	QMD_TAILQ_CHECK_NEXT(elm, field);                              \
+	QMD_TAILQ_CHECK_PREV(elm, field);                              \(\backslash\)
+        if ((TAILQ_NEXT((elm), field)) != NULL)                         \
+		TAILQ_NEXT((elm), field)->field.tqe\_prev =            \(\backslash\)
+                    (elm)->field.tqe\_prev;                              \(\backslash\)
+        \textcolor{keywordflow}{else} \{                                                          \(\backslash\)
+                (head)->tqh\_last = (elm)->field.tqe\_prev;               \(\backslash\)
+                QMD_TRACE_HEAD(head);                                   \(\backslash\)
+        \}                                                               \(\backslash\)
+        *(elm)->field.tqe\_prev = TAILQ_NEXT((elm), field);              \
+	TRASHIT(*oldnext);                                             \
+	TRASHIT(*oldprev);                                             \
+	QMD_TRACE_ELEM(&(elm)->field);                                 \(\backslash\)
+\} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+
+
+Definition at line 659 of file queue.\-h.
+
+
+
+Referenced by output\-\_\-memory\-\_\-info(), and tracked\-\_\-free().
+
+\index{queue.\-h@{queue.\-h}!T\-A\-I\-L\-Q\-\_\-\-S\-W\-A\-P@{T\-A\-I\-L\-Q\-\_\-\-S\-W\-A\-P}}
+\index{T\-A\-I\-L\-Q\-\_\-\-S\-W\-A\-P@{T\-A\-I\-L\-Q\-\_\-\-S\-W\-A\-P}!queue.h@{queue.\-h}}
+\subsubsection[{T\-A\-I\-L\-Q\-\_\-\-S\-W\-A\-P}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\-A\-I\-L\-Q\-\_\-\-S\-W\-A\-P(
+\begin{DoxyParamCaption}
+\item[{}]{head1, }
+\item[{}]{head2, }
+\item[{}]{type, }
+\item[{}]{field}
+\end{DoxyParamCaption}
+)}\label{queue_8h_aa4cf483c7dcddd1d89a00886b5466bac}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{                    \(\backslash\)
+        struct type *swap\_first = (head1)->tqh\_first;                   \(\backslash\)
+        struct type **swap\_last = (head1)->tqh\_last;                    \(\backslash\)
+        (head1)->tqh\_first = (head2)->tqh\_first;                        \(\backslash\)
+        (head1)->tqh\_last = (head2)->tqh\_last;                          \(\backslash\)
+        (head2)->tqh\_first = swap\_first;                                \(\backslash\)
+        (head2)->tqh\_last = swap\_last;                                  \(\backslash\)
+        if ((swap\_first = (head1)->tqh\_first) != NULL)                  \(\backslash\)
+                swap\_first->field.tqe\_prev = &(head1)->tqh\_first;       \(\backslash\)
+        else                                                            \(\backslash\)
+                (head1)->tqh\_last = &(head1)->tqh\_first;                \(\backslash\)
+        if ((swap\_first = (head2)->tqh\_first) != NULL)                  \(\backslash\)
+                swap\_first->field.tqe\_prev = &(head2)->tqh\_first;       \(\backslash\)
+        else                                                            \(\backslash\)
+                (head2)->tqh\_last = &(head2)->tqh\_first;                \(\backslash\)
+\} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+
+
+Definition at line 677 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!T\-R\-A\-C\-E\-B\-U\-F@{T\-R\-A\-C\-E\-B\-U\-F}}
+\index{T\-R\-A\-C\-E\-B\-U\-F@{T\-R\-A\-C\-E\-B\-U\-F}!queue.h@{queue.\-h}}
+\subsubsection[{T\-R\-A\-C\-E\-B\-U\-F}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\-R\-A\-C\-E\-B\-U\-F}\label{queue_8h_a743488648fbd29bf4cf1addf004f43ef}
+
+
+Definition at line 141 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!T\-R\-A\-C\-E\-B\-U\-F\-\_\-\-I\-N\-I\-T\-I\-A\-L\-I\-Z\-E\-R@{T\-R\-A\-C\-E\-B\-U\-F\-\_\-\-I\-N\-I\-T\-I\-A\-L\-I\-Z\-E\-R}}
+\index{T\-R\-A\-C\-E\-B\-U\-F\-\_\-\-I\-N\-I\-T\-I\-A\-L\-I\-Z\-E\-R@{T\-R\-A\-C\-E\-B\-U\-F\-\_\-\-I\-N\-I\-T\-I\-A\-L\-I\-Z\-E\-R}!queue.h@{queue.\-h}}
+\subsubsection[{T\-R\-A\-C\-E\-B\-U\-F\-\_\-\-I\-N\-I\-T\-I\-A\-L\-I\-Z\-E\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\-R\-A\-C\-E\-B\-U\-F\-\_\-\-I\-N\-I\-T\-I\-A\-L\-I\-Z\-E\-R}\label{queue_8h_a0397af84b4a238c2b678721a88b6eccc}
+
+
+Definition at line 142 of file queue.\-h.
+
+\index{queue.\-h@{queue.\-h}!T\-R\-A\-S\-H\-I\-T@{T\-R\-A\-S\-H\-I\-T}}
+\index{T\-R\-A\-S\-H\-I\-T@{T\-R\-A\-S\-H\-I\-T}!queue.h@{queue.\-h}}
+\subsubsection[{T\-R\-A\-S\-H\-I\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\-R\-A\-S\-H\-I\-T(
+\begin{DoxyParamCaption}
+\item[{}]{x}
+\end{DoxyParamCaption}
+)}\label{queue_8h_adee7bf054da0ade68bb853732c665a2b}
+
+
+Definition at line 143 of file queue.\-h.
+

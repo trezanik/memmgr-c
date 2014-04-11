@@ -1,0 +1,125 @@
+\section{memblock\-\_\-header Struct Reference}
+\label{structmemblock__header}\index{memblock\-\_\-header@{memblock\-\_\-header}}
+
+
+{\ttfamily \#include $<$tracked\-\_\-memory.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structmemblock__header_a566a8f9bbca747216118ce5c38518fc0}{T\-A\-I\-L\-Q\-\_\-\-E\-N\-T\-R\-Y} (\hyperlink{structmemblock__header}{memblock\-\_\-header}) np\-\_\-blocks
+\end{DoxyCompactItemize}
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+unsigned \hyperlink{structmemblock__header_a10ebc950edccb690a784aceb6362d696}{magic}
+\item 
+struct \hyperlink{structmemblock__footer}{memblock\-\_\-footer} $\ast$ \hyperlink{structmemblock__header_a21ce1e9005809a1f4ac9d9fc16f0ccc6}{footer}
+\item 
+char \hyperlink{structmemblock__header_a97093dcb31daa58a36e471701b63d0d3}{file} \mbox{[}\hyperlink{tracked__memory_8h_ac811ed79333c5131bf74f609b0b67fcf}{M\-E\-M\-\_\-\-M\-A\-X\-\_\-\-F\-I\-L\-E\-N\-A\-M\-E\-\_\-\-L\-E\-N\-G\-T\-H}+1\mbox{]}
+\item 
+char \hyperlink{structmemblock__header_ab3a09c5ab1300cb51e93ff910431c40f}{function} \mbox{[}\hyperlink{tracked__memory_8h_af15f994b428f827c19ae31d1df47d7ca}{M\-E\-M\-\_\-\-M\-A\-X\-\_\-\-F\-U\-N\-C\-T\-I\-O\-N\-\_\-\-L\-E\-N\-G\-T\-H}+1\mbox{]}
+\item 
+uint32\-\_\-t \hyperlink{structmemblock__header_aa2bb67f4837cf735956c591e23e4c800}{line}
+\item 
+uint32\-\_\-t \hyperlink{structmemblock__header_a9f32a9108b8ca49a6296605b42ee3a54}{requested\-\_\-size}
+\item 
+uint32\-\_\-t \hyperlink{structmemblock__header_acbea4f5572643309ac41e9493baaa7f7}{real\-\_\-size}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This structure is added at the start of a block of allocated memory, when U\-S\-I\-N\-G\-\_\-\-M\-E\-M\-O\-R\-Y\-\_\-\-D\-E\-B\-U\-G\-G\-I\-N\-G is defined. 
+
+Definition at line 76 of file tracked\-\_\-memory.\-h.
+
+
+
+\subsection{Member Function Documentation}
+\index{memblock\-\_\-header@{memblock\-\_\-header}!T\-A\-I\-L\-Q\-\_\-\-E\-N\-T\-R\-Y@{T\-A\-I\-L\-Q\-\_\-\-E\-N\-T\-R\-Y}}
+\index{T\-A\-I\-L\-Q\-\_\-\-E\-N\-T\-R\-Y@{T\-A\-I\-L\-Q\-\_\-\-E\-N\-T\-R\-Y}!memblock_header@{memblock\-\_\-header}}
+\subsubsection[{T\-A\-I\-L\-Q\-\_\-\-E\-N\-T\-R\-Y}]{\setlength{\rightskip}{0pt plus 5cm}memblock\-\_\-header\-::\-T\-A\-I\-L\-Q\-\_\-\-E\-N\-T\-R\-Y (
+\begin{DoxyParamCaption}
+\item[{{\bf memblock\-\_\-header}}]{}
+\end{DoxyParamCaption}
+)}\label{structmemblock__header_a566a8f9bbca747216118ce5c38518fc0}
+Linked list entry 
+
+\subsection{Field Documentation}
+\index{memblock\-\_\-header@{memblock\-\_\-header}!file@{file}}
+\index{file@{file}!memblock_header@{memblock\-\_\-header}}
+\subsubsection[{file}]{\setlength{\rightskip}{0pt plus 5cm}char memblock\-\_\-header\-::file\mbox{[}{\bf M\-E\-M\-\_\-\-M\-A\-X\-\_\-\-F\-I\-L\-E\-N\-A\-M\-E\-\_\-\-L\-E\-N\-G\-T\-H}+1\mbox{]}}\label{structmemblock__header_a97093dcb31daa58a36e471701b63d0d3}
+The file this memory block was created in; is not allocated dynamically, and so is bound by the M\-E\-M\-\_\-\-M\-A\-X\-\_\-\-F\-I\-L\-E\-N\-A\-M\-E\-\_\-\-L\-E\-N\-G\-T\-H definition. 
+
+Definition at line 92 of file tracked\-\_\-memory.\-h.
+
+
+
+Referenced by check\-\_\-block(), tracked\-\_\-alloc(), and tracked\-\_\-free().
+
+\index{memblock\-\_\-header@{memblock\-\_\-header}!footer@{footer}}
+\index{footer@{footer}!memblock_header@{memblock\-\_\-header}}
+\subsubsection[{footer}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf memblock\-\_\-footer}$\ast$ memblock\-\_\-header\-::footer}\label{structmemblock__header_a21ce1e9005809a1f4ac9d9fc16f0ccc6}
+A pointer to this memory blocks footer 
+
+Definition at line 86 of file tracked\-\_\-memory.\-h.
+
+
+
+Referenced by check\-\_\-block(), and tracked\-\_\-alloc().
+
+\index{memblock\-\_\-header@{memblock\-\_\-header}!function@{function}}
+\index{function@{function}!memblock_header@{memblock\-\_\-header}}
+\subsubsection[{function}]{\setlength{\rightskip}{0pt plus 5cm}char memblock\-\_\-header\-::function\mbox{[}{\bf M\-E\-M\-\_\-\-M\-A\-X\-\_\-\-F\-U\-N\-C\-T\-I\-O\-N\-\_\-\-L\-E\-N\-G\-T\-H}+1\mbox{]}}\label{structmemblock__header_ab3a09c5ab1300cb51e93ff910431c40f}
+The function name this memory block was created in; like the file member, is not allocated dynamically, and so is bound by the M\-E\-M\-\_\-\-M\-A\-X\-\_\-\-F\-U\-N\-C\-T\-I\-O\-N\-\_\-\-L\-E\-N\-G\-T\-H definition 
+
+Definition at line 96 of file tracked\-\_\-memory.\-h.
+
+
+
+Referenced by tracked\-\_\-alloc().
+
+\index{memblock\-\_\-header@{memblock\-\_\-header}!line@{line}}
+\index{line@{line}!memblock_header@{memblock\-\_\-header}}
+\subsubsection[{line}]{\setlength{\rightskip}{0pt plus 5cm}uint32\-\_\-t memblock\-\_\-header\-::line}\label{structmemblock__header_aa2bb67f4837cf735956c591e23e4c800}
+The line in the file this memory block was created in 
+
+Definition at line 98 of file tracked\-\_\-memory.\-h.
+
+
+
+Referenced by check\-\_\-block(), tracked\-\_\-alloc(), and tracked\-\_\-free().
+
+\index{memblock\-\_\-header@{memblock\-\_\-header}!magic@{magic}}
+\index{magic@{magic}!memblock_header@{memblock\-\_\-header}}
+\subsubsection[{magic}]{\setlength{\rightskip}{0pt plus 5cm}unsigned memblock\-\_\-header\-::magic}\label{structmemblock__header_a10ebc950edccb690a784aceb6362d696}
+The header magic number is used to detect if an operation on memory has written into this structure. Corrupt headers usually mean something else has written into the block -\/ an exception being if an operation has stepped too far back, to the extent of overwriting the magic number 
+
+Definition at line 83 of file tracked\-\_\-memory.\-h.
+
+
+
+Referenced by check\-\_\-block(), and tracked\-\_\-alloc().
+
+\index{memblock\-\_\-header@{memblock\-\_\-header}!real\-\_\-size@{real\-\_\-size}}
+\index{real\-\_\-size@{real\-\_\-size}!memblock_header@{memblock\-\_\-header}}
+\subsubsection[{real\-\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}uint32\-\_\-t memblock\-\_\-header\-::real\-\_\-size}\label{structmemblock__header_acbea4f5572643309ac41e9493baaa7f7}
+The size, in bytes, of the total allocation (header+data+footer) 
+
+Definition at line 102 of file tracked\-\_\-memory.\-h.
+
+
+
+Referenced by check\-\_\-block(), tracked\-\_\-alloc(), and tracked\-\_\-free().
+
+\index{memblock\-\_\-header@{memblock\-\_\-header}!requested\-\_\-size@{requested\-\_\-size}}
+\index{requested\-\_\-size@{requested\-\_\-size}!memblock_header@{memblock\-\_\-header}}
+\subsubsection[{requested\-\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}uint32\-\_\-t memblock\-\_\-header\-::requested\-\_\-size}\label{structmemblock__header_a9f32a9108b8ca49a6296605b42ee3a54}
+The size, in bytes, the original request desired 
+
+Definition at line 100 of file tracked\-\_\-memory.\-h.
+
+
+
+Referenced by check\-\_\-block(), tracked\-\_\-alloc(), tracked\-\_\-free(), and tracked\-\_\-realloc().
+

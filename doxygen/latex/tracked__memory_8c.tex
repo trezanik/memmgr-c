@@ -1,0 +1,976 @@
+\section{tracked\-\_\-memory.\-c File Reference}
+\label{tracked__memory_8c}\index{tracked\-\_\-memory.\-c@{tracked\-\_\-memory.\-c}}
+{\ttfamily \#include \char`\"{}tracked\-\_\-memory.\-h\char`\"{}}\\*
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+{\ttfamily \#include $<$string.\-h$>$}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{tracked__memory_8c_ae6dbf32c394f00509d560b40c81bccc6}{M\-A\-X\-\_\-\-L\-E\-N\-\_\-\-G\-E\-N\-E\-R\-I\-C}~250
+\item 
+\#define \hyperlink{tracked__memory_8c_a2db6c9af5aa02be13a49f706da54385c}{M\-E\-M\-\_\-\-H\-E\-A\-D\-E\-R\-\_\-\-M\-A\-G\-I\-C}~0x\-C\-A\-F\-E\-F\-A\-C\-E
+\item 
+\#define \hyperlink{tracked__memory_8c_adb9b241eeb9083c288e77112c7e7b0a5}{M\-E\-M\-\_\-\-F\-O\-O\-T\-E\-R\-\_\-\-M\-A\-G\-I\-C}~0x\-D\-E\-A\-D\-B\-E\-E\-F
+\item 
+\#define \hyperlink{tracked__memory_8c_ada833569779d8c8a9b8415e8112c1fad}{M\-E\-M\-\_\-\-O\-N\-\_\-\-I\-N\-I\-T}~0x0\-F
+\item 
+\#define \hyperlink{tracked__memory_8c_ab4cd30097b76edd986e9f0db035b6279}{M\-E\-M\-\_\-\-A\-F\-T\-E\-R\-\_\-\-F\-R\-E\-E}~0x\-F\-F
+\item 
+\#define \hyperlink{tracked__memory_8c_a4535345fe0fa840b2b74ce4eaf6dd004}{block\-\_\-offset\-\_\-header}(real\-\_\-mem)~(struct \hyperlink{structmemblock__header}{memblock\-\_\-header}$\ast$)((uint8\-\_\-t$\ast$)real\-\_\-mem -\/ sizeof(struct \hyperlink{structmemblock__header}{memblock\-\_\-header}))
+\item 
+\#define \hyperlink{tracked__memory_8c_ad4ec1862e1c0007f85c0d0eb6b75ff91}{block\-\_\-offset\-\_\-realmem}(memblock)~(void$\ast$)((uint8\-\_\-t$\ast$)memblock + sizeof(struct \hyperlink{structmemblock__header}{memblock\-\_\-header}))
+\item 
+\#define \hyperlink{tracked__memory_8c_aff46be828cb143ee0ffde154ac547a46}{block\-\_\-offset\-\_\-footer}(memblock, num\-\_\-bytes)~(struct \hyperlink{structmemblock__footer}{memblock\-\_\-footer}$\ast$)((uint8\-\_\-t$\ast$)memblock + (sizeof(struct \hyperlink{structmemblock__header}{memblock\-\_\-header}) + num\-\_\-bytes))
+\item 
+\#define \hyperlink{tracked__memory_8c_a23fcee323662954abeea9a2b0d3d7bdf}{H\-E\-A\-D\-E\-R\-\_\-\-F\-O\-O\-T\-E\-R\-\_\-\-S\-I\-Z\-E}~(sizeof(struct \hyperlink{structmemblock__header}{memblock\-\_\-header}) + sizeof(struct \hyperlink{structmemblock__footer}{memblock\-\_\-footer}))
+\item 
+\#define \hyperlink{tracked__memory_8c_a83cebbffc784c0755f531e4c19abf8d0}{P\-A\-T\-H\-\_\-\-C\-H\-A\-R}~'/'
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{tracked__memory_8c_a0a67a6685295c0e8f0d891fe56353b4d}{mem\-\_\-context\-\_\-init} (struct \hyperlink{structmem__context}{mem\-\_\-context} $\ast$const context)
+\item 
+void \hyperlink{tracked__memory_8c_a18ea1d9235496d3eeefa9e5ef683a7a1}{mem\-\_\-context\-\_\-destroy} (struct \hyperlink{structmem__context}{mem\-\_\-context} $\ast$const context)
+\item 
+enum \hyperlink{tracked__memory_8h_adc7040deea27628dba424c534b71dbbf}{E\-\_\-\-M\-E\-M\-O\-R\-Y\-\_\-\-E\-R\-R\-O\-R} \hyperlink{tracked__memory_8c_ab753a667917e4aa67a8e5ee2117083ba}{check\-\_\-block} (struct \hyperlink{structmemblock__header}{memblock\-\_\-header} $\ast$memory\-\_\-block)
+\item 
+void \hyperlink{tracked__memory_8c_a1ed5a096e4418b4468d1f6eb94fe953a}{output\-\_\-memory\-\_\-info} (struct \hyperlink{structmem__context}{mem\-\_\-context} $\ast$const context)
+\item 
+void $\ast$ \hyperlink{tracked__memory_8c_a060364772083abaaf94eee077a5d3365}{tracked\-\_\-alloc} (struct \hyperlink{structmem__context}{mem\-\_\-context} $\ast$const context, const uint32\-\_\-t num\-\_\-bytes, const char $\ast$file, const char $\ast$function, const uint32\-\_\-t line)
+\item 
+void \hyperlink{tracked__memory_8c_adaadfc4aa30023606455c7f940868825}{tracked\-\_\-free} (struct \hyperlink{structmem__context}{mem\-\_\-context} $\ast$const context, void $\ast$memory)
+\item 
+void $\ast$ \hyperlink{tracked__memory_8c_a4e46491d14d0a28b73e4758cc2b20d3b}{tracked\-\_\-realloc} (struct \hyperlink{structmem__context}{mem\-\_\-context} $\ast$const context, void $\ast$memory, const uint32\-\_\-t new\-\_\-num\-\_\-bytes, const char $\ast$file, const char $\ast$function, const uint32\-\_\-t line)
+\item 
+bool \hyperlink{tracked__memory_8c_a1f0ff25556f5435b8c7048f58b3c80a9}{validate\-\_\-memory} (struct \hyperlink{structmem__context}{mem\-\_\-context} $\ast$const context, void $\ast$memory)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const unsigned \hyperlink{tracked__memory_8c_ac870dbfc709df78d9ee713843f55e894}{mem\-\_\-header\-\_\-magic} = \hyperlink{tracked__memory_8c_a2db6c9af5aa02be13a49f706da54385c}{M\-E\-M\-\_\-\-H\-E\-A\-D\-E\-R\-\_\-\-M\-A\-G\-I\-C}
+\item 
+const unsigned \hyperlink{tracked__memory_8c_a89ab5016ef388d7a5691e4d77208cc32}{mem\-\_\-footer\-\_\-magic} = \hyperlink{tracked__memory_8c_adb9b241eeb9083c288e77112c7e7b0a5}{M\-E\-M\-\_\-\-F\-O\-O\-T\-E\-R\-\_\-\-M\-A\-G\-I\-C}
+\item 
+struct \hyperlink{structmem__context}{mem\-\_\-context} \hyperlink{tracked__memory_8c_a7d7857f56a1eceeb304e53870738e18f}{g\-\_\-mem\-\_\-ctx}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+James Warren 
+\end{DoxyAuthor}
+\begin{DoxyCopyright}{Copyright}
+James Warren, 2013-\/2014 
+\end{DoxyCopyright}
+\begin{DoxyParagraph}{License\-:}
+Zlib (see license.\-txt or \href{http://opensource.org/licenses/Zlib}{\tt http\-://opensource.\-org/licenses/\-Zlib}) 
+\end{DoxyParagraph}
+
+
+Definition in file \hyperlink{tracked__memory_8c_source}{tracked\-\_\-memory.\-c}.
+
+
+
+\subsection{Macro Definition Documentation}
+\index{tracked\-\_\-memory.\-c@{tracked\-\_\-memory.\-c}!block\-\_\-offset\-\_\-footer@{block\-\_\-offset\-\_\-footer}}
+\index{block\-\_\-offset\-\_\-footer@{block\-\_\-offset\-\_\-footer}!tracked_memory.c@{tracked\-\_\-memory.\-c}}
+\subsubsection[{block\-\_\-offset\-\_\-footer}]{\setlength{\rightskip}{0pt plus 5cm}\#define block\-\_\-offset\-\_\-footer(
+\begin{DoxyParamCaption}
+\item[{}]{memblock, }
+\item[{}]{num\-\_\-bytes}
+\end{DoxyParamCaption}
+)~(struct {\bf memblock\-\_\-footer}$\ast$)((uint8\-\_\-t$\ast$)memblock + (sizeof(struct {\bf memblock\-\_\-header}) + num\-\_\-bytes))}\label{tracked__memory_8c_aff46be828cb143ee0ffde154ac547a46}
+
+
+Definition at line 39 of file tracked\-\_\-memory.\-c.
+
+
+
+Referenced by tracked\-\_\-alloc().
+
+\index{tracked\-\_\-memory.\-c@{tracked\-\_\-memory.\-c}!block\-\_\-offset\-\_\-header@{block\-\_\-offset\-\_\-header}}
+\index{block\-\_\-offset\-\_\-header@{block\-\_\-offset\-\_\-header}!tracked_memory.c@{tracked\-\_\-memory.\-c}}
+\subsubsection[{block\-\_\-offset\-\_\-header}]{\setlength{\rightskip}{0pt plus 5cm}\#define block\-\_\-offset\-\_\-header(
+\begin{DoxyParamCaption}
+\item[{}]{real\-\_\-mem}
+\end{DoxyParamCaption}
+)~(struct {\bf memblock\-\_\-header}$\ast$)((uint8\-\_\-t$\ast$)real\-\_\-mem -\/ sizeof(struct {\bf memblock\-\_\-header}))}\label{tracked__memory_8c_a4535345fe0fa840b2b74ce4eaf6dd004}
+
+
+Definition at line 35 of file tracked\-\_\-memory.\-c.
+
+
+
+Referenced by tracked\-\_\-free(), tracked\-\_\-realloc(), and validate\-\_\-memory().
+
+\index{tracked\-\_\-memory.\-c@{tracked\-\_\-memory.\-c}!block\-\_\-offset\-\_\-realmem@{block\-\_\-offset\-\_\-realmem}}
+\index{block\-\_\-offset\-\_\-realmem@{block\-\_\-offset\-\_\-realmem}!tracked_memory.c@{tracked\-\_\-memory.\-c}}
+\subsubsection[{block\-\_\-offset\-\_\-realmem}]{\setlength{\rightskip}{0pt plus 5cm}\#define block\-\_\-offset\-\_\-realmem(
+\begin{DoxyParamCaption}
+\item[{}]{memblock}
+\end{DoxyParamCaption}
+)~(void$\ast$)((uint8\-\_\-t$\ast$)memblock + sizeof(struct {\bf memblock\-\_\-header}))}\label{tracked__memory_8c_ad4ec1862e1c0007f85c0d0eb6b75ff91}
+
+
+Definition at line 37 of file tracked\-\_\-memory.\-c.
+
+
+
+Referenced by output\-\_\-memory\-\_\-info(), and tracked\-\_\-alloc().
+
+\index{tracked\-\_\-memory.\-c@{tracked\-\_\-memory.\-c}!H\-E\-A\-D\-E\-R\-\_\-\-F\-O\-O\-T\-E\-R\-\_\-\-S\-I\-Z\-E@{H\-E\-A\-D\-E\-R\-\_\-\-F\-O\-O\-T\-E\-R\-\_\-\-S\-I\-Z\-E}}
+\index{H\-E\-A\-D\-E\-R\-\_\-\-F\-O\-O\-T\-E\-R\-\_\-\-S\-I\-Z\-E@{H\-E\-A\-D\-E\-R\-\_\-\-F\-O\-O\-T\-E\-R\-\_\-\-S\-I\-Z\-E}!tracked_memory.c@{tracked\-\_\-memory.\-c}}
+\subsubsection[{H\-E\-A\-D\-E\-R\-\_\-\-F\-O\-O\-T\-E\-R\-\_\-\-S\-I\-Z\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define H\-E\-A\-D\-E\-R\-\_\-\-F\-O\-O\-T\-E\-R\-\_\-\-S\-I\-Z\-E~(sizeof(struct {\bf memblock\-\_\-header}) + sizeof(struct {\bf memblock\-\_\-footer}))}\label{tracked__memory_8c_a23fcee323662954abeea9a2b0d3d7bdf}
+
+
+Definition at line 41 of file tracked\-\_\-memory.\-c.
+
+
+
+Referenced by output\-\_\-memory\-\_\-info(), and tracked\-\_\-alloc().
+
+\index{tracked\-\_\-memory.\-c@{tracked\-\_\-memory.\-c}!M\-A\-X\-\_\-\-L\-E\-N\-\_\-\-G\-E\-N\-E\-R\-I\-C@{M\-A\-X\-\_\-\-L\-E\-N\-\_\-\-G\-E\-N\-E\-R\-I\-C}}
+\index{M\-A\-X\-\_\-\-L\-E\-N\-\_\-\-G\-E\-N\-E\-R\-I\-C@{M\-A\-X\-\_\-\-L\-E\-N\-\_\-\-G\-E\-N\-E\-R\-I\-C}!tracked_memory.c@{tracked\-\_\-memory.\-c}}
+\subsubsection[{M\-A\-X\-\_\-\-L\-E\-N\-\_\-\-G\-E\-N\-E\-R\-I\-C}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-A\-X\-\_\-\-L\-E\-N\-\_\-\-G\-E\-N\-E\-R\-I\-C~250}\label{tracked__memory_8c_ae6dbf32c394f00509d560b40c81bccc6}
+
+
+Definition at line 25 of file tracked\-\_\-memory.\-c.
+
+\index{tracked\-\_\-memory.\-c@{tracked\-\_\-memory.\-c}!M\-E\-M\-\_\-\-A\-F\-T\-E\-R\-\_\-\-F\-R\-E\-E@{M\-E\-M\-\_\-\-A\-F\-T\-E\-R\-\_\-\-F\-R\-E\-E}}
+\index{M\-E\-M\-\_\-\-A\-F\-T\-E\-R\-\_\-\-F\-R\-E\-E@{M\-E\-M\-\_\-\-A\-F\-T\-E\-R\-\_\-\-F\-R\-E\-E}!tracked_memory.c@{tracked\-\_\-memory.\-c}}
+\subsubsection[{M\-E\-M\-\_\-\-A\-F\-T\-E\-R\-\_\-\-F\-R\-E\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-E\-M\-\_\-\-A\-F\-T\-E\-R\-\_\-\-F\-R\-E\-E~0x\-F\-F}\label{tracked__memory_8c_ab4cd30097b76edd986e9f0db035b6279}
+
+
+Definition at line 32 of file tracked\-\_\-memory.\-c.
+
+
+
+Referenced by tracked\-\_\-free().
+
+\index{tracked\-\_\-memory.\-c@{tracked\-\_\-memory.\-c}!M\-E\-M\-\_\-\-F\-O\-O\-T\-E\-R\-\_\-\-M\-A\-G\-I\-C@{M\-E\-M\-\_\-\-F\-O\-O\-T\-E\-R\-\_\-\-M\-A\-G\-I\-C}}
+\index{M\-E\-M\-\_\-\-F\-O\-O\-T\-E\-R\-\_\-\-M\-A\-G\-I\-C@{M\-E\-M\-\_\-\-F\-O\-O\-T\-E\-R\-\_\-\-M\-A\-G\-I\-C}!tracked_memory.c@{tracked\-\_\-memory.\-c}}
+\subsubsection[{M\-E\-M\-\_\-\-F\-O\-O\-T\-E\-R\-\_\-\-M\-A\-G\-I\-C}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-E\-M\-\_\-\-F\-O\-O\-T\-E\-R\-\_\-\-M\-A\-G\-I\-C~0x\-D\-E\-A\-D\-B\-E\-E\-F}\label{tracked__memory_8c_adb9b241eeb9083c288e77112c7e7b0a5}
+
+
+Definition at line 29 of file tracked\-\_\-memory.\-c.
+
+\index{tracked\-\_\-memory.\-c@{tracked\-\_\-memory.\-c}!M\-E\-M\-\_\-\-H\-E\-A\-D\-E\-R\-\_\-\-M\-A\-G\-I\-C@{M\-E\-M\-\_\-\-H\-E\-A\-D\-E\-R\-\_\-\-M\-A\-G\-I\-C}}
+\index{M\-E\-M\-\_\-\-H\-E\-A\-D\-E\-R\-\_\-\-M\-A\-G\-I\-C@{M\-E\-M\-\_\-\-H\-E\-A\-D\-E\-R\-\_\-\-M\-A\-G\-I\-C}!tracked_memory.c@{tracked\-\_\-memory.\-c}}
+\subsubsection[{M\-E\-M\-\_\-\-H\-E\-A\-D\-E\-R\-\_\-\-M\-A\-G\-I\-C}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-E\-M\-\_\-\-H\-E\-A\-D\-E\-R\-\_\-\-M\-A\-G\-I\-C~0x\-C\-A\-F\-E\-F\-A\-C\-E}\label{tracked__memory_8c_a2db6c9af5aa02be13a49f706da54385c}
+
+
+Definition at line 28 of file tracked\-\_\-memory.\-c.
+
+\index{tracked\-\_\-memory.\-c@{tracked\-\_\-memory.\-c}!M\-E\-M\-\_\-\-O\-N\-\_\-\-I\-N\-I\-T@{M\-E\-M\-\_\-\-O\-N\-\_\-\-I\-N\-I\-T}}
+\index{M\-E\-M\-\_\-\-O\-N\-\_\-\-I\-N\-I\-T@{M\-E\-M\-\_\-\-O\-N\-\_\-\-I\-N\-I\-T}!tracked_memory.c@{tracked\-\_\-memory.\-c}}
+\subsubsection[{M\-E\-M\-\_\-\-O\-N\-\_\-\-I\-N\-I\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-E\-M\-\_\-\-O\-N\-\_\-\-I\-N\-I\-T~0x0\-F}\label{tracked__memory_8c_ada833569779d8c8a9b8415e8112c1fad}
+
+
+Definition at line 31 of file tracked\-\_\-memory.\-c.
+
+
+
+Referenced by tracked\-\_\-alloc().
+
+\index{tracked\-\_\-memory.\-c@{tracked\-\_\-memory.\-c}!P\-A\-T\-H\-\_\-\-C\-H\-A\-R@{P\-A\-T\-H\-\_\-\-C\-H\-A\-R}}
+\index{P\-A\-T\-H\-\_\-\-C\-H\-A\-R@{P\-A\-T\-H\-\_\-\-C\-H\-A\-R}!tracked_memory.c@{tracked\-\_\-memory.\-c}}
+\subsubsection[{P\-A\-T\-H\-\_\-\-C\-H\-A\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-A\-T\-H\-\_\-\-C\-H\-A\-R~'/'}\label{tracked__memory_8c_a83cebbffc784c0755f531e4c19abf8d0}
+
+
+Referenced by tracked\-\_\-alloc().
+
+
+
+\subsection{Function Documentation}
+\index{tracked\-\_\-memory.\-c@{tracked\-\_\-memory.\-c}!check\-\_\-block@{check\-\_\-block}}
+\index{check\-\_\-block@{check\-\_\-block}!tracked_memory.c@{tracked\-\_\-memory.\-c}}
+\subsubsection[{check\-\_\-block}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf E\-\_\-\-M\-E\-M\-O\-R\-Y\-\_\-\-E\-R\-R\-O\-R} check\-\_\-block (
+\begin{DoxyParamCaption}
+\item[{struct {\bf memblock\-\_\-header} $\ast$}]{memory\-\_\-block}
+\end{DoxyParamCaption}
+)}\label{tracked__memory_8c_ab753a667917e4aa67a8e5ee2117083ba}
+Checks a block of memory, ensuring both the header and footer are not corrupt, and the rest of the block matches the original requestors specifications.
+
+Define D\-I\-S\-A\-B\-L\-E\-\_\-\-M\-E\-M\-O\-R\-Y\-\_\-\-C\-H\-E\-C\-K\-\_\-\-T\-O\-\_\-\-S\-T\-D\-O\-U\-T to prevent stage-\/by-\/stage output of the checking process.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em memory\-\_\-block} & The block of memory to check \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em E\-\_\-\-M\-E\-M\-O\-R\-Y\-\_\-\-E\-R\-R\-O\-R} & The relevant memory error code as to the block status; should hopefully always be E\-C\-\_\-\-No\-Error \\
+\hline
+\end{DoxyRetVals}
+
+
+Definition at line 92 of file tracked\-\_\-memory.\-c.
+
+
+
+References E\-C\-\_\-\-Corrupt\-Footer, E\-C\-\_\-\-Corrupt\-Header, E\-C\-\_\-\-No\-Error, E\-C\-\_\-\-No\-Memory\-Block, E\-C\-\_\-\-Size\-Mismatch, memblock\-\_\-header\-::file, memblock\-\_\-header\-::footer, memblock\-\_\-header\-::line, memblock\-\_\-footer\-::magic, memblock\-\_\-header\-::magic, mem\-\_\-footer\-\_\-magic, mem\-\_\-header\-\_\-magic, memblock\-\_\-header\-::real\-\_\-size, and memblock\-\_\-header\-::requested\-\_\-size.
+
+
+
+Referenced by output\-\_\-memory\-\_\-info(), and validate\-\_\-memory().
+
+
+\begin{DoxyCode}
+95 \{
+96         uint32\_t        block\_size = 0;
+97 
+98         \textcolor{keywordflow}{if} ( memory\_block == NULL )
+99                 \textcolor{keywordflow}{goto} null\_block;
+100 
+101 \textcolor{preprocessor}{#if !defined(DISABLE\_MEMORY\_CHECK\_TO\_STDOUT)}
+102 \textcolor{preprocessor}{}        printf(\textcolor{stringliteral}{"\(\backslash\)tChecking Memory Block %p..\(\backslash\)n"},
+103                 memory\_block);
+104         printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)tGlobal Header magic number is %lu bytes in size :: %#x\(\backslash\)n"},
+105                 \textcolor{keyword}{sizeof}(mem_header_magic), mem_header_magic);
+106         printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)tGlobal Footer magic number is %lu bytes in size :: %#x\(\backslash\)n"},
+107                 \textcolor{keyword}{sizeof}(mem_footer_magic), mem_footer_magic);
+108 \textcolor{preprocessor}{#endif}
+109 \textcolor{preprocessor}{}
+110         \textcolor{keywordflow}{if} ( memcmp(&memory\_block->magic,
+111                 &mem_header_magic,
+112                 \textcolor{keyword}{sizeof}(mem_header_magic)) != 0 )
+113         \{
+114                 \textcolor{comment}{/* memory\_block magic number has been modified; block contents}
+115 \textcolor{comment}{                 * are unstable */}
+116                 \textcolor{keywordflow}{goto} corrupt\_header;
+117         \}
+118 
+119 \textcolor{preprocessor}{#if !defined(DISABLE\_MEMORY\_CHECK\_TO\_STDOUT)}
+120 \textcolor{preprocessor}{}        printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)tHas a valid header (%lu bytes, %#x)...\(\backslash\)n"},
+121                 \textcolor{keyword}{sizeof}(memory\_block->magic), memory\_block->magic);
+122         printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)tHeader Info:: %u (%u requested) bytes, line %u in %s\(\backslash\)n"},
+123                 memory\_block->real_size, memory\_block->requested_size,
+124                 memory\_block->line, memory\_block->file);
+125 \textcolor{preprocessor}{#endif}
+126 \textcolor{preprocessor}{}
+127         \textcolor{keywordflow}{if} ( memory\_block->footer == NULL ||
+128                 memcmp(&memory\_block->footer->magic, &mem_footer_magic, \textcolor{keyword}{sizeof}(
+      mem_footer_magic)) != 0 )
+129         \{
+130                 \textcolor{comment}{/* memory\_block footer magic has been modified - as the header}
+131 \textcolor{comment}{                 * is not corrupt, we can retrieve the allocation info safely */}
+132                 \textcolor{keywordflow}{goto} corrupt\_footer;
+133         \}
+134 
+135 \textcolor{preprocessor}{#if !defined(DISABLE\_MEMORY\_CHECK\_TO\_STDOUT)}
+136 \textcolor{preprocessor}{}        printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)tHas a valid footer (%lu bytes, %#x)...\(\backslash\)n"},
+137                 \textcolor{keyword}{sizeof}(memory\_block->footer->magic),
+138                 memory\_block->footer->magic);
+139 \textcolor{preprocessor}{#endif}
+140 \textcolor{preprocessor}{}
+141         \textcolor{comment}{// calculate the size requested by removing the header + footer}
+142         block\_size = ((uint8\_t*)memory\_block->footer) - ((uint8\_t*)memory\_block + \textcolor{keyword}{sizeof}(\textcolor{keyword}{struct} 
+      memblock_header));
+143 
+144 \textcolor{preprocessor}{#if !defined(DISABLE\_MEMORY\_CHECK\_TO\_STDOUT)}
+145 \textcolor{preprocessor}{}        printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)tCalculated block\_size is %u bytes\(\backslash\)n"}, block\_size);
+146 \textcolor{preprocessor}{#endif}
+147 \textcolor{preprocessor}{}
+148         \textcolor{keywordflow}{if} ( memory\_block->requested_size != block\_size )
+149         \{
+150                 \textcolor{comment}{/* The size stored by the memory\_block header is different from}
+151 \textcolor{comment}{                 * that calculated (remember we've already validated the magic}
+152 \textcolor{comment}{                 * numbers) */}
+153                 \textcolor{keywordflow}{goto} invalid\_size;
+154         \}
+155 
+156 \textcolor{preprocessor}{#if !defined(DISABLE\_MEMORY\_CHECK\_TO\_STDOUT)}
+157 \textcolor{preprocessor}{}        printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)tHas a valid app\_mem size (%u bytes)\(\backslash\)n\(\backslash\)t\(\backslash\)tValidated!\(\backslash\)n"},
+158                block\_size);
+159 \textcolor{preprocessor}{#endif}
+160 \textcolor{preprocessor}{}
+161         \textcolor{comment}{// memory\_block is as expected}
+162 
+163         \textcolor{keywordflow}{return} EC_NoError;
+164 
+165 null\_block:
+166         \textcolor{comment}{// Optional: Raise error}
+167         \textcolor{keywordflow}{return} EC_NoMemoryBlock;
+168 corrupt\_header:
+169         \textcolor{comment}{// Optional: Raise error}
+170         \textcolor{keywordflow}{return} EC_CorruptHeader;
+171 corrupt\_footer:
+172         \textcolor{comment}{// Optional: Raise error}
+173         \textcolor{keywordflow}{return} EC_CorruptFooter;
+174 invalid\_size:
+175         \textcolor{comment}{// Optional: Raise error}
+176         \textcolor{keywordflow}{return} EC_SizeMismatch;
+177 \}
+\end{DoxyCode}
+\index{tracked\-\_\-memory.\-c@{tracked\-\_\-memory.\-c}!mem\-\_\-context\-\_\-destroy@{mem\-\_\-context\-\_\-destroy}}
+\index{mem\-\_\-context\-\_\-destroy@{mem\-\_\-context\-\_\-destroy}!tracked_memory.c@{tracked\-\_\-memory.\-c}}
+\subsubsection[{mem\-\_\-context\-\_\-destroy}]{\setlength{\rightskip}{0pt plus 5cm}void mem\-\_\-context\-\_\-destroy (
+\begin{DoxyParamCaption}
+\item[{struct {\bf mem\-\_\-context} $\ast$const}]{context}
+\end{DoxyParamCaption}
+)}\label{tracked__memory_8c_a18ea1d9235496d3eeefa9e5ef683a7a1}
+Destroys a previously initialized memory context. If any memory blocks exist within the list, it is declared as a memory leak, and will call the \hyperlink{tracked__memory_8h_a1ed5a096e4418b4468d1f6eb94fe953a}{output\-\_\-memory\-\_\-info()} function to report it.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em context} & The memory context to destroy \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 74 of file tracked\-\_\-memory.\-c.
+
+
+
+References mem\-\_\-context\-::lock, M\-E\-M\-\_\-\-L\-E\-A\-K\-\_\-\-L\-O\-G\-\_\-\-N\-A\-M\-E, output\-\_\-memory\-\_\-info(), and T\-A\-I\-L\-Q\-\_\-\-E\-M\-P\-T\-Y.
+
+
+
+Referenced by main().
+
+
+\begin{DoxyCode}
+77 \{
+78         \textcolor{keywordflow}{if} ( !TAILQ_EMPTY(&context->memblocks) )
+79         \{
+80                 printf(\textcolor{stringliteral}{"Memory Leak Detected\(\backslash\)n\(\backslash\)nCheck '%s' for details\(\backslash\)n"},
+81                        MEM_LEAK_LOG_NAME);
+82         \}
+83 
+84         output_memory_info(context);
+85 
+86         pthread\_mutex\_destroy(&context->lock);
+87 \}
+\end{DoxyCode}
+\index{tracked\-\_\-memory.\-c@{tracked\-\_\-memory.\-c}!mem\-\_\-context\-\_\-init@{mem\-\_\-context\-\_\-init}}
+\index{mem\-\_\-context\-\_\-init@{mem\-\_\-context\-\_\-init}!tracked_memory.c@{tracked\-\_\-memory.\-c}}
+\subsubsection[{mem\-\_\-context\-\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}void mem\-\_\-context\-\_\-init (
+\begin{DoxyParamCaption}
+\item[{struct {\bf mem\-\_\-context} $\ast$const}]{context}
+\end{DoxyParamCaption}
+)}\label{tracked__memory_8c_a0a67a6685295c0e8f0d891fe56353b4d}
+Initializes the memory context, ready for usage.
+
+Must be destroyed via \hyperlink{tracked__memory_8h_a18ea1d9235496d3eeefa9e5ef683a7a1}{mem\-\_\-context\-\_\-destroy()}.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em context} & The memory context to initialize \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 55 of file tracked\-\_\-memory.\-c.
+
+
+
+References mem\-\_\-context\-::allocs, mem\-\_\-context\-::current\-\_\-allocated, mem\-\_\-context\-::frees, mem\-\_\-context\-::lock, mem\-\_\-context\-::lock\-\_\-attrib, T\-A\-I\-L\-Q\-\_\-\-I\-N\-I\-T, and mem\-\_\-context\-::total\-\_\-allocated.
+
+
+
+Referenced by main().
+
+
+\begin{DoxyCode}
+58 \{
+59         pthread\_mutexattr\_settype(&context->lock_attrib, PTHREAD\_MUTEX\_RECURSIVE);
+60         pthread\_mutexattr\_settype(&context->lock_attrib, PTHREAD\_PROCESS\_PRIVATE);
+61         pthread\_mutex\_init(&context->lock, &context->lock_attrib);
+62         
+63         context->allocs                 = 0;
+64         context->frees                  = 0;
+65         context->current_allocated      = 0;
+66         context->total_allocated        = 0;
+67         
+68         TAILQ_INIT(&context->memblocks);
+69 \}
+\end{DoxyCode}
+\index{tracked\-\_\-memory.\-c@{tracked\-\_\-memory.\-c}!output\-\_\-memory\-\_\-info@{output\-\_\-memory\-\_\-info}}
+\index{output\-\_\-memory\-\_\-info@{output\-\_\-memory\-\_\-info}!tracked_memory.c@{tracked\-\_\-memory.\-c}}
+\subsubsection[{output\-\_\-memory\-\_\-info}]{\setlength{\rightskip}{0pt plus 5cm}void output\-\_\-memory\-\_\-info (
+\begin{DoxyParamCaption}
+\item[{struct {\bf mem\-\_\-context} $\ast$const}]{context}
+\end{DoxyParamCaption}
+)}\label{tracked__memory_8c_a1ed5a096e4418b4468d1f6eb94fe953a}
+Called only in the destructor, but available for calling manually if desired; will always output the memory stats for the application run, but will also write out the information on any unfreed memory.
+
+Outputs to M\-E\-M\-\_\-\-L\-E\-A\-K\-\_\-\-L\-O\-G\-\_\-\-N\-A\-M\-E, but if it's not writable, it is printed to stderr instead.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em context} & The memory context to work with \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000001}{Todo}]causes warning 'cast to pointer from integer of different size' and 'format x expects argument of type unsigned int' \end{DoxyRefDesc}
+
+
+Definition at line 182 of file tracked\-\_\-memory.\-c.
+
+
+
+References mem\-\_\-context\-::allocs, block\-\_\-offset\-\_\-realmem, check\-\_\-block(), mem\-\_\-context\-::current\-\_\-allocated, E\-C\-\_\-\-Corrupt\-Footer, E\-C\-\_\-\-Corrupt\-Header, E\-C\-\_\-\-No\-Error, E\-C\-\_\-\-No\-Memory\-Block, E\-C\-\_\-\-Size\-Mismatch, mem\-\_\-context\-::frees, H\-E\-A\-D\-E\-R\-\_\-\-F\-O\-O\-T\-E\-R\-\_\-\-S\-I\-Z\-E, M\-E\-M\-\_\-\-L\-E\-A\-K\-\_\-\-L\-O\-G\-\_\-\-N\-A\-M\-E, M\-E\-M\-\_\-\-O\-U\-T\-P\-U\-T\-\_\-\-L\-I\-M\-I\-T, P\-R\-I\-N\-T\-\_\-\-P\-O\-I\-N\-T\-E\-R, T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H, T\-A\-I\-L\-Q\-\_\-\-R\-E\-M\-O\-V\-E, and mem\-\_\-context\-::total\-\_\-allocated.
+
+
+
+Referenced by mem\-\_\-context\-\_\-destroy().
+
+
+\begin{DoxyCode}
+185 \{
+186         \textcolor{keyword}{enum} E_MEMORY_ERROR     result;
+187         \textcolor{keyword}{struct }memblock_header* block\_ptr;
+188         FILE*           leak\_file;
+189         int32\_t         close\_file = 1;
+190         uint32\_t        i = 0;
+191         \textcolor{comment}{// we don't store/track the user-requested amounts, only the real}
+192         uint32\_t        requested\_alloc;
+193         uint32\_t        requested\_unfreed;
+194 
+195         \textcolor{comment}{/* since Windows has been kind enough to not provide more standards}
+196 \textcolor{comment}{         * complaint security functionality, we shall have to use their own}
+197 \textcolor{comment}{         * fopen\_s. POSIX builds can happily use the 'x' flag to provide a}
+198 \textcolor{comment}{         * decent security level - fopen\_s is still vulnerable to potential}
+199 \textcolor{comment}{         * exploits ironically... */}
+200 \textcolor{preprocessor}{#if defined(\_WIN32)}
+201 \textcolor{preprocessor}{}        \textcolor{keywordflow}{if} ( fopen\_s(&leak\_file, MEM_LEAK_LOG_NAME, \textcolor{stringliteral}{"w+"}) != 0 )
+202         \{
+203 \textcolor{preprocessor}{#else}
+204 \textcolor{preprocessor}{}        \textcolor{keywordflow}{if} (( leak\_file = fopen(MEM_LEAK_LOG_NAME, \textcolor{stringliteral}{"w+"})) == NULL )
+205         \{
+206 \textcolor{preprocessor}{#endif}
+207 \textcolor{preprocessor}{}                leak\_file = stdout;
+208                 close\_file = 0;
+209         \}
+210 
+211         \textcolor{comment}{/* Remove memory block sizes, multiplied by the number of allocations,}
+212 \textcolor{comment}{         * which is taken away from the total amount allocated. */}
+213         requested\_alloc         = context->total_allocated - (HEADER_FOOTER_SIZE * context->
+      allocs);
+214         \textcolor{comment}{/* Remove memory block sizes, multiplied by the number of pending frees,}
+215 \textcolor{comment}{         * which is to be taken away from the current amount still allocated. */}
+216         requested\_unfreed       = context->current_allocated - (
+      HEADER_FOOTER_SIZE * (context->allocs - context->frees));
+217 
+218         fprintf(leak\_file,
+219                 \textcolor{stringliteral}{"# Details\(\backslash\)n"}
+220                 \textcolor{stringliteral}{"Header+Footer Size......: %lu\(\backslash\)n"}
+221                 \textcolor{stringliteral}{"\(\backslash\)n"}
+222                 \textcolor{stringliteral}{"# Code Stats\(\backslash\)n"}
+223                 \textcolor{stringliteral}{"Allocations.............: %u\(\backslash\)n"}
+224                 \textcolor{stringliteral}{"Frees...................: %u\(\backslash\)n"}
+225                 \textcolor{stringliteral}{"Pending Frees...........: %u\(\backslash\)n"}
+226                 \textcolor{stringliteral}{"\(\backslash\)n"}
+227                 \textcolor{stringliteral}{"# Totals, Real\(\backslash\)n"}
+228                 \textcolor{stringliteral}{"Bytes Allocated.........: %u\(\backslash\)n"}
+229                 \textcolor{stringliteral}{"Unfreed Bytes...........: %u\(\backslash\)n"}
+230                 \textcolor{stringliteral}{"\(\backslash\)n"}
+231                 \textcolor{stringliteral}{"# Totals, Requested\(\backslash\)n"}
+232                 \textcolor{stringliteral}{"Bytes Allocated.........: %u\(\backslash\)n"}
+233                 \textcolor{stringliteral}{"Unfreed Bytes...........: %u\(\backslash\)n"}
+234                 \textcolor{stringliteral}{"\(\backslash\)n"}
+235                 \textcolor{stringliteral}{"##################\(\backslash\)n"}
+236                 \textcolor{stringliteral}{"  Unfreed Blocks  \(\backslash\)n"},
+237                 HEADER_FOOTER_SIZE,
+238                 context->allocs, context->frees, (context->allocs - context->
+      frees),
+239                 context->total_allocated, context->current_allocated,
+240                 requested\_alloc, requested\_unfreed
+241                 );
+242 
+243         TAILQ_FOREACH(block\_ptr, &context->memblocks, np\_blocks)
+244         \{
+245                 i++;
+246 
+247                 fprintf(leak\_file,
+248                         \textcolor{stringliteral}{"##################\(\backslash\)n"}
+249                         \textcolor{stringliteral}{"%u)\(\backslash\)n"}
+250                         \textcolor{stringliteral}{"Block...: "} PRINT_POINTER
+251                         \textcolor{stringliteral}{"\(\backslash\)n"},
+252                         i, (uintptr\_t)block\_ptr
+253                 );
+254 
+255                 result = check_block(block\_ptr);
+256                 \textcolor{keywordflow}{switch} ( result )
+257                 \{
+258                 \textcolor{keywordflow}{case} EC_NoMemoryBlock:
+259                         \{
+260                                 fprintf(leak\_file,
+261                                         \textcolor{stringliteral}{"Error...: Block Pointer was NULL\(\backslash\)n"}
+262                                 );
+263                                 \textcolor{keywordflow}{break};
+264                         \}
+265                 \textcolor{keywordflow}{case} EC_CorruptFooter:
+266                         \{
+267                                 fprintf(leak\_file,
+268                                         \textcolor{stringliteral}{"Error...: Corrupt Footer\(\backslash\)n"}
+269                                 );
+270                                 \textcolor{keywordflow}{break};
+271                         \}
+272                 \textcolor{keywordflow}{case} EC_CorruptHeader:
+273                         \{
+274                                 fprintf(leak\_file,
+275                                         \textcolor{stringliteral}{"Error...: Corrupt Header\(\backslash\)n"}
+276                                 );
+277                                 \textcolor{keywordflow}{break};
+278                         \}
+279                 \textcolor{keywordflow}{case} EC_SizeMismatch:
+280                         \{
+281                                 fprintf(leak\_file,
+282                                         \textcolor{stringliteral}{"Error...: Size Mismatch (%u actual bytes)\(\backslash\)n"},
+283                                         block\_ptr->requested_size
+284                                 );
+285                                 \textcolor{keywordflow}{break};
+286                         \}
+287                 \textcolor{keywordflow}{case} EC_NoError:
+288                 \textcolor{keywordflow}{default}:
+289                         \textcolor{keywordflow}{break};
+290                 \}
+291 
+292                 \textcolor{comment}{/* can't fall through in switch, so have to do a secondary check}
+293 \textcolor{comment}{                 * as we can't print data that's corrupt or a NULL */}
+294                 \textcolor{keywordflow}{if} ( result != EC_NoMemoryBlock && result != EC_CorruptHeader )
+295                 \{
+296                         fprintf(leak\_file,
+297                                 \textcolor{stringliteral}{"Size....: %u\(\backslash\)n"}
+298                                 \textcolor{stringliteral}{"Function: %s\(\backslash\)n"}
+299                                 \textcolor{stringliteral}{"File....: %s\(\backslash\)n"}
+300                                 \textcolor{stringliteral}{"Line....: %u\(\backslash\)n"},
+301                                 block\_ptr->requested_size,
+302                                 block\_ptr->function,
+303                                 block\_ptr->file,
+304                                 block\_ptr->line
+305                         );
+306                         fprintf(leak\_file, \textcolor{stringliteral}{"Data....: "});
+307                         \textcolor{keywordflow}{for} ( uint32\_t j = 0;
+308                                 j < block\_ptr->requested_size && j < 
+      MEM_OUTPUT_LIMIT;
+309                                 j++ )
+310                         \{
+314                                 fprintf(leak\_file,
+315                                         \textcolor{stringliteral}{"%02x "},
+316                                         block_offset_realmem(block\_ptr)[j]);
+317                         \}
+318                         fprintf(leak\_file, \textcolor{stringliteral}{"\(\backslash\)n"});
+319                 \}
+320         \}
+321 
+322         \textcolor{keywordflow}{if} ( close\_file )
+323                 fclose(leak\_file);
+324 
+325         \textcolor{comment}{/* try to free whatever we didn't during runtime; if any of these are}
+326 \textcolor{comment}{         * screwed (heap corruption) then this will probably trigger a crash */}
+327         TAILQ_FOREACH(block\_ptr, &context->memblocks, np\_blocks)
+328         \{
+329                 TAILQ_REMOVE(&context->memblocks, block\_ptr, np\_blocks);
+330                 free(block\_ptr);
+331         \}
+332 \}
+\end{DoxyCode}
+\index{tracked\-\_\-memory.\-c@{tracked\-\_\-memory.\-c}!tracked\-\_\-alloc@{tracked\-\_\-alloc}}
+\index{tracked\-\_\-alloc@{tracked\-\_\-alloc}!tracked_memory.c@{tracked\-\_\-memory.\-c}}
+\subsubsection[{tracked\-\_\-alloc}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ tracked\-\_\-alloc (
+\begin{DoxyParamCaption}
+\item[{struct {\bf mem\-\_\-context} $\ast$const}]{context, }
+\item[{const uint32\-\_\-t}]{num\-\_\-bytes, }
+\item[{const char $\ast$}]{file, }
+\item[{const char $\ast$}]{function, }
+\item[{const uint32\-\_\-t}]{line}
+\end{DoxyParamCaption}
+)}\label{tracked__memory_8c_a060364772083abaaf94eee077a5d3365}
+Tracked version of malloc -\/ use the M\-A\-L\-L\-O\-C macro to call this, as it will setup the parameters for you, barring the num\-\_\-bytes.
+
+This function will dynamically alter the requested amount in order to leave space for a header and footer; the client code does not need to handle, or be aware, of this fact.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em context} & The memory context to work with \\
+\hline
+\mbox{\tt in}  & {\em num\-\_\-bytes} & The number of bytes to allocate \\
+\hline
+\mbox{\tt in}  & {\em file} & The file this method was called in \\
+\hline
+\mbox{\tt in}  & {\em function} & The function this method was called in \\
+\hline
+\mbox{\tt in}  & {\em line} & The line number in the file this method was called in \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the allocated memory, or a nullptr if the allocation failed. 
+\end{DoxyReturn}
+
+
+Definition at line 337 of file tracked\-\_\-memory.\-c.
+
+
+
+References mem\-\_\-context\-::allocs, block\-\_\-offset\-\_\-footer, block\-\_\-offset\-\_\-realmem, mem\-\_\-context\-::current\-\_\-allocated, memblock\-\_\-header\-::file, memblock\-\_\-header\-::footer, memblock\-\_\-header\-::function, H\-E\-A\-D\-E\-R\-\_\-\-F\-O\-O\-T\-E\-R\-\_\-\-S\-I\-Z\-E, memblock\-\_\-header\-::line, mem\-\_\-context\-::lock, memblock\-\_\-footer\-::magic, memblock\-\_\-header\-::magic, mem\-\_\-footer\-\_\-magic, mem\-\_\-header\-\_\-magic, M\-E\-M\-\_\-\-O\-N\-\_\-\-I\-N\-I\-T, P\-A\-T\-H\-\_\-\-C\-H\-A\-R, memblock\-\_\-header\-::real\-\_\-size, memblock\-\_\-header\-::requested\-\_\-size, T\-A\-I\-L\-Q\-\_\-\-I\-N\-S\-E\-R\-T\-\_\-\-T\-A\-I\-L, and mem\-\_\-context\-::total\-\_\-allocated.
+
+
+
+Referenced by tracked\-\_\-realloc().
+
+
+\begin{DoxyCode}
+344 \{
+345         \textcolor{keyword}{struct }memblock_header* mem\_block = NULL;
+346         \textcolor{keyword}{struct }memblock_footer* mem\_footer = NULL;
+347         \textcolor{keywordtype}{void}*                   mem\_return = NULL;
+348         \textcolor{keywordtype}{char}*                   p = NULL;
+349         uint32\_t                patched\_alloc = 0;      \textcolor{comment}{// num\_bytes + memblocks}
+350 
+351         \textcolor{comment}{// allocate the requested amount, plus the size of the header & footer memblocks}
+352         patched\_alloc = num\_bytes + HEADER_FOOTER_SIZE;
+353 
+354         \textcolor{comment}{// the actual, real, physical allocation of memory}
+355         mem\_block = (\textcolor{keyword}{struct }memblock_header*)malloc(patched\_alloc);
+356 
+357         \textcolor{keywordflow}{if} ( mem\_block == NULL )
+358                 \textcolor{keywordflow}{goto} alloc\_failure;
+359 
+360         \textcolor{comment}{// initialize the value for the new memory}
+361         memset(mem\_block, MEM_ON_INIT, patched\_alloc);
+362 
+363 \textcolor{preprocessor}{#if defined(\_WIN32)}
+364 \textcolor{preprocessor}{}\textcolor{preprocessor}{#       define PATH\_CHAR        '\(\backslash\)\(\backslash\)'}
+365 \textcolor{preprocessor}{}\textcolor{preprocessor}{#else}
+366 \textcolor{preprocessor}{}\textcolor{preprocessor}{#       define PATH\_CHAR        '/'}
+367 \textcolor{preprocessor}{}\textcolor{preprocessor}{#endif}
+368 \textcolor{preprocessor}{}        \textcolor{comment}{// we don't want the full path information that compilers set}
+369         \textcolor{keywordflow}{if} (( p = strrchr(file, PATH_CHAR)) != NULL )
+370                 file = ++p;
+371 
+372         \textcolor{comment}{// calculate the offsets of the return memory and the footer}
+373         mem\_return = block_offset_realmem(mem\_block);
+374         mem\_footer = block_offset_footer(mem\_block, num\_bytes);
+375 
+376         \textcolor{comment}{// prepare the structure internals}
+377         mem\_footer->magic       = mem_footer_magic;
+378         mem\_block->footer       = mem\_footer;
+379         mem\_block->magic        = mem_header_magic;
+380         mem\_block->line         = line;
+381         mem\_block->real_size            = patched\_alloc;
+382         mem\_block->requested_size       = num\_bytes;
+383 
+384         \textcolor{comment}{/* you should be using strlcpy if you're doing character buffer copying}
+385 \textcolor{comment}{         * and other functionality!! For the sake of securing your application,}
+386 \textcolor{comment}{         * please USE IT!}
+387 \textcolor{comment}{         * We provide a 'normal, well-known' alternative for the sake of the}
+388 \textcolor{comment}{         * example using strncpy (which is in standard headers everywhere) */}
+389 \textcolor{preprocessor}{#if defined(HAVE\_STRLCPY)}
+390 \textcolor{preprocessor}{}        strlcpy(mem\_block->file, file, \textcolor{keyword}{sizeof}(mem\_block->file));
+391         strlcpy(mem\_block->function, \textcolor{keyword}{function}, \textcolor{keyword}{sizeof}(mem\_block->function));
+392 \textcolor{preprocessor}{#else}
+393 \textcolor{preprocessor}{}        strncpy(mem\_block->file, file, \textcolor{keyword}{sizeof}(mem\_block->file)-1);
+394         strncpy(mem\_block->function, \textcolor{keyword}{function}, \textcolor{keyword}{sizeof}(mem\_block->function)-1);
+395 \textcolor{preprocessor}{#endif}
+396 \textcolor{preprocessor}{}
+397         \textcolor{comment}{/* lock this context, only 1 thread to update sensitive internals at a}
+398 \textcolor{comment}{         * time - lock for as little time as possible! */}
+399         pthread\_mutex\_lock(&context->lock);
+400 
+401         \textcolor{comment}{// update the stats, using patched values}
+402         context->allocs++;
+403         context->current_allocated += patched\_alloc;
+404         context->total_allocated += patched\_alloc;
+405         \textcolor{comment}{// append it to the list}
+406         TAILQ_INSERT_TAIL(&context->memblocks, mem\_block, np\_blocks);
+407 
+408         \textcolor{comment}{// unlock the context, other threads can now allocate from this class}
+409         pthread\_mutex\_unlock(&context->lock);
+410 
+411         \textcolor{keywordflow}{return} mem\_return;
+412 
+413 alloc\_failure:
+414         \textcolor{keywordflow}{return} NULL;
+415 \}
+\end{DoxyCode}
+\index{tracked\-\_\-memory.\-c@{tracked\-\_\-memory.\-c}!tracked\-\_\-free@{tracked\-\_\-free}}
+\index{tracked\-\_\-free@{tracked\-\_\-free}!tracked_memory.c@{tracked\-\_\-memory.\-c}}
+\subsubsection[{tracked\-\_\-free}]{\setlength{\rightskip}{0pt plus 5cm}void tracked\-\_\-free (
+\begin{DoxyParamCaption}
+\item[{struct {\bf mem\-\_\-context} $\ast$const}]{context, }
+\item[{void $\ast$}]{memory}
+\end{DoxyParamCaption}
+)}\label{tracked__memory_8c_adaadfc4aa30023606455c7f940868825}
+Tracked version of free -\/ use the F\-R\-E\-E macro to call this, for consistency and potential future changes.
+
+In compliance with the C standard, if memory is a nullptr, this function performs no action. No action is also performed if a memory validation check fails (i.\-e. the supplied block is corrupt or otherwise invalid), as doing so could crash the application, and miss logging the information.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em context} & The memory context to work with \\
+\hline
+\mbox{\tt in}  & {\em memory} & A pointer to the memory previously allocated by tracked\-\_\-alloc (which should be called via M\-A\-L\-L\-O\-C) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 420 of file tracked\-\_\-memory.\-c.
+
+
+
+References block\-\_\-offset\-\_\-header, mem\-\_\-context\-::current\-\_\-allocated, memblock\-\_\-header\-::file, mem\-\_\-context\-::frees, memblock\-\_\-header\-::line, mem\-\_\-context\-::lock, M\-E\-M\-\_\-\-A\-F\-T\-E\-R\-\_\-\-F\-R\-E\-E, memblock\-\_\-header\-::real\-\_\-size, memblock\-\_\-header\-::requested\-\_\-size, T\-A\-I\-L\-Q\-\_\-\-R\-E\-M\-O\-V\-E, and validate\-\_\-memory().
+
+
+
+Referenced by tracked\-\_\-realloc().
+
+
+\begin{DoxyCode}
+424 \{
+425         \textcolor{keyword}{struct }memblock_header* mem\_block = NULL;
+426 
+427         \textcolor{comment}{// as per the C standard, if it's a NULL, do nothing}
+428         \textcolor{keywordflow}{if} ( memory == NULL )
+429                 \textcolor{keywordflow}{return};
+430 
+431         \textcolor{keywordflow}{if} ( !validate_memory(context, memory) )
+432                 \textcolor{keywordflow}{return};
+433 
+434         mem\_block = block_offset_header(memory);
+435 
+436 \textcolor{preprocessor}{#if !defined(DISABLE\_MEMORY\_OP\_TO\_STDOUT)}
+437 \textcolor{preprocessor}{}        printf( \textcolor{stringliteral}{"free [%s (%u bytes) line %u]\(\backslash\)n"}
+438                 \textcolor{stringliteral}{"\(\backslash\)tBlock: %p | Usable Block: %p\(\backslash\)n"},
+439                 mem\_block->file, mem\_block->requested_size, mem\_block->line,
+440                 mem\_block, memory);
+441 \textcolor{preprocessor}{#endif}
+442 \textcolor{preprocessor}{}
+443         \textcolor{comment}{// stop other modifications on this memory context}
+444         pthread\_mutex\_lock(&context->lock);
+445 
+446         \textcolor{comment}{// update the context stats}
+447         context->frees++;
+448         context->current_allocated -= (mem\_block->real_size);
+449         \textcolor{comment}{// remove the mem\_block from the list}
+450         TAILQ_REMOVE(&context->memblocks, mem\_block, np\_blocks);
+451 
+452         \textcolor{comment}{// we're done with the class internals, open it up again}
+453         pthread\_mutex\_unlock(&context->lock);
+454 
+455         \textcolor{comment}{// fill the app-allocated memory (highlights use after free)}
+456         memset(mem\_block, MEM_AFTER_FREE, mem\_block->real_size);
+457         \textcolor{comment}{// perform the actual freeing of memory, including our header + footer}
+458         free(mem\_block);
+459 
+460         \textcolor{keywordflow}{return};
+461 \}
+\end{DoxyCode}
+\index{tracked\-\_\-memory.\-c@{tracked\-\_\-memory.\-c}!tracked\-\_\-realloc@{tracked\-\_\-realloc}}
+\index{tracked\-\_\-realloc@{tracked\-\_\-realloc}!tracked_memory.c@{tracked\-\_\-memory.\-c}}
+\subsubsection[{tracked\-\_\-realloc}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ tracked\-\_\-realloc (
+\begin{DoxyParamCaption}
+\item[{struct {\bf mem\-\_\-context} $\ast$const}]{context, }
+\item[{void $\ast$}]{memory, }
+\item[{const uint32\-\_\-t}]{new\-\_\-num\-\_\-bytes, }
+\item[{const char $\ast$}]{file, }
+\item[{const char $\ast$}]{function, }
+\item[{const uint32\-\_\-t}]{line}
+\end{DoxyParamCaption}
+)}\label{tracked__memory_8c_a4e46491d14d0a28b73e4758cc2b20d3b}
+Tracked version of realloc -\/ use the R\-E\-A\-L\-L\-O\-C macro to call this.
+
+In compliance with the C standard, if memory\-\_\-block is a nullptr, the end result is the same as calling tracked\-\_\-alloc (i.\-e. malloc). The same applies if new\-\_\-num\-\_\-bytes is 0 -\/ tracked\-\_\-free (i.\-e. free) will be called on the memory block.
+
+No validation is performed on the original block of memory, and unlike the real realloc, we call Tracked\-Alloc regardless of size differences and other parameters. The previous memory is then moved into this newly allocated block, and the original freed.
+
+As a result, a Tracked\-Realloc guarantees that the returned pointer will never be the same as the one passed in.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em context} & The memory context to work with \\
+\hline
+\mbox{\tt in}  & {\em memory} & The pointer to memory returned by Tracked\-Alloc() \\
+\hline
+\mbox{\tt in}  & {\em new\-\_\-num\-\_\-bytes} & The new number of bytes to allocate \\
+\hline
+\mbox{\tt in}  & {\em file} & The file this method was called in \\
+\hline
+\mbox{\tt in}  & {\em function} & The function this method was called in \\
+\hline
+\mbox{\tt in}  & {\em line} & The line number in the file this method was called in \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em nullptr} & if the function fails due to invalid parameters, or the call to realloc fails \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyReturn}{Returns}
+A pointer to the usable block of memory allocated 
+\end{DoxyReturn}
+
+
+Definition at line 466 of file tracked\-\_\-memory.\-c.
+
+
+
+References block\-\_\-offset\-\_\-header, mem\-\_\-context\-::lock, memblock\-\_\-header\-::requested\-\_\-size, tracked\-\_\-alloc(), and tracked\-\_\-free().
+
+
+\begin{DoxyCode}
+474 \{
+475         \textcolor{keyword}{struct }memblock_header* mem\_block = NULL;
+476         \textcolor{keywordtype}{void}*                   mem\_return = NULL;
+477 
+478         \textcolor{keywordflow}{if} ( memory == NULL )
+479         \{
+480                 \textcolor{comment}{// if the memory is NULL, call malloc [ISO C]}
+481                 \textcolor{keywordflow}{return} tracked_alloc(context, new\_num\_bytes, file, \textcolor{keyword}{function}, 
+      line);
+482         \}
+483 
+484         \textcolor{keywordflow}{if} ( new\_num\_bytes == 0 )
+485         \{
+486                 \textcolor{comment}{/* if new\_num\_bytes is 0 and the memory is not null, call}
+487 \textcolor{comment}{                 * free() [ISO C] */}
+488                 tracked_free(context, memory);
+489                 \textcolor{comment}{/* whether it works or fails, the memory is still unusable, so}
+490 \textcolor{comment}{                 * return a NULL */}
+491                 \textcolor{keywordflow}{return} NULL;
+492         \}
+493 
+494         pthread\_mutex\_lock(&context->lock);
+495 
+496 \textcolor{preprocessor}{#if !defined(DISABLE\_MEMORY\_OP\_TO\_STDOUT)}
+497 \textcolor{preprocessor}{}        \textcolor{comment}{// since we call TrackedAlloc, make the log info accurate}
+498         printf( \textcolor{stringliteral}{"realloc [%s (%u bytes) line %u]\(\backslash\)n"}
+499                 \textcolor{stringliteral}{"\(\backslash\)tTo be allocated in the following malloc; using memory at: %p\(\backslash\)n"},
+500                 file, new\_num\_bytes, line,
+501                 memory);
+502 \textcolor{preprocessor}{#endif}
+503 \textcolor{preprocessor}{}
+504         mem\_return = (\textcolor{keywordtype}{void}*)tracked_alloc(context, new\_num\_bytes, file, \textcolor{keyword}{function}, 
+      line);
+505 
+506         \textcolor{keywordflow}{if} ( mem\_return != NULL )
+507         \{
+508                 mem\_block = block_offset_header(memory);
+509 
+510                 \textcolor{comment}{// move the original data into the new allocation}
+511                 mem\_block->requested_size < new\_num\_bytes ?
+512                         memmove(mem\_return, memory, new\_num\_bytes) :
+513                         memmove(mem\_return, memory, mem\_block->requested_size);
+514 
+515                 \textcolor{comment}{// free the original block}
+516                 tracked_free(context, memory);
+517         \}
+518 
+519         pthread\_mutex\_unlock(&context->lock);
+520 
+521         \textcolor{keywordflow}{return} mem\_return;
+522 \}
+\end{DoxyCode}
+\index{tracked\-\_\-memory.\-c@{tracked\-\_\-memory.\-c}!validate\-\_\-memory@{validate\-\_\-memory}}
+\index{validate\-\_\-memory@{validate\-\_\-memory}!tracked_memory.c@{tracked\-\_\-memory.\-c}}
+\subsubsection[{validate\-\_\-memory}]{\setlength{\rightskip}{0pt plus 5cm}bool validate\-\_\-memory (
+\begin{DoxyParamCaption}
+\item[{struct {\bf mem\-\_\-context} $\ast$const}]{context, }
+\item[{void $\ast$}]{memory}
+\end{DoxyParamCaption}
+)}\label{tracked__memory_8c_a1f0ff25556f5435b8c7048f58b3c80a9}
+Validates a tracked bit of memory; if no pointer is supplied, so nullptr is passed in, every tracked block currently present in the class is validated.
+
+If present, the memory passed in must be at the pointer to the memory returned by the tracked\-\_\-alloc/tracked\-\_\-realloc caller.
+
+Internally calls \hyperlink{tracked__memory_8h_ab753a667917e4aa67a8e5ee2117083ba}{check\-\_\-block()}.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em context} & The \hyperlink{structmem__context}{mem\-\_\-context} memory resides in \\
+\hline
+\mbox{\tt in}  & {\em memory} & A pointer to the memory to validate \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em true} & if the memory is not corrupt and usable \\
+\hline
+{\em false} & if the memory failed one of the checks \\
+\hline
+\end{DoxyRetVals}
+
+
+Definition at line 527 of file tracked\-\_\-memory.\-c.
+
+
+
+References block\-\_\-offset\-\_\-header, check\-\_\-block(), E\-C\-\_\-\-No\-Error, mem\-\_\-context\-::lock, and T\-A\-I\-L\-Q\-\_\-\-F\-O\-R\-E\-A\-C\-H.
+
+
+
+Referenced by tracked\-\_\-free().
+
+
+\begin{DoxyCode}
+531 \{
+532         \textcolor{keywordtype}{bool}    ret = \textcolor{keyword}{true};
+533         \textcolor{keyword}{struct }memblock_header* mem\_block;
+534 
+535         pthread\_mutex\_lock(&context->lock);
+536 
+537         \textcolor{comment}{// if no pointer was specified, check the entire list}
+538         \textcolor{keywordflow}{if} ( memory == NULL )
+539         \{
+540                 TAILQ_FOREACH(mem\_block, &context->memblocks, np\_blocks)
+541                 \{
+542                         \textcolor{comment}{// bail if a block is invalid}
+543                         \textcolor{keywordflow}{if} ( check_block(mem\_block) != EC_NoError )
+544                         \{
+545                                 ret = \textcolor{keyword}{false};
+546                                 \textcolor{keywordflow}{break};
+547                         \}
+548                 \}
+549         \}
+550         \textcolor{keywordflow}{else}
+551         \{
+552                 mem\_block = block_offset_header(memory);
+553 
+554                 ret = (check_block(mem\_block) == EC_NoError);
+555         \}
+556 
+557         pthread\_mutex\_unlock(&context->lock);
+558 
+559         \textcolor{keywordflow}{return} ret;
+560 \}
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\index{tracked\-\_\-memory.\-c@{tracked\-\_\-memory.\-c}!g\-\_\-mem\-\_\-ctx@{g\-\_\-mem\-\_\-ctx}}
+\index{g\-\_\-mem\-\_\-ctx@{g\-\_\-mem\-\_\-ctx}!tracked_memory.c@{tracked\-\_\-memory.\-c}}
+\subsubsection[{g\-\_\-mem\-\_\-ctx}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf mem\-\_\-context} g\-\_\-mem\-\_\-ctx}\label{tracked__memory_8c_a7d7857f56a1eceeb304e53870738e18f}
+The default, global, memory context to use for all memory operations 
+
+Definition at line 50 of file tracked\-\_\-memory.\-c.
+
+
+
+Referenced by main().
+
+\index{tracked\-\_\-memory.\-c@{tracked\-\_\-memory.\-c}!mem\-\_\-footer\-\_\-magic@{mem\-\_\-footer\-\_\-magic}}
+\index{mem\-\_\-footer\-\_\-magic@{mem\-\_\-footer\-\_\-magic}!tracked_memory.c@{tracked\-\_\-memory.\-c}}
+\subsubsection[{mem\-\_\-footer\-\_\-magic}]{\setlength{\rightskip}{0pt plus 5cm}const unsigned mem\-\_\-footer\-\_\-magic = {\bf M\-E\-M\-\_\-\-F\-O\-O\-T\-E\-R\-\_\-\-M\-A\-G\-I\-C}}\label{tracked__memory_8c_a89ab5016ef388d7a5691e4d77208cc32}
+
+
+Definition at line 47 of file tracked\-\_\-memory.\-c.
+
+
+
+Referenced by check\-\_\-block(), and tracked\-\_\-alloc().
+
+\index{tracked\-\_\-memory.\-c@{tracked\-\_\-memory.\-c}!mem\-\_\-header\-\_\-magic@{mem\-\_\-header\-\_\-magic}}
+\index{mem\-\_\-header\-\_\-magic@{mem\-\_\-header\-\_\-magic}!tracked_memory.c@{tracked\-\_\-memory.\-c}}
+\subsubsection[{mem\-\_\-header\-\_\-magic}]{\setlength{\rightskip}{0pt plus 5cm}const unsigned mem\-\_\-header\-\_\-magic = {\bf M\-E\-M\-\_\-\-H\-E\-A\-D\-E\-R\-\_\-\-M\-A\-G\-I\-C}}\label{tracked__memory_8c_ac870dbfc709df78d9ee713843f55e894}
+
+
+Definition at line 46 of file tracked\-\_\-memory.\-c.
+
+
+
+Referenced by check\-\_\-block(), and tracked\-\_\-alloc().
+

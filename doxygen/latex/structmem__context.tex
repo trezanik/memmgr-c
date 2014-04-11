@@ -1,0 +1,133 @@
+\section{mem\-\_\-context Struct Reference}
+\label{structmem__context}\index{mem\-\_\-context@{mem\-\_\-context}}
+
+
+{\ttfamily \#include $<$tracked\-\_\-memory.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structmem__context_a34706a5868f46210cd53dac06b3d1faa}{T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D} (st\-\_\-headname, \hyperlink{structmemblock__header}{memblock\-\_\-header}) memblocks
+\end{DoxyCompactItemize}
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+uint32\-\_\-t \hyperlink{structmem__context_a3eb8087c0f859202f13e8877f1871530}{allocs}
+\item 
+uint32\-\_\-t \hyperlink{structmem__context_a816e6dda100a2b8133c078194cd41f11}{frees}
+\item 
+uint32\-\_\-t \hyperlink{structmem__context_a8edd1cdf2fb7f8e841eb7abacb839a18}{current\-\_\-allocated}
+\item 
+uint32\-\_\-t \hyperlink{structmem__context_a513b900aa111101d2491b1395912e7a1}{total\-\_\-allocated}
+\item 
+pthread\-\_\-mutex\-\_\-t \hyperlink{structmem__context_a0ab6d63011eb813840718d80623e16c9}{lock}
+\item 
+pthread\-\_\-mutexattr\-\_\-t \hyperlink{structmem__context_a270a8ee10aed0945ffbbfc1a806794c3}{lock\-\_\-attrib}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Holds the stats and pointers to the memory operations performed. You can create multiple contexts in an application if desired, so you can separate tracking between network, gui, etc.
+
+By default, there's a single, global context used, which is automatically passed in by the custom macros we work with. To support additionals, you could create another macro like\-: 
+\begin{DoxyCode}
+\textcolor{preprocessor}{#define MALLOC\_NET(size)        tracked\_alloc(g\_net\_memctx, ...}
+\textcolor{preprocessor}{...}
+\end{DoxyCode}
+ and provide your context as another extern.
+
+Will not exist if U\-S\-I\-N\-G\-\_\-\-M\-E\-M\-O\-R\-Y\-\_\-\-D\-E\-B\-U\-G\-G\-I\-N\-G is not defined.
+
+Most interaction with this class should be done with the special macros\-:
+\begin{DoxyItemize}
+\item M\-A\-L\-L\-O\-C
+\item R\-E\-A\-L\-L\-O\-C
+\item F\-R\-E\-E These handle providing the line number, file, and function, and will define to the real malloc/realloc/free automatically if not debugging memory.
+\end{DoxyItemize}
+
+Naturally, anything allocated/freed by malloc/realloc/free outside of our macros will not be tracked.
+
+You must initialize the context with \hyperlink{tracked__memory_8c_a0a67a6685295c0e8f0d891fe56353b4d}{mem\-\_\-context\-\_\-init()}, and cleanup with \hyperlink{tracked__memory_8c_a18ea1d9235496d3eeefa9e5ef683a7a1}{mem\-\_\-context\-\_\-destroy()}. 
+
+Definition at line 156 of file tracked\-\_\-memory.\-h.
+
+
+
+\subsection{Member Function Documentation}
+\index{mem\-\_\-context@{mem\-\_\-context}!T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D@{T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D}}
+\index{T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D@{T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D}!mem_context@{mem\-\_\-context}}
+\subsubsection[{T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D}]{\setlength{\rightskip}{0pt plus 5cm}mem\-\_\-context\-::\-T\-A\-I\-L\-Q\-\_\-\-H\-E\-A\-D (
+\begin{DoxyParamCaption}
+\item[{st\-\_\-headname}]{, }
+\item[{{\bf memblock\-\_\-header}}]{}
+\end{DoxyParamCaption}
+)}\label{structmem__context_a34706a5868f46210cd53dac06b3d1faa}
+A list of all the \hyperlink{structmemblock__header}{memblock\-\_\-header} objects created and active 
+
+\subsection{Field Documentation}
+\index{mem\-\_\-context@{mem\-\_\-context}!allocs@{allocs}}
+\index{allocs@{allocs}!mem_context@{mem\-\_\-context}}
+\subsubsection[{allocs}]{\setlength{\rightskip}{0pt plus 5cm}uint32\-\_\-t mem\-\_\-context\-::allocs}\label{structmem__context_a3eb8087c0f859202f13e8877f1871530}
+The amount of times new has been called successfully 
+
+Definition at line 158 of file tracked\-\_\-memory.\-h.
+
+
+
+Referenced by mem\-\_\-context\-\_\-init(), output\-\_\-memory\-\_\-info(), and tracked\-\_\-alloc().
+
+\index{mem\-\_\-context@{mem\-\_\-context}!current\-\_\-allocated@{current\-\_\-allocated}}
+\index{current\-\_\-allocated@{current\-\_\-allocated}!mem_context@{mem\-\_\-context}}
+\subsubsection[{current\-\_\-allocated}]{\setlength{\rightskip}{0pt plus 5cm}uint32\-\_\-t mem\-\_\-context\-::current\-\_\-allocated}\label{structmem__context_a8edd1cdf2fb7f8e841eb7abacb839a18}
+Currently allocated amount of bytes 
+
+Definition at line 160 of file tracked\-\_\-memory.\-h.
+
+
+
+Referenced by mem\-\_\-context\-\_\-init(), output\-\_\-memory\-\_\-info(), tracked\-\_\-alloc(), and tracked\-\_\-free().
+
+\index{mem\-\_\-context@{mem\-\_\-context}!frees@{frees}}
+\index{frees@{frees}!mem_context@{mem\-\_\-context}}
+\subsubsection[{frees}]{\setlength{\rightskip}{0pt plus 5cm}uint32\-\_\-t mem\-\_\-context\-::frees}\label{structmem__context_a816e6dda100a2b8133c078194cd41f11}
+The amount of times delete has been called successfully 
+
+Definition at line 159 of file tracked\-\_\-memory.\-h.
+
+
+
+Referenced by mem\-\_\-context\-\_\-init(), output\-\_\-memory\-\_\-info(), and tracked\-\_\-free().
+
+\index{mem\-\_\-context@{mem\-\_\-context}!lock@{lock}}
+\index{lock@{lock}!mem_context@{mem\-\_\-context}}
+\subsubsection[{lock}]{\setlength{\rightskip}{0pt plus 5cm}pthread\-\_\-mutex\-\_\-t mem\-\_\-context\-::lock}\label{structmem__context_a0ab6d63011eb813840718d80623e16c9}
+
+
+Definition at line 166 of file tracked\-\_\-memory.\-h.
+
+
+
+Referenced by mem\-\_\-context\-\_\-destroy(), mem\-\_\-context\-\_\-init(), tracked\-\_\-alloc(), tracked\-\_\-free(), tracked\-\_\-realloc(), and validate\-\_\-memory().
+
+\index{mem\-\_\-context@{mem\-\_\-context}!lock\-\_\-attrib@{lock\-\_\-attrib}}
+\index{lock\-\_\-attrib@{lock\-\_\-attrib}!mem_context@{mem\-\_\-context}}
+\subsubsection[{lock\-\_\-attrib}]{\setlength{\rightskip}{0pt plus 5cm}pthread\-\_\-mutexattr\-\_\-t mem\-\_\-context\-::lock\-\_\-attrib}\label{structmem__context_a270a8ee10aed0945ffbbfc1a806794c3}
+
+
+Definition at line 167 of file tracked\-\_\-memory.\-h.
+
+
+
+Referenced by mem\-\_\-context\-\_\-init().
+
+\index{mem\-\_\-context@{mem\-\_\-context}!total\-\_\-allocated@{total\-\_\-allocated}}
+\index{total\-\_\-allocated@{total\-\_\-allocated}!mem_context@{mem\-\_\-context}}
+\subsubsection[{total\-\_\-allocated}]{\setlength{\rightskip}{0pt plus 5cm}uint32\-\_\-t mem\-\_\-context\-::total\-\_\-allocated}\label{structmem__context_a513b900aa111101d2491b1395912e7a1}
+The total amount of allocated bytes 
+
+Definition at line 161 of file tracked\-\_\-memory.\-h.
+
+
+
+Referenced by mem\-\_\-context\-\_\-init(), output\-\_\-memory\-\_\-info(), and tracked\-\_\-alloc().
+

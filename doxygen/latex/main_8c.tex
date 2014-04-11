@@ -1,0 +1,69 @@
+\section{main.\-c File Reference}
+\label{main_8c}\index{main.\-c@{main.\-c}}
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+{\ttfamily \#include $<$stdint.\-h$>$}\\*
+{\ttfamily \#include $<$string.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}tracked\-\_\-memory.\-h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int32\-\_\-t \hyperlink{main_8c_af19ddca125f05a2090dd132045573ee4}{main} (int32\-\_\-t argc, char $\ast$$\ast$argv)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{main.\-c@{main.\-c}!main@{main}}
+\index{main@{main}!main.c@{main.\-c}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int32\-\_\-t main (
+\begin{DoxyParamCaption}
+\item[{int32\-\_\-t}]{argc, }
+\item[{char $\ast$$\ast$}]{argv}
+\end{DoxyParamCaption}
+)}\label{main_8c_af19ddca125f05a2090dd132045573ee4}
+
+
+Definition at line 12 of file main.\-c.
+
+
+
+References F\-R\-E\-E, g\-\_\-mem\-\_\-ctx, M\-A\-L\-L\-O\-C, mem\-\_\-context\-\_\-destroy(), and mem\-\_\-context\-\_\-init().
+
+
+\begin{DoxyCode}
+16 \{
+17         uint32\_t        leak\_alloc\_1 = 256;
+18         uint32\_t        leak\_alloc\_2 = 128;
+19         uint32\_t        free\_alloc = 24;
+20         \textcolor{keywordtype}{char}*           leaked\_buffer\_1;
+21         \textcolor{keywordtype}{char}*           leaked\_buffer\_2;
+22         \textcolor{keywordtype}{char}*           freed\_buffer;
+23 
+24         \textcolor{comment}{// must initialize context before use}
+25         mem_context_init(&g_mem_ctx);
+26 
+27         leaked\_buffer\_1 = (\textcolor{keywordtype}{char}*)MALLOC(leak\_alloc\_1);
+28         leaked\_buffer\_2 = (\textcolor{keywordtype}{char}*)MALLOC(leak\_alloc\_2);
+29         freed\_buffer = (\textcolor{keywordtype}{char}*)MALLOC(free\_alloc);
+30 
+31         printf(\textcolor{stringliteral}{"\(\backslash\)n############################\(\backslash\)n"});
+32         printf(\textcolor{stringliteral}{"### C Memory Manager PoC ###\(\backslash\)n"});
+33         printf(\textcolor{stringliteral}{"############################\(\backslash\)n\(\backslash\)n"});
+34         printf(\textcolor{stringliteral}{"allocated %i bytes of memory\(\backslash\)n"}, leak\_alloc\_1);
+35         printf(\textcolor{stringliteral}{"allocated %i bytes of memory\(\backslash\)n"}, leak\_alloc\_2);
+36         printf(\textcolor{stringliteral}{"allocated %i bytes of memory\(\backslash\)n"}, free\_alloc);
+37 
+38         strncpy(leaked\_buffer\_1, \textcolor{stringliteral}{"This is allocated memory that will not be freed"}, leak\_alloc\_1 - 1);
+39         strncpy(freed\_buffer, \textcolor{stringliteral}{"This buffer is freed"}, free\_alloc-1);
+40         strncpy(leaked\_buffer\_2, argv[0], leak\_alloc\_2 - 1);
+41 
+42         printf(\textcolor{stringliteral}{"freeing one buffer...\(\backslash\)n"});
+43         FREE(freed\_buffer);
+44         printf(\textcolor{stringliteral}{"closing the application without freeing the remaining allocated memory...\(\backslash\)n\(\backslash\)n"});
+45 
+46         \textcolor{comment}{// destroy context when finished, so it can output meminfo}
+47         mem_context_destroy(&g_mem_ctx);
+48         
+49         \textcolor{keywordflow}{return} EXIT\_SUCCESS;
+50 \}
+\end{DoxyCode}

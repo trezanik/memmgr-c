@@ -1,0 +1,5 @@
+See http://www.trezanik.org/projects/memmgr-c/ for documentation.
+
+Not recommended for use on Windows. Visual Studio has piss-poor handling of C99
+(i.e. it doesn't support it), and you WILL encounter some issues/errors if you
+attempt to use it. That said, it compiles, so best of luck...
